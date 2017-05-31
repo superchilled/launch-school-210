@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Operators and Conditionals: Exercise 9</title>
+</head>
+<body>
+<h1>Launch Sschool 210 | Lesson 1 Exercises - Operators and Conditionals</h1>
+<h2>Exercise 9</h2>
+<p>Set the value of bananas to 1. Perform the same assignment for eitherOr. Log the value of eitherOr. Afterward, assign bananas || apples to the eitherOr variable. Note that the value is now the bananas variable instead of apples. JavaScript reads this statement from left to right. If the left-side has a truthy value, it is used. Otherwise, the right-side value is used.</p>
+<script>
+var apples = 3;
+var bananas = 1;
+var eitherOr = (apples || bananas);
+console.log(eitherOr);
+eitherOr = (bananas || apples);
+console.log(eitherOr);
+</script>
+</body>
+</html>

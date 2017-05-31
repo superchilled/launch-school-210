@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Operators and Conditionals: Exercise 3</title>
+</head>
+<body>
+<h1>Launch Sschool 210 | Lesson 1 Exercises - Operators and Conditionals</h1>
+<h2>Exercise 3</h2>
+<p>Change the conditional from the previous exercise to use === instead. Why doesn't this one output a message?</p>
+<p><strong>Answer:</strong> this doesn't output teh message because === tests for strict equality and the string '3' and the integer 3 are different data types.</p>
+<script>
+var apples = 3;
+var bananas = '3';
+
+if (apples === bananas) {
+  console.log("Apples are the same as bananas!!")
+}
+</script>
+</body>
+</html>

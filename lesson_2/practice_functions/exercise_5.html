@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Functions: Exercise 5</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 2 Practice Problems - Functions</h1>
+<h2>Exercise 5</h2>
+<p>With this refactor, we can now use our functions to determine the average of all the numbers in an arbitrary array of numbers. Create an array named temperatures and store five temperature values in it. Find the average temperature by passing the array to the average function and log the result.</p>
+<script>
+function sum(arr) {
+  var total = 0;
+  for (var i = 0; i < arr.length; i++) {
+    total += arr[i];
+  }
+  return total;
+}
+
+function average(arr) {
+  return sum(arr) / arr.length;
+}
+
+var temperatures = [15, 18, 20, 22, 25];
+console.log(average(temperatures));
+</script>
+</body>
+</html>

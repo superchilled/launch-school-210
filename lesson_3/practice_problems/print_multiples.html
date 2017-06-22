@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <title>Course 210 | Lesson 3 Practice Problems: Print Multiples</title>
+</head>
+<body>
+<h1>Print Multiples</h1>
+<p>Write a function logMultiples that takes one argument number. It should log all multiples of the argument between 0 and 100 (inclusive) that are also odd numbers. Log the values in descending order.</p>
+
+<p>You may assume that number is an integer between 0 and 100.</p>
+<script>
+
+
+// input: an integer number
+// output: log of each number in descending order, from 100 down to the number input number, that is a multiple of the input number and also an odd number
+// algorithm: 
+// 1) loop through all numbers from 100 down to input number
+// 2) test the current number to see if it is a multiple of the current number and also if it is odd
+// if yes to both log the number, if not do nothing
+
+// test cases
+//logMultiples(17); // should log 85, 51, 17
+logMultiples(21); // should log 63, 21
+
+function logMultiples(number) {
+  for (var i = 100; i >= number; i--) {
+    if (isMultiple(number, i) && isOdd(i)) {
+      console.log(i);
+    } 
+  }
+}
+
+function isMultiple(inputNumber, currentNumber) {
+  return currentNumber % inputNumber === 0;
+}
+
+function isOdd(number) {
+  return number % 2 === 1;
+}
+</script>
+</body>
+</html>

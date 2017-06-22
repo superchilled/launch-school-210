@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <title>Course 210 | Lesson 3 Practice Problems: Student Grade</title>
+</head>
+<body>
+<h1>Student Grade</h1>
+<p>Write a program to determine a student’s grade based on the average of three scores you get from the user. Use these rules to compute the grade:</p>
+  
+<ul>
+  <li>If the average score >= 90 => grade: A</li>
+  <li>If the average score >= 70 and < 90 => grade: B</li>
+  <li>If the average score >= 50 and < 70 => grade: C</li>
+  <li>If the average score < 50 => grade: F</li>
+</ul>
+
+<p>You may assume that all input values are valid positive integers.</p>
+<script>
+// input: 3 positive integer scores
+// output: log a grade based ont eh average of the scores
+// algorithm:
+// 1) prompt the user 3 times for a grade, assigning each submitted grade to a variable
+// 2) average the 3 submitted grades
+// 3) match the average to a range of scores which equates to a specific grade
+// 4) log the matched grade
+
+var totalScore = 0;
+var inputScore;
+var grade;
+
+for (var i = 1; i <= 3; i++) {
+  inputScore = prompt('Enter score ' + i);
+  totalScore += Number(inputScore);
+}
+
+var averageScore = totalScore / 3;
+
+if (averageScore >= 90) {
+  grade = 'A'
+} else if (averageScore >= 70) {
+  grade = 'B'
+} else if (averageScore >= 50) {
+  grade = 'C'
+} else {
+  grade = 'F'
+}
+
+console.log('Based on the average of your 3 scores your letter grade is "' + grade + '"');
+</script>
+</body>
+</html>

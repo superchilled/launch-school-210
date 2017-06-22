@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <title>Course 210 | Lesson 3 Practice Problems: Odd Numbers</title>
+</head>
+<body>
+<h1>Odd Numbers</h1>
+<p>Write a function that takes a positive integer as an argument, and logs all the odd numbers from 1 to the passed in number (inclusive). All numbers should be logged on separate lines.</p>
+<script>
+
+
+// input: an integer value
+// output: log of each odd numbers up to and including (if odd) the input integer value
+// algorithm: 
+// 1) create a range of numbers from 0 up to the input number
+// 2) iterate through range and test each number to see if it is odd
+// if odd log the number, if not do nothing
+
+// test cases
+
+logOddNumbers(19); // should log 1, 3, 5, 7, 9, 11, 13, 15, 17, 19
+//logOddNumbers(10); // should log 1, 3, 5, 7, 9
+//logOddNumbers(1);  // should log 1
+//logOddNumbers(0);  // shouldn't log anything
+
+function logOddNumbers(int) {
+  for (var i = 1; i <= int; i++) {
+    if (isOdd(i)) {
+      console.log(i);
+    }
+  }
+}
+
+function isOdd(int) {
+  return int % 2 !== 0;
+}
+
+</script>
+</body>
+</html>

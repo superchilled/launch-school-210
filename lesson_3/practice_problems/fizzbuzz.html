@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+  <title>Course 210 | Lesson 3 Practice Problems: FizzBuzz</title>
+</head>
+<body>
+<h1>FizzBuzz</h1>
+<p>Write a function that iterates over the integers from 1 to 100, inclusive. For multiples of three, log "Fizz" to the console. For multiples of five, log "Buzz". For numbers which are multiples of both three and five, log "FizzBuzz". For all other numbers, log the number.</p>
+<script>
+// input: no input
+// output: a log equivalent to each number from 1 to 100 , multiples of 3 log as Fizz, multiples of 5 log as Buzz, multiples of
+// 3 & 5 log as FizzBuzz, all other numbers log as the number itself
+// algorithm: 
+// 1) loop through all numbers from 1 to 100
+// 2) test the current number to see if it is a multiple of the three and five
+// if yes to both log FizzBuzz
+// 3) test the current number to see if it is a multiple of three
+// if yes log Fizz
+// 4) test the current number to see if it is a multiple of five
+// if yes log Buzz
+// if no log the number
+
+// test cases
+fizzbuzz(); // should log 1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz, etc..
+
+function fizzbuzz() {
+  for (var i = 1; i <= 100; i++) {
+    if (isMutlipleOfThree(i) && isMutlipleOfFive(i)) {
+      console.log('FizzBuzz');
+    } else if (isMutlipleOfThree(i)) {
+      console.log('Fizz');
+    } else if (isMutlipleOfFive(i)) {
+      console.log('Buzz');
+    } else {
+      console.log(i);
+    }
+  }
+}
+
+function isMutlipleOfThree(int) {
+  return int % 3 === 0;
+}
+
+function isMutlipleOfFive(int) {
+  return int % 5 === 0;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <title>Course 210 | Lesson 3 Practice Problems: Multiples of 3 and 5</title>
+</head>
+<body>
+<h1>Multiples of 3 and 5</h1>
+<p>Write a function that logs the integers from 1 to 100 (inclusive) that are multiples of either 3 or 5. If the number is divisible by both 3 and 5, append an "!" to the number.</p>
+<script>
+
+
+// input: none
+// output: log of each number, up to and including 100, that is a multiple of thre or five
+// algorithm: 
+// 1) loop through all numbers from 1 to 100
+// 2) test the current number to see if it is a multiple of either three or five
+// if yes log the number, if not do nothing
+
+// test cases
+multiplesOfThreeAndFive(); // should log 3, 5, 6, 9, 10, 12, 15, etc... up to 100
+
+function multiplesOfThreeAndFive() {
+  for (var i = 1; i <= 100; i++) {
+    if (isMutlipleOfThree(i) && isMutlipleOfFive(i)) {
+      console.log(String(i) + '!');
+    } else if (isMutlipleOfThree(i) || isMutlipleOfFive(i)) {
+      console.log(i);
+    }
+  }
+}
+
+function isMutlipleOfThree(int) {
+  return int % 3 === 0;
+}
+
+function isMutlipleOfFive(int) {
+  return int % 5 === 0;
+}
+</script>
+</body>
+</html>

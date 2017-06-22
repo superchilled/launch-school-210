@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <title>Course 210 | Lesson 3 Practice Problems: XOR</title>
+</head>
+<body>
+<h1>XOR</h1>
+<p>For boolean values, the || operator returns true if either or both of its operands are true, false if both operands are false. The && operator, on the other hand, returns true if both of its operands are true, and false if either operand is false. This works great until you need only one of two conditions to be true, the so-called "exclusive or", or XOR.</p>
+
+<p>Write a function named isXor that takes two arguments, and returns true if exactly one argument is truthy, false otherwise. Your function should work with the boolean values of true and false, but also any JavaScript values based on their "truthiness".</p>
+<script>
+// input: two arguments, either booleans or some other single value of any data type
+// output: a boolean -- true if only one argument is truthy, false otherwise
+// algorithm:
+// 1) if both arguments are falsy return false
+// 2) if both arguments are truthy return false
+// 3) otherwise return true
+
+// test cases
+isXor(false, true);     // true
+isXor(true, false);     // true
+isXor(false, false);    // false
+isXor(true, true);      // false
+
+isXor(false, 3);        // true
+isXor('a', undefined);  // true
+isXor(null, '');        // false
+isXor('2', 23);         // false
+
+function isXor(arg1, arg2) {
+  if ((!arg1 && !arg2) || (arg1 && arg2)) {
+    return false;
+  } else {
+    return true;
+  }
+}
+</script>
+</body>
+</html>

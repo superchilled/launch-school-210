@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <title>Course 210 | Lesson 3 Practice Problems: Greatest Common Divisor</title>
+</head>
+<body>
+<h1>Greatest Common Divisor</h1>
+<p>Create a function that computes the Greatest Common Divisor of two positive integers.</p>
+<script>
+// input: 2 positive integers
+// output: a positive integer that represents the greatest common divisor of the two positive integers
+// algorithm:
+// 1) Determine which is the smaller of the two input integers
+// 2) loop from that integer down to 1
+// 3) on each iteration determine if the current number is a divsor of both input integers
+//  - if yes, return the current number
+//  - if no, continue to the next number
+
+// test cases
+gcd(12, 4);   // 4
+gcd(15, 10);  // 5
+gcd(9, 2);    // 1
+
+function gcd(int1, int2) {
+  var smallestInt = int1 < int2 ? int1 : int2;
+
+  for (var i = smallestInt; i >= 1; i--) {
+    if (isDivisor(int1, i) && isDivisor(int2, i)) {
+      return i;
+    }
+  }
+}
+
+function isDivisor(integer, divisor) {
+  return integer % divisor === 0;
+}
+
+</script>
+</body>
+</html>

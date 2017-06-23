@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+  <title>Course 210 | Lesson 3 Practice Problems: Goldbach Numbers</title>
+</head>
+<body>
+<h1>Goldbach Numbers</h1>
+<p>Write a function named checkGoldbach() that uses Goldbach's Conjecture to log every pair of primes that sum to the number supplied as an argument. The conjecture states that "you can express every even integer greater than 2 as the sum of two primes". The function takes as its only parameter, an integer n, and logs all combinations of two prime numbers whose sum is n. Log the prime pairs with the smaller number first. If n is odd or less than 4, your function should log null.</p>
+
+<p>Your checkGoldbach() function may call the isPrime() function you wrote for a previous practice problem.</p>
+<script>
+// input: a single positive integer
+// output: a log of every pair of prime number between 1 and the input number that sums to the input number
+// algorithm:
+// 1) Set two values:
+//  - the integer 2
+//  - the input number minus two
+// 2) set an endpoint which is the input integer divided by two and rounded up
+// 3) check if both are primes
+//  - if yes log both numbers
+// 4) increment the first number by 1 and decrement the second number by 1 and return to step 3
+// 5) keep repeating steps 3 & 4 until the end point is reached, if no other pairs are logged, log null
+
+// test cases
+checkGoldbach(3);
+// logs: null
+
+checkGoldbach(4);
+// logs: 2 2
+
+checkGoldbach(12);
+// logs: 5 7
+
+checkGoldbach(100);
+// logs:
+// 3 97
+// 11 89
+// 17 83
+// 29 71
+// 41 59
+// 47 53
+
+function checkGoldbach(int) {
+  var endPoint = Math.ceil(int / 2);
+  var pairs = 0;
+  var num = int - 2;
+
+  for (var i = 2; i <= endPoint; i++) {
+    
+    if (isPrime(i) && isPrime(num)) {
+      console.log(i, num);
+
+      pairs++; 
+    }
+
+    num--;
+  }
+
+  if (pairs === 0) {
+    console.log(null);
+  }
+}
+
+function isPrime(number) {
+  if (number < 2) {
+    return false;
+  }
+
+  for (var i = 2; i < number; i++) {
+    if (isMultiple(number, i)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function isMultiple(inputNumber, currentNumber) {
+  return inputNumber % currentNumber === 0;
+}
+</script>
+</body>
+</html>

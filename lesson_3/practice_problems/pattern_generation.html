@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <title>Course 210 | Lesson 3 Practice Problems: Pattern Generation</title>
+</head>
+<body>
+<h1>Pattern Generation</h1>
+<p>Write a function that takes a number of rows as the argument n and logs a square of numbers and asterisks. For example, if n = 7, log the following pattern:</p>
+<script>
+// input: a single positive integer
+// output: a log of patterns consisting of a numbers an asterisks from 1 up to the input number
+// algorithm:
+// 1) Set an initial string to '1'
+// 2) set an asterisk value to the input number minus 1
+// 3) loop from 1 to the input number, on each iteration:
+//  - log initial string concatenated with asterisk a number of times equal to asterisk value
+//  - decrement asterisk value by 1
+//  - concatenate initial string with the next number in the loop
+
+// test cases
+generatePattern(7);
+
+// console output
+// 1******
+// 12*****
+// 123****
+// 1234***
+// 12345**
+// 123456*
+// 1234567
+
+function generatePattern(int) {
+  var initialString = '1';
+  var asteriskAmount = int - 1;
+
+  for (var i = 1; i <= int; i++) {
+    asteriskString = createAsteriskString(asteriskAmount);
+
+    console.log(initialString + asteriskString);
+
+    initialString += String(i + 1);
+    asteriskAmount--;
+  }
+}
+
+function createAsteriskString(amount) {
+  var asteriskString = '';
+
+  for (var i = 1; i <= amount; i++) {
+    if (i > 9) {
+      asteriskString += '**';
+    } else {
+      asteriskString += '*';
+    }
+  }
+
+  return asteriskString;
+}
+
+</script>
+</body>
+</html>

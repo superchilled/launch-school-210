@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <title>Course 210 | Lesson 3 Practice Problems: Repeating Strings</title>
+</head>
+<body>
+<h1>Repeating Strings</h1>
+<p>Implement a function that takes a string and a number times as arguments. The function should return the string repeated times number of times. If times is not a number, return undefined. If it is a negative number, return undefined also. If times is 0, return an empty string. You may ignore the possibility that times is a number that isn't an integer.</p>
+
+<p>You may concatenate strings, but you may not use any other properties or methods from JavaScript's built-in String class.</p>
+
+<script>
+// input: a string and an integer
+// output: the input string repeated by the number of times of the integer, and empty string, or undefined
+// algorithm:
+// 1) Test to see if times is either not a number or a negative number
+// - if so return undefined
+// 2) Set an empty output string
+// 3) Iterate anumber of times equal to times, concatenating the output string with the input string
+// 3) Return the output string
+
+//test cases
+
+repeat('abc', 1);    // "abc"
+repeat('abc', 2);    // "abcabc"
+repeat('abc', -1);   // undefined
+repeat('abc', 0);    // ""
+repeat('abc', 'a');  // undefined
+
+function repeat(string, times) {
+  if (isNaN(times) || times < 0) {
+    return undefined;
+  }
+
+  var outputString = '';
+
+  for (var i = 0; i < times; i++) {
+    outputString += string;
+  }
+
+  return outputString;
+}
+</script>
+</body>
+</html>

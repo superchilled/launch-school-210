@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+  <title>Course 210 | Lesson 3 Practice Problems: Substring (2)</title>
+</head>
+<body>
+<h1>Substring (2)</h1>
+<p>This practice problem is similar to the previous one. This time, though, both arguments are indices of the provided string. The following rules apply:</p>
+<ul>
+<li>If both start and end are positive integers, start is less than end, and both are within the boundary of the string, return the substring from the start index (inclusive), to the end index (NOT inclusive).</li>
+<li>If the value of start is greater than end, swap the values of the two, then return the substring as described above. </li>
+<li>If start is equal to end, return an empty string. </li>
+<li>If end is omitted, the end variable inside the function isundefined. Return the substring starting at position start up through (and including) the end of the string. </li>
+<li>If either start or end is less than 0 or NaN, treat it as 0. </li>
+<li>If either start or end is greater than the length of the string, treat it as equal to the string length. </li>
+</ul>
+<script>
+// input: a string and two integers (a starting point and an end point)
+// output: a sub-string with length equal to the input length and starting from the index of the string equal to starting point
+//  note - starting point
+// algorithm:
+// 1) Set a value for start
+//  - test if start is negative, if so reset its value to start + the length of teh string
+// 2) Set an output string to an empty string
+// 3) iterate through the input string starting at start and for length iterations, concatenating to
+//  output string the character from the input string at the index for that iteration
+
+//test cases
+var string = 'hello world';
+
+substring(string, 2, 4);    // "ll"
+substring(string, 4, 2);    // "ll"
+substring(string, 2, 2);    // ""
+substring(string, 0, -1);   // ""
+substring(string, 2);       // "llo world"
+substring(string, 'a');     // "hello world"
+substring(string, 8, 20);   // "rld"
+
+function substring(string, start, end) {
+  var outputString = '';
+  var startPoint = start;
+  var endPoint = end;
+
+  if (endPoint === undefined) {
+    endPoint = string.length;
+  }
+
+  if (isNaN(startPoint) || startPoint < 0) {
+    startPoint = 0;
+  }
+
+  if (isNaN(endPoint) || endPoint < 0) {
+    endPoint = 0;
+  }
+
+  if (startPoint > string.length) {
+    startPoint = string.length;
+  }
+
+  if (endPoint > string.length) {
+    endPoint = string.length;
+  }
+
+  if (startPoint > endPoint) {
+    var tempStart = startPoint;
+    startPoint = endPoint;
+    endPoint = tempStart;
+  }
+
+  for (var i = startPoint; i < endPoint; i++) {
+    outputString += string[i];
+  }
+
+  return outputString;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <title>Course 210 | Lesson 3 Practice Problems: Substring (1)</title>
+</head>
+<body>
+<h1>Substring (1)</h1>
+<p>Write a function that returns a substring of a string based on a starting index and length.</p>
+<ul>
+<li>The start argument is the starting index. If negative, treat it as strLength + start where strLength is the length of the string. For example, if start is -3, treat it as strLength - 3.</li>
+<li>The length argument is the maximum length of the desired substring. If length exceeds the number of characters available, just use the available characters.</li>
+</ul>
+<script>
+// input: a string and two integers (a starting point and an length)
+// output: a sub-string with length equal to the input length and starting from the index of the string equal to starting point
+//  note - starting point
+// algorithm:
+// 1) Set a value for start
+//  - test if start is negative, if so reset its value to start + the length of teh string
+// 2) Set an output string to an empty string
+// 3) iterate through the input string starting at start and for length iterations, concatenating to
+//  output string the character from the input string at the index for that iteration
+
+//test cases
+var string = 'hello world';
+
+substr(string, 2, 4);     // "llo "
+substr(string, -3, 2);    // "rl"
+substr(string, 8, 20);    // "rld"
+substr(string, 0, -20);   // ""
+substr(string, 0, 0);     // ""
+
+function substr(string, start, length) {
+  var outputString = '';
+  var startPoint = start < 0 ? start + string.length : start;
+
+  for (var i = startPoint; i < startPoint + length; i++) {
+    if (i === string.length) {
+      break;
+    }
+    outputString += string[i];
+  }
+
+  return outputString;
+}
+</script>
+</body>
+</html>

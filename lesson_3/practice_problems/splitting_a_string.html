@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+  <title>Course 210 | Lesson 3 Practice Problems: Splitting a String</title>
+</head>
+<body>
+<h1>Splitting a String</h1>
+<p>Write a function that takes two arguments:</p>
+<ol>
+  <li>a string to be split</li>
+  <li>a delimiter character</li>
+</ol>
+<p>The functions logs the split strings to the console</p>
+
+<script>
+// input: a string (to be split) and a delimiter character
+// output: a log of each sub string split by the delimiter
+// algorithm:
+// 1) iterate through the string, adding characters to a log string
+//  - if a delimiter character is encountered, log the log string and clear it
+
+//test cases
+splitString('abc,123,hello world', ',');
+// logs:
+// abc
+// 123
+// hello world
+
+splitString('hello');
+// logs:
+// ERROR: No delimiter
+
+splitString('hello', '');
+// logs:
+// h
+// e
+// l
+// l
+// o
+
+splitString('hello', ';');
+// logs:
+// hello
+
+splitString(';hello;', ';');
+// logs:
+//  (this is a blank line)
+// hello
+
+
+function splitString(string, delimiter) {
+  if (delimiter === undefined) {
+    console.log('ERROR: No delimiter');
+    return;
+  }
+
+  var logString = '';
+
+  for (var i = 0; i < string.length; i++) {
+    if (delimiter === '') {
+      console.log(string[i]);
+    } else if (string[i] === delimiter) {
+      console.log(logString);
+      logString = '';
+    } else {
+      logString += string[i];
+    }
+  }
+
+  if (logString !== '') {
+    console.log(logString);
+  }
+}
+</script>
+</body>
+</html>

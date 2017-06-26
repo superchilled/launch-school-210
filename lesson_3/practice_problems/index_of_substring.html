@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+  <title>Course 210 | Lesson 3 Practice Problems: Index of Substring</title>
+</head>
+<body>
+<h1>Index of Substring</h1>
+<p>Write two functions that each take two strings as arguments. Their expected behaviors are as follows:</p>
+<ul>
+  <li>The indexOf() function searches for the first instance of a substring in firstString that matches the string secondString, and returns the index of the character where that substring begins.</li>
+  <li>The lastIndexOf() function searches for the last instance of a substring in firstString that matches the string secondString, and returns the index of the character where that substring begins.</li>
+  <li>Both functions return -1 if firstString does not contain the substring specified by secondString.</li>
+</ul>
+<script>
+// input: Two strings: a string to be searched in and a sub-string to search for within the first string
+// output: An integer value, either representing the index of the start of the sub-string within the larger string or -1 if not found
+// algorithm:
+// 1) Determine the length of the substring
+// 2) Iterate through the search string from index 0
+//  - at each iteration create a 'check string' from that index to the equal lenth of the substring
+//  - if the substring and checkstring match, return the index
+//  - otherwise continue to next itertion
+//  3) If iteration completes with no match, return -1
+// for the lastIndexOf function do the same but start at the end of the first string and decrement
+
+//test cases
+indexOf('Some strings', 's');      // 5
+indexOf('Blue Whale', 'Whale');    // 5
+indexOf('Blue Whale', 'Blute');    // -1
+indexOf('Blue Whale', 'leB');      // -1
+
+lastIndexOf('Some strings', 's');                  // 11
+lastIndexOf('Blue Whale, Killer Whale', 'Whale');  // 19
+lastIndexOf('Blue Whale, Killer Whale', 'all');    // -1
+
+function indexOf(firstString, secondString) {
+  var index = -1;
+
+  for (var i = 0; i <= firstString.length; i++) {
+    if (subStringFound(firstString, secondString, i)) {
+      index = i;
+      break;
+    }
+  }
+  return index;
+}
+
+function lastIndexOf(firstString, secondString) {
+  var index = -1;
+
+  for (var i = firstString.length; i >= 0; i--) {
+    if (subStringFound(firstString, secondString, i)) {
+      index = i;
+      break;
+    }
+  }
+  return index;
+}
+
+function subStringFound(firstString, secondString, i) {
+  return createSearchString(firstString, i, secondString.length) === secondString;
+}
+
+function createSearchString(string, start, length) {
+  var searchString = '';
+
+  for (var i = start; i < start + length; i++) {
+    searchString += string[i]
+  }
+
+  return searchString;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <title>Course 210 | Lesson 3 Practice Problems: Converting Strings to Lower Case</title>
+</head>
+<body>
+<h1>Converting Strings to Lower Case</h1>
+<p>Write a function that returns a string converted to lowercase.</p>
+
+<p>To convert a single uppercase character to a lowercase character, get its ASCII numeric representation from the ASCII table, add 32 to that number, then convert the number back to a character using the same ASCII table. You can use the String.fromCharCode and the String.charCodeAt methods for these operations. For example:</p>
+
+<code>
+var string = 'A'<br>
+asciiNumeric = string.charCodeAt(0);                 // 65<br>
+asciiNumeric += 32;<br>
+string = String.fromCharCode(asciiNumeric);          // "a", converted to lower case<br>
+</code>
+
+<script>
+// input: a string
+// output: a string with all the characters converted to lowercase
+// algorithm:
+// 1) set an empty output string
+// 2) iterate through the input string:
+//  - if it is an uppercase character (65 to 90), convert it to lowercase and concatenate to output string
+//  - otherwise just concatenate it to the ouput string without conversion
+// 3) return the output string
+
+//test cases
+toLowerCase('ALPHABET');      // "alphabet"
+toLowerCase('123');           // "123"
+toLowerCase('abcDEF');        // "abcdef"
+
+function toLowerCase(string) {
+  var outputString = '';
+
+  for (var i = 0; i < string.length; i++) {
+    var charCode = string[i].charCodeAt(0);
+
+    if (charCode >= 65 && charCode <= 90) {
+      outputString += String.fromCharCode(charCode + 32);
+    } else {
+      outputString += string[i];
+    }  
+  }
+
+  return outputString;
+}
+
+</script>
+</body>
+</html>

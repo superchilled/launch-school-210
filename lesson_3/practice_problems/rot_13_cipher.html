@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <title>Course 210 | Lesson 3 Practice Problems: Code Review -- Rot13 Cipher</title>
+</head>
+<body>
+<h1>Code Review -- Rot13 Cipher</h1>
+<p>Rot13 ("rotate by 13 places") is a letter-substitution cipher that translates a String into a new String.</p>
+
+<p>For each character in the original String:</p>
+<ul>
+<li>If the character is a letter in the modern English alphabet, change it to the character 13 positions later in the alphabet. So a becomes n. If you reach the end of the alphabet, return to the beginning. So o becomes b.</li>
+<li>Letter transformations preserve case. A becomes N while a becomes n.</li>
+<li>Don't modify characters that are not letters.</li>
+</ul>
+<p>Write a Function, rot13, that takes a String and returns that String transformed by the rot13 cipher.</p>
+<script>
+// input: a string
+// output: 
+// algorithm:
+
+//test cases
+console.log(rot13('Teachers open the door, but you must enter by yourself.'));
+// logs:
+// Grnpuref bcra gur qbbe, ohg lbh zhfg ragre ol lbhefrys.
+
+console.log(rot13(rot13('Teachers open the door, but you must enter by yourself.')));
+// logs:
+// Teachers open the door, but you must enter by yourself.
+
+
+function rot13(string) {
+
+}
+</script>
+</body>
+</html>

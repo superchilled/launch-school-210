@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+  <title>Course 210 | Lesson 3 Practice Problems: Trimming Spaces</title>
+</head>
+<body>
+<h1>Trimming Spaces</h1>
+<p>Write a function that takes a string as an argument, and returns the string stripped of spaces from both ends. Do not remove or alter internal spaces.</p>
+<script>
+// input: a string, possibly including one or more 'space' characters
+// output: a sub-string with any space characters removed from either end but not internal space characters
+// algorithm:
+// 1) set the start index
+//  - starting at index 0
+//    - if the character is a space character go to the next character up
+//    - if the string is not a space character set this as the start index and exit the loop
+// 2) set the end index
+//  - starting at the last index of the string:
+//    - if the character is a space character go to the next character down
+//    - if the string is not a space character set this as the end index and exit the loop
+// 3) iterate through the string from the start index to end index to create the new (stripped) string
+// 4) return the stripped string
+
+//test cases
+trim('  abc  ');  // "abc"
+trim('abc   ');   // "abc"
+trim(' ab c');    // "ab c"
+trim(' a b  c');  // "a b  c"
+trim('      ');   // ""
+trim('');         // ""
+
+function trim(string) {
+  var startIndex = setStartIndex(string);
+  var endIndex = setEndIndex(string);
+  var strippedString = '';
+
+  for (var i = startIndex; i <= endIndex; i++) {
+    strippedString += string[i];
+  }
+
+  return strippedString;
+}
+
+function setStartIndex(string) {
+  for (var i = 0; i <= string.length; i++) {
+    if (string[i] === ' ') {
+      continue;
+    } else {
+      return i;
+    }
+  }
+}
+
+function setEndIndex(string) {
+  for (var i = string.length - 1; i >= 0; i--) {
+    if (string[i] === ' ') {
+      continue;
+    } else {
+      return i;
+    }
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+  <title>Course 210 | Lesson 3 Practice Problems: String StartsWith</title>
+</head>
+<body>
+<h1>String StartsWith</h1>
+<p>Implement a function that determines whether a string begins with another string. If it does, the function should return true, false otherwise.</p>
+
+<script>
+// input: A string to search in and a search string to match at the start of that string
+// output: a boolean
+// algorithm:
+// 1) Chaek if the search string i '', if so return true
+// 2) create a match string from the input string, starting and index zero and creating it to the lenght of the search string
+// 3) Compare the match string and search string:
+//  - if they are the same, return ture
+//  - otherwise return false
+
+//test cases
+
+var str = 'We put comprehension and mastery above all else';
+startsWith(str, 'We');       // true
+startsWith(str, 'We put');   // true
+startsWith(str, '');         // true
+startsWith(str, 'put');      // false
+
+var longerString = 'We put comprehension and mastery above all else!';
+startsWith(str, longerString);      // false
+
+function startsWith(string, searchString) {
+  if (searchString === '') {
+    return true;
+  }
+
+  var matchString = createMatchString(string, searchString.length);
+
+  if (matchString === searchString) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function createMatchString(string, length) {
+  var matchString = '';
+
+  for (var i = 0; i < length; i++) {
+    matchString += string[i];
+  }
+
+  return matchString;
+}
+</script>
+</body>
+</html>

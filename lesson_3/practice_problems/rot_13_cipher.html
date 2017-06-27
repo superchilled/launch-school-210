@@ -45,7 +45,7 @@ function rot13(string) {
   for (var i = 0; i < string.length; i++) {
     char = string[i];
 
-    if (char >= 'A' && char <= 'z') {
+    if ((char >= 'A' && char <= 'Z') || (char >= 'a' && char <= 'z')) {
       outputString += rotateChar(char);
     } else {
       outputString += char;
@@ -56,15 +56,15 @@ function rot13(string) {
 }
 
 function rotateChar(char) {
-  var rotation = 13;
+  var ROTATION = 13;
   var lowerCaseChar = char.toLowerCase();
   var charCode = char.charCodeAt(0);
 
   if (lowerCaseChar >= 'n' && lowerCaseChar <= 'z') {
-    rotation = -13;
+    ROTATION = -13;
   }
 
-  return String.fromCharCode(charCode + rotation);
+  return String.fromCharCode(charCode + ROTATION);
 }
 </script>
 </body>

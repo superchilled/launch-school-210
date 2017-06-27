@@ -16,8 +16,17 @@
 <p>Write a Function, rot13, that takes a String and returns that String transformed by the rot13 cipher.</p>
 <script>
 // input: a string
-// output: 
+// output: a string of the same length with any letters 'rotated' around the alphabet by 13 places
 // algorithm:
+// 1) Set an initially empty output string
+// 2) Iterate through each character in the input string. On each iteration:
+//  - Determine if the character is in the English alphabet (a-z or A-Z)
+//    - If no, concatenate it to the output string
+//    - If yes
+//      - determine the 'rotation amount' (13 for a-m or A-M, -13 for n-z or N-Z)
+//      - 'rotate' the character by the appropriate amount
+//      - concatenate the 'rotated' character to the output string
+// 3) Log the output string to the console
 
 //test cases
 console.log(rot13('Teachers open the door, but you must enter by yourself.'));
@@ -30,7 +39,32 @@ console.log(rot13(rot13('Teachers open the door, but you must enter by yourself.
 
 
 function rot13(string) {
+  var outputString = '';
+  var char;
 
+  for (var i = 0; i < string.length; i++) {
+    char = string[i];
+
+    if (char >= 'A' && char <= 'z') {
+      outputString += rotateChar(char);
+    } else {
+      outputString += char;
+    }
+  }
+
+  return outputString;
+}
+
+function rotateChar(char) {
+  var rotation = 13;
+  var lowerCaseChar = char.toLowerCase();
+  var charCode = char.charCodeAt(0);
+
+  if (lowerCaseChar >= 'n' && lowerCaseChar <= 'z') {
+    rotation = -13;
+  }
+
+  return String.fromCharCode(charCode + rotation);
 }
 </script>
 </body>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Arrays: Exercise 5</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 Practice Problems: Arrays</h1>
+<h2>Exercise 5</h2>
+<p>Write a function that returns a string of all the values in an array with no intervening content. For example, your function should return '1a4' if the argument is [1, 'a', 4]. Use a for loop to process the array elements in sequence, and coerce each value in the array to a String before concatenating it to the result string.</p>
+<script>
+// Input: An array of items (e.g. strings or integers)
+// Output: A string made of of concatenating all of the array items
+// Algorithm:
+// 1) Declare an empty output string
+// 2) Iterate through the array; on each iteration:
+//  - Coerce the item for that iteration to a string
+//  - concatenate the coerced item to the output string
+// 3) Returnt he output string
+
+function stringifyArray(arr) {
+  var outputString = '';
+  for (var i = 0; i < arr.length; i++) {
+    outputString += String(arr[i]);
+  }
+
+  return outputString;
+}
+
+var namesArray = ['Karl', 1, 'Emma', 5, 'Anna'];
+console.log(stringifyArray(namesArray));
+</script>
+</body>
+</html>

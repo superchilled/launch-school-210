@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Arrays: Exercise 4</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 Practice Problems: Arrays</h1>
+<h2>Exercise 4</h2>
+<p>Create a function that finds the first instance of a value in an array and returns the index position of the value, or -1 if the value is not in the array. The function should take two arguments: the value to search for, and the array to search. Use the break keyword to exit the loop immediately when you find the first instance of the value. If you don't find the value, make sure you don't use the final index value as your return value.</p>
+<script>
+// Input: An array and a value to search for in the array
+// Output: The index position of the value within the array, or -1 if the value is not in the array
+// Algorithm:
+// 1) Iterate through the array starting from index 0; on each iteration:
+//  - check if the value at that array index matches the search value
+//    - if yes, break out of the loop and return the index for that iteration
+//    - if no, move onto the the next iteration
+//  - if no match is found, return -1
+
+function search(arr, value) {
+  var matchIndex = -1;
+
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] === value) {
+      matchIndex = i;
+    }
+  }
+
+  return matchIndex;
+}
+
+var namesArray = ['Karl', 'Kate', 'Emma', 'Rosie', 'Anna'];
+console.log(search(namesArray, 'Jayne'));
+</script>
+</body>
+</html>

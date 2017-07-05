@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Arrays: Exercise 3</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 Practice Problems: Arrays</h1>
+<h2>Exercise 3</h2>
+<p>Create a function that returns the contents of the array it receives as an argument, but with the values in reversed order. Your function should use a for loop that iterates over the elements in the array from the end of the array to the beginning, and pushes each element's value to a new result array. Be sure to start your loop with the element whose index is one less than the input array's length.</p>
+<script>
+// Input: An array
+// Output: An array with the items from the original arry in reverse order
+// Algorithm:
+// 1) Declare a new (empty) array
+// 2) Loop through the input array from the end
+//  - on each oteration add the item for that iteration to the new array
+// 3) Return the new array
+
+
+
+function reverseArray(arr) {
+  var newArr = [];
+  var newArrIndex = 0;
+
+  for (var i = arr.length - 1; i >= 0; i--) {
+    newArr[newArrIndex] = arr[i];
+    newArrIndex++;
+  }
+
+  return newArr;
+}
+
+var namesArray = ['Karl', 'Kate', 'Emma', 'Rosie', 'Anna'];
+console.log(reverseArray(namesArray));
+</script>
+</body>
+</html>

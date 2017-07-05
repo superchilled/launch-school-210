@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Arrays: Exercise 1</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 Practice Problems: Arrays</h1>
+<h2>Exercise 1</h2>
+<p>With arrays, you can access the first element's value with [0], but how do you access the last value? Write a function named lastInArray that returns the value of the last element in the array provided by the function's argument. You may use the length property and the [] operator, but do not use any other methods or properties.</p>
+<script>
+// Algorithm:
+// 1) Obtain the length of the array
+// 2) subtract 1 from the length
+// 3) use this value to access the last item int he array
+
+function lastInArray(arr) {
+  var arrLength = arr.length;
+  var lastIndex = arrLength - 1;
+  return arr[lastIndex];
+}
+
+// test cases 
+console.log(lastInArray([1, 2, 3, 4, 5]) === 5);
+console.log(lastInArray(['a', 'b', 'c']) === 'c');
+console.log(lastInArray(['cat', 'mat', 'hat']) === 'hat');
+</script>
+</body>
+</html>

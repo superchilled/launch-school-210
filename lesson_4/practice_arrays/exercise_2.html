@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Arrays: Exercise 2</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 Practice Problems: Arrays</h1>
+<h2>Exercise 2</h2>
+<p>Create a function named rollCall that takes an array of first names as an argument and logs all the names to the console, one name per line. You should log the names in the same sequence they appear in the array. Use a for loop to process the array.</p>
+<script>
+// Input: An array of names
+// Output: Each name in the array logged in turn
+// Algorithm:
+// 1) Loop through the array starting at index 0 and up to array length minus 1
+// 2) On each iteration log the name equivalent to the index for that iteration to the console
+
+
+function rollCall(arr) {
+  for (var i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+  }
+}
+
+var namesArray = ['Karl', 'Kate', 'Emma', 'Rosie', 'Anna'];
+rollCall(namesArray);
+</script>
+</body>
+</html>

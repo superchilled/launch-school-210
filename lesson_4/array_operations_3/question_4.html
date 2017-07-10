@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Array Operations: slice, splice, concat, and join</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- slice, splice, concat, and join</h1>
+<h2>Exercise 3: join</h2>
+<p>Write a function named <code>join</code> that accepts two arguments: an Array and a String. The function should coerce each value in the Array to a String, and then join those values together using the second argument as a separator. You may assume that a separator will always be passed.</p>
+
+<p>You can call the <code>String()</code> function on any JavaScript value to get its String representation.</p>
+<script>
+// Input: An array of items and a string 'separator'
+// Output: A string contining each item (as a string) from the array concatenated along with the separator between them
+// Algorithm:
+// 1) Declare an empty return
+// 2) Loop through the array from the first item to the second to last item. On each iteration:
+//  - Coerce the item to a string, concatenate the return string, the item and the separator
+// 3) Coerce the final item in the array to a string and concatenate this with the return string
+// 4) Return the string
+
+function join(arr, separator) {
+  var returnString = '';
+  for (var i = 0; i < arr.length -1; i++) {
+    returnString = returnString + String(arr[i]) + separator;
+  }
+
+  returnString = returnString + String(arr[i])
+  return returnString
+}
+
+var firstJoin = join(['bri', 'tru', 'wha'], 'ck ');       
+var secondJoin = join([1, 2, 3], ' and ');                 
+console.log(firstJoin); // 'brick truck wha'
+console.log(secondJoin); // '1 and 2 and 3'
+</script>
+</body>
+</html>

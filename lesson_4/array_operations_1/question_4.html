@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Array Operations: push, pop, shift, and unshift</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- Array Operations: push, pop, shift, and unshift</h1>
+<h2>Exercise 4: shift</h2>
+<p>Write a function named <code>shift</code> tthat accepts one argument: an Array. The function should remove the first value from the beginning of the Array and return it.</p>
+<script>
+// Input: an array
+// Output: the removed value (the array should  be mutated to remove the value from the start)
+// Algorithm:
+// 1) Determine the length of the input array
+// 2) Set a local variable to the value at index zero of the array
+// 3) Loop through the array starting at index 1. On each iteration
+//  - Set the preceding index to the value at the index for the current iteration
+// 4) Set the length of the array to the original length minus 1
+
+function shift(arr) {
+  var firstItem = arr[0];
+
+  for (var i = 1; i <= arr.length; i++) {
+    arr[i - 1] = arr[i];
+  }
+
+  arr.length = arr.length - 1;
+  return firstItem;
+}
+
+var count = [1, 2, 3];
+console.log(shift(count));           // 1
+console.log(count);                  // [ 2, 3 ]
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Array Operations: push, pop, shift, and unshift</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- Array Operations: push, pop, shift, and unshift</h1>
+<h2>Exercise 3: unshift</h2>
+<p>Write a function named <code>unshift</code> that accepts two arguments: an Array and a value. The function should insert the value at the beginning of the Array and return the new <code>length</code> of the array. You will need a <code>for</code> loop for this problem.</p>
+<script>
+// Input: an array and a value
+// Output: length of the mutated array (the array should  be mutated to insert the input value at the start)
+// Algorithm:
+// 1) Determine the length of the input array
+// 2) Loop backwards through the array from the last item, setting subsequent index position to that item
+// 3) After the loop has completed, set index zero to the input value
+// 4) Return the length of the new array
+
+function unshift(arr, value) {
+  for (var i = arr.length; i > 0; i--) {
+    arr[i] = arr[i - 1];
+  }
+  
+  arr[0] = value;
+  return arr.length
+}
+
+var count = [1, 2, 3];
+console.log(unshift(count, 0));        // 4
+console.log(count);                    // [ 0, 1, 2, 3 ]
+</script>
+</body>
+</html>

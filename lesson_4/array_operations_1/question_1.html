@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Array Operations: push, pop, shift, and unshift</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- Array Operations: push, pop, shift, and unshift</h1>
+<h2>Exercise 1: push</h2>
+<p>Write a function named <code>push</code> that accepts two arguments: an Array and any other value. The function should append the second argument to the end of the Array and return the new length of the Array.</p>
+<script>
+// Input: an array and another value
+// Output: length of the mutated array (the array should  be mutated to have the other value appended)
+// Algorithm:
+// 1) Determine the length of the array
+// 2) Set the item at index equal to length to the input value
+// 3) Return the new length of the array
+
+function push(arr, value) {
+  arr[arr.length] = value;
+  return arr.length;
+}
+
+var count = [1, 2, 3];
+console.log(push(count, 4));   // 4
+console.log(count);            // [ 1, 2, 3, 4 ]
+</script>
+</body>
+</html>

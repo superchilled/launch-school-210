@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Array Operations: slice, splice, concat, and join</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- slice, splice, concat, and join</h1>
+<h2>Exercise 2: splice</h2>
+<p>Write a function named <code>splice</code> that accepts three arguments: an Array, a start index, and the number of values to remove. The function should remove values from the original Array, starting with the first index and removing the specified number of values. The method should return the removed values in a new Array.</p>
+<script>
+// Input: An array and two integers (representing the start index and number of items to remove).
+// Output: A new array containing the removed items from the original array. The original array should be mutated to remove the items.
+// Algorithm: 
+// 1) Declare an empty return array
+// 2) Loop through the array from the start point until a point equal to the start point plus the number of items to remove. On each iteration:
+//  - Add the item for that iteration to the return array
+// 3) If the array is longer than the end point:
+//  - Set a counter equal to the start point.
+//  - Loop through the array from the item after the end point to the end of the array. On each iteration:
+//    - Set the item at the index equal to counter to the value for that iteration
+//    - Increment the counter by one
+//  - Set a new length for the input array equal to the original length minus the number of items to remove
+// 4) return the new array
+
+function push(arr, value) {
+  arr[arr.length] = value;
+  return arr.length;
+}
+
+function slice(arr, start, end) {
+  var newArr = [];
+  for (var i = start; i < end; i++) {
+    push(newArr, arr[i]);
+  }
+
+  return newArr;
+}
+
+function splice(arr, start, length) {
+  var newArr = slice(arr, start, start + length);
+  if (arr.length > start + length) {
+    var counter = start;
+    for (var i = start + length; i < arr.length; i++) {
+      arr[counter] = arr[i];
+    }
+  }
+
+  arr.length = arr.length - length;
+  return newArr;
+}
+
+
+var count = [1, 2, 3, 4, 5, 6, 7, 8];
+var spliceArr = splice(count, 2, 5);        
+console.log(spliceArr); // [ 3, 4, 5, 6, 7 ]
+console.log(count);  // [ 1, 2, 8]         
+</script>
+</body>
+</html>

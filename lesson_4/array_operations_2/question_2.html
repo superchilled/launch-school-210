@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Array Operations: indexOf and lastIndexOf</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- Array Operations: indexOf and lastIndexOf</h1>
+<h2>Exercise 2: lastIndexOf</h2>
+<p>Write a function <code>lastIndexOf</code> that accepts two arguments: an Array and a value. The function should return the index of the last element that contains the value, or <code>-1</code> if the value is not present.</p>
+<script>
+// Input: An array and a value
+// Output: The index of the first array element which matches the value, or -1 if no element matches
+// Algorithm:
+// 1) Loop through the array from the end. For each iteration:
+//  - Check if the element at the index for that iteration matches the input value
+//    - If yes, return the index
+//    - If no, continue to the next iteration
+//  - If no matches are found when the loop is complete, return -1
+
+function indexOf(arr, value) {
+  for (var i = arr.length; i >= 0; i--) {
+    if (arr[i] === value) {
+      return i;
+    }
+  }
+
+  return -1;
+}
+
+console.log(indexOf([1, 2, 3, 3], 3));         // 3
+console.log(indexOf([1, 2, 3], 4));            // -1
+</script>
+</body>
+</html>

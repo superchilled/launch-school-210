@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Array Operations: slice, splice, concat, and join</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- slice, splice, concat, and join</h1>
+<h2>Exercise 1: slice</h2>
+<p>Write a function named <code>slice</code> that accepts three arguments: an Array, a start index, and an end index. The function should return a new Array that contains values from the original Array starting with the value at the starting index, and including all values up to but not including the end index. Do not modify the original Array.</p>
+<script>
+// Input: An array and two integers (representing the start and end indexes)
+// Output: A new array, containing the values from the original array between the start and end indexes (not including the end index)
+// Algorithm:
+// 1) Declare a new array
+// 2) Loop through the original array, starting at the start index and up, but not including, the end index. For each iteration:
+//  - Add the value at the index for that iteration to the new array
+// 3) Return the new array
+
+function push(arr, value) {
+  arr[arr.length] = value;
+  return arr.length;
+}
+
+function slice(arr, start, end) {
+  var newArr = [];
+  for (var i = start; i < end; i++) {
+    push(newArr, arr[i]);
+  }
+
+  return newArr;
+}
+
+var test_1 = slice([1, 2, 3, 4, 5], 0, 2);                         // [ 1, 2 ]
+var test_2 = slice(['a', 'b', 'c', 'd', 'e', 'f', 'g'], 1, 3);     // [ 'b', 'c' ]
+console.log(test_1);
+console.log(test_2);
+</script>
+</body>
+</html>

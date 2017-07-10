@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Array Operations: slice, splice, concat, and join</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- slice, splice, concat, and join</h1>
+<h2>Exercise 3: concat</h2>
+<p>Write a function named <code>concat</code> that accepts two Array arguments. The function should return a new Array that contains the values from each of the original Arrays.</p>
+<script>
+// Input: Two arrays
+// Output: A new array containing the values from the two input arrays
+// Algorithm:
+// 1) Declare an empty return array
+// 2) Iterate through the first array. On each iteration push the value for that iteration to the new array
+// 3) Iterate through the second array. On each iteration push the value for that iteration to the new array
+// 4) return the new array
+
+function push(arr, value) {
+  arr[arr.length] = value;
+  return arr.length;
+}
+
+function concat(arr1, arr2) {
+  var returnArr = [];
+  for (var i = 0; i < arr1.length; i++) {
+    push(returnArr, arr1[i]);
+  }
+  for (var i = 0; i < arr2.length; i++) {
+    push(returnArr, arr2[i]);
+  }
+
+  return returnArr;
+}
+
+var concatArr = concat([1, 2, 3], [4, 5, 6]);
+console.log(concatArr); // [ 1, 2, 3, 4, 5, 6 ]
+</script>
+</body>
+</html>

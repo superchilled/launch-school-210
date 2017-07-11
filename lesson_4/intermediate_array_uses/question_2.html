@@ -8,12 +8,34 @@
 <h2>Exercise 1</h2>
 <p>Write a function that takes two arrays and returns a new array whose even positions come from the first array, and whose odd positions come from the second array. Assume that both arrays have equal length.</p>
 <script>
-// Input: 
-// Output: 
+// Input: Two arrays
+// Output: A new array, combining elements from the two input arrays (even indexed elements from the first, odd indexed elements from the second)
 // Algorithm:
-// 1) 
+// 1) Declare an empty return array
+// 2) Decalre an 'return array index' variable initialized to 0
+// 3) Loop through the first input array, up to the length of the array
+//  - Set a value in the return array at the index position equal to return array index to the value from the first array equal to the index for that iteration
+//  - Set a value in the return array at the index position equal to return array index to the value from the second array equal to the index for that iteration
+//  - Increment the return array index by two
+// 4) Return the return array
 
+function combinedArray(even, odd) {
+  var returnArray = [];
+  var returnArrayIndex = 0;
+  for (var i = 0; i < even.length; i++) {
+    returnArray[returnArrayIndex] = even[i];
+    returnArray[returnArrayIndex + 1] = odd[i];
+    returnArrayIndex += 2;
+  }
 
+  return returnArray;
+}
+
+var digits = [4, 8, 15, 16, 23, 42];
+var letters = ['A', 'L', 'V', 'A', 'R', 'H'];
+
+var test = combinedArray(digits, letters); // Returns [4, "A", 8, "L", 15, "V", 16, "A", 23, "R", 42, "H"]
+console.log(test);
 </script>
 </body>
 </html>

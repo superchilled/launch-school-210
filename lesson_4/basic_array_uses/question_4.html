@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Basic Array Uses</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- Practice Problems: Basic Array Uses</h1>
+<h2>Exercise 4</h2>
+<p>Can we insert data into an array at a negative index? If so, why is this possible?</p>
+<script>
+// Yes, it is possible to insert data into an array using a negative index since Arrays in JavaScript are objects which effectively act as a Hash Map, so the index is used as the key to access the value. However, the value at a negative index is not 'visible' in the arr since they are arbitrary properties of the array and not actually a 'member' of the array. For this reason such values do not contribute towards the 'length' of the array.
+
+// Example:
+
+var myArr = [1, 2, 3];
+myArr.length; // should return 3
+
+myArr[-1] = 0;
+myArr[-1]; // should return 0
+myArr.length; // should return 3
+</script>
+</body>
+</html>

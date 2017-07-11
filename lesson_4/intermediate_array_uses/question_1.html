@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Intermediate Array Uses</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- Practice Problems: Intermediate Array Uses</h1>
+<h2>Exercise 1</h2>
+<p>Write a function that creates and returns a new array from its array argument. The new array should contain all values from the argument array whose positions have an odd index.</p>
+<script>
+// Input: An array
+// Output: A new array containing all the elements from the original array with an odd index
+// Algorithm:
+// 1) Declare an empty return array
+// 2) Declare an index counter for the new array initialized to 0
+// 3) Loop through the input array. On each iteration:
+//  - If the index is an odd number, add the element at that index to the return array at the index equal to index counter
+//    - Increment the index counter by 1
+// 4) return the return array
+
+function isOdd(num) {
+  return num % 2 !== 0;
+}
+
+function oddElementsOf(arr) {
+  var returnArr = [];
+  var returnArrIndex = 0;
+  for (var i = 0; i < arr.length; i++) {
+    if (isOdd(i)) {
+      returnArr[returnArrIndex] = arr[i];
+      returnArrIndex++;
+    }
+  }
+
+  return returnArr;
+}
+
+var digits = [4, 8, 15, 16, 23, 42];
+
+var test = oddElementsOf(digits); // Returns [8, 16, 42]
+console.log(test);
+</script>
+</body>
+</html>

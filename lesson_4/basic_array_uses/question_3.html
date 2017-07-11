@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Basic Array Uses</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- Practice Problems: Basic Array Uses</h1>
+<h2>Exercise 3</h2>
+<p>Write a function that accepts two arguments, an array and an integer index position, and returns the element at the given index. What happens if the index is greater than the length of the array? What happens if it is a negative integer?</p>
+<script>
+// Input: An array and an integer representing anindex position
+// Output: The element at the specified index position within the array
+// Algorithm: Return the lement at the index position specified by the integer argument
+// 1) 
+
+function nthElementOf(arr, index) {
+  return arr[index];
+}
+
+var digits = [4, 8, 15, 16, 23, 42];
+
+var test1 = nthElementOf(digits, 3); // Returns 16
+var test2 = nthElementOf(digits, 8); // What does this return?
+var test3 = nthElementOf(digits, -1); // What does this return?
+
+console.log(test1);
+console.log(test2); // should log 'undefined'
+console.log(test3); // should log 'undefined'
+</script>
+</body>
+</html>

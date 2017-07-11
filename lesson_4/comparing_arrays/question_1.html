@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Comparing Arrays</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- Practice Problem: Comparing Arrays</h1>
+<h2>Exercise 1</h2>
+<p>In the last assignment, we saw that JavaScript's equality operators don't examine the values in the Arrays; they merely check that the Arrays are the same object. It's more likely that you'll want to know whether two Arrays contain the same values. To do this, you need to write your own function.</p>
+
+<p>Write a function named <code>arraysEqual</code> that takes two Arrays as arguments. The function returns <code>true</code> if the Arrays contain the same values, <code>false</code> if they do not.</p>
+
+<p>Test the function with Arrays that contain Numbers, Strings, and Boolean values. Don't worry about handling Arrays that contain other Arrays or Objects.</p>
+<script>
+// Input: Two arrays
+// Output: a boolean
+// Algorithm:
+// 1) Check if the arrays are of the same length. If not return false
+// 2) Iterate through the first array. On each iteration:
+//  - Compare the value at the index for that iteration with the equivalent value from the second array
+//  - if the values are not equal, return false
+// 3) If the loop completes without explicitly returning false, then return true
+
+function arraysEqual(arr1, arr2) {
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
+
+  for (var i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== arr2[i]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+var test1 = arraysEqual([1], [1]);                               // true
+var test2 = arraysEqual([1], [2]);                               // false
+var test3 = arraysEqual([1, 2], [1, 2, 3]);                      // false
+var test4 = arraysEqual([1, 'hi', true], [1, 'hi', true]);       // true
+var test5 = arraysEqual([1, 'hi', true], [1, 'hi', false]);      // false
+var test6 = arraysEqual([1, 'hi', true], [1, 'hello', true]);    // false
+var test7 = arraysEqual([1, 'hi', true], [2, 'hi', true]);       // false
+
+var allTests = [test1, test2, test3, test4, test5, test6, test7];
+
+for (var i = 0; i < allTests.length; i++) {
+  console.log(allTests[i]);
+}
+</script>
+</body>
+</html>

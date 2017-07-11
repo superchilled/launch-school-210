@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Basic Array Uses</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- Practice Problems: Basic Array Uses</h1>
+<h2>Exercise 8</h2>
+<p>Write a function that accepts two arrays as arguments and returns an array with the first element from the first array and the last element from the second array.</p>
+<script>
+// Input: Two arrays
+// Output: A new array containing the first eleemnt of the first input array and the last element of the second input array
+// Algorithm:
+// 1) Declare an empty return array
+// 2) Determine the first element of the first array and add this to the return array
+// 3) Determine the last element of the second array and add this to the return array
+// 4) Return the return array
+
+function endsOf(beginningArr, endingArr) {
+  var returnArr = [];
+  returnArr[0] = beginningArr[0];
+  returnArr[1] = endingArr[endingArr.length - 1];
+
+  return returnArr;
+}
+
+var test = endsOf([4, 8, 15], [16, 23, 42]); // Returns [4, 42]
+console.log(test);
+</script>
+</body>
+</html>

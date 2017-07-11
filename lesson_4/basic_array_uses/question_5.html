@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Basic Array Uses</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- Practice Problems: Basic Array Uses</h1>
+<h2>Exercise 5</h2>
+<p>Write a function that accepts an array as the first argument and an integer element, count, as the second. It should return a new array that contains the first count elements of the array.</p>
+<script>
+// Input: An array and an inter representing a 'count' of array items
+// Output: A new array containing the number of items equal to count from the input array starting at index 0
+// Algorithm:
+// 1) Declare an empty return array
+// 2) Loop through the input array from index zero to one less than count. On each iteration:
+//  - Add the element at the index for that iteration to the new array
+// 3) Return the new array
+
+function firstNOf(arr, count) {
+  var returnArr = [];
+  for (var i = 0; i < count; i++) {
+    returnArr[i] = arr[i];
+  }
+
+  return returnArr;
+}
+
+var digits = [4, 8, 15, 16, 23, 42];
+var test = firstNOf(digits, 3); // Returns [4, 8, 15]
+console.log(test);
+</script>
+</body>
+</html>

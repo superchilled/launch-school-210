@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Basic Array Uses</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- Practice Problems: Basic Array Uses</h1>
+<h2>Exercise 6</h2>
+<p>Write a function like the previous one, except this time return the last count elements as a new array.</p>
+<script>
+// Input: An array and an inter representing a 'count' of array items
+// Output: A new array containing the number of items equal to count from the input array starting at the final index
+// Algorithm:
+// 1) Determine the index for the first item by subtracting count from array length
+// 2) Call the 'Arry.slice' method on arr, passing in the start index, calculated in step one, and the array length
+
+function lastNOf(arr, count) {
+  var startIndex = arr.length - count;
+  return arr.slice(startIndex, arr.length);
+}
+
+var digits = [4, 8, 15, 16, 23, 42];
+var test = lastNOf(digits, 3); // Returns [16, 23, 42]
+console.log(test);
+</script>
+</body>
+</html>

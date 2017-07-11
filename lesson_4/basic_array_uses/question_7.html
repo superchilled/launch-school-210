@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Basic Array Uses</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- Practice Problems: Basic Array Uses</h1>
+<h2>Exercise 7</h2>
+<p>Using the function from the previous problem, What happens if you pass a count greater than the length of the array? How can you fix the function so it returns a new instance of the entire array when count is greater than the array length?</p>
+<script>
+// Input: An array and an inter representing a 'count' of array items
+// Output: A new array containing the number of items equal to count from the input array starting at the final index
+// Algorithm:
+// 1) Determine if count is greater than or equal to array length. 
+//  - If so, set start index to zero
+//  - If not, determine the index for the first item by subtracting count from array length
+// 2) Call the 'Arry.slice' method on arr, passing in the start index, calculated in step one, as an argument
+
+function lastNOf(arr, count) {
+  var startIndex;
+  if (count >= arr.length) {
+    startIndex = 0;
+  } else {
+    startIndex = arr.length - count;
+  }
+
+  return arr.slice(startIndex);
+}
+
+var digits = [4, 8, 15, 16, 23, 42];
+var test1 = lastNOf(digits, 3); // Returns [16, 23, 42]
+var test2 = lastNOf(digits, 10); // Returns [4, 8, 15, 16, 23, 42]
+console.log(test1);
+console.log(test2);
+</script>
+</body>
+</html>

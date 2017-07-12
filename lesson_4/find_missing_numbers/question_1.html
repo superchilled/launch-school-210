@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Find Missing Numbers</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- Practice Problem: Find Missing Numbers</h1>
+<h2>Exercise 1</h2>
+<p>Write a function that takes a sorted array of integers as an argument, and returns an array that includes all the missing integers (in order) between the first and last elements of the argument.</p>
+<script>
+// Input: An array of integers
+// Output: A new array of 'missing' numbers from the original array
+// Algorithm:
+// 1) Declare an empty return array
+// 2) Check if the length of the input array is longer than 1. If not return the empty return array
+// 3) Loop through the input array starting at index 1. For each iteration:
+//  - Subtract the integer at previous index from integer at current index and covert to positive
+//  - Check if converted integer is greater than 1
+//    - If so, loop for a number of iterations equal to the converted integer. On each iteration:
+//      - Add to the return array the integer at the index of the outer loop summed with the counter for that iteration of the inner loop
+// Return the return array
+
+function missing(arr) {
+  var returnArray = []
+  if (arr.length < 2) {
+    return returnArray;
+  }
+
+  for (var i = 1; i < arr.length; i++) {
+    var diff = Math.abs(arr[i] - arr[i -1]);
+
+    if (diff > 1) {
+      for (var j = 1; j < diff; j++) {
+        returnArray.push(arr[i - 1] + j)
+      }
+    }
+  }
+
+  return returnArray;
+}
+
+var test1 = missing([-3, -2, 1, 5]);                  // [-1, 0, 2, 3, 4]
+var test2 = missing([1, 2, 3, 4]);                    // []
+var test3 = missing([1, 5]);                          // [2, 3, 4]
+var test4 = missing([6]);                             // []
+
+console.log(test1);
+console.log(test2);
+console.log(test3);
+console.log(test4);
+</script>
+</body>
+</html>

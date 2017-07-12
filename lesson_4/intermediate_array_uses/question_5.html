@@ -5,15 +5,31 @@
 </head>
 <body>
 <h1>Launch School 210 | Lesson 4 -- Practice Problems: Intermediate Array Uses</h1>
-<h2>Exercise 1</h2>
+<h2>Exercise 5</h2>
 <p>Write a function that takes an array of arrays as an argument, and returns a new array that contains the sums of each of the sub-arrays.</p>
 <script>
-// Input: 
-// Output: 
+// Input: An array of arrays. Each sub array contains a number of integers
+// Output: A new array containing integers which represent the sum of th integers in each sub array
 // Algorithm:
-// 1) 
+// 1) Declare an empty return array
+// 2) Loop through the input array. For each iteration:
+//  - Declare a variable assigned to the return value of calling reduce on the sub array for that iteration. The reduce call should use a function expression that returns the sum plus the value
+//  - Set the value of that variable as an item in the new aray at the index equivalent to the current iteration
+// 4) Return the return array
 
+function matrixSums(arr) {
+  var returnArray = [];
+  
+  for (var i = 0; i < arr.length; i++) {
+    var sum = arr[i].reduce(function(sum, value) { return sum + value; });
+    returnArray[i] = sum;
+  }
 
+  return returnArray;
+}
+
+var test = matrixSums([[2, 8, 5], [12, 48, 0], [12]]); // Returns [15, 60, 12]
+console.log(test);
 </script>
 </body>
 </html>

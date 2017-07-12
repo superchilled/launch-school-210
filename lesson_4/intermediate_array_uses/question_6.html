@@ -5,15 +5,34 @@
 </head>
 <body>
 <h1>Launch School 210 | Lesson 4 -- Practice Problems: Intermediate Array Uses</h1>
-<h2>Exercise 1</h2>
+<h2>Exercise 6</h2>
 <p>Write a function that takes an array and returns a new array with duplicate elements removed.</p>
 <script>
-// Input: 
-// Output: 
+// Input: An array
+// Output: A new array containing all elements from the original array which are not duplicates
 // Algorithm:
-// 1) 
+// 1) Declare an empty return array
+// 2) Iterate through the input array. For each iteration:
+//  - Check if the item at the index for that iteration already exists in the return array
+//    - If yes, move to the next iteration
+//    - If no, add the item to the return array
+// 3) return the return array 
 
+function uniqueElements(arr) {
+  var returnArray = [];
 
+  for (var i = 0; i < arr.length; i++) {
+    if (returnArray.includes(arr[i])) {
+      continue;
+    }
+    returnArray.push(arr[i]);
+  }
+
+  return returnArray;
+}
+
+var test = uniqueElements([1, 2, 4, 3, 4, 1, 5, 4]); // Returns [1, 2, 4, 3, 5]
+console.log(test);
 </script>
 </body>
 </html>

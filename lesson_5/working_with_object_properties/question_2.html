@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Working with Object Properties</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 5 -- Practice Problems: Working with Object Properties</h1>
+<h2>Exercise 2</h2>
+<p>Write a function named <code>incrementProperty</code> that takes two arguments: an Object and a String. If the Object contains a property with the specified name, the function should increment the value of that property. If the property does not exist, the function should add a new property with a value of <code>1</code>. The function should return the new value of the property.</p>
+<script>
+// Input: An object and a string
+// Output: The new value of the incremented property (either 1 if the property does not already exist, or the current value plus 1 if the property does already exist)
+// Algorithm:
+// 1) Assess whether the object contains a property that matches the name of the string.
+//  - If it does, increment the value of that property by 1
+//  - If it doesn't create a new property and set its value to 1
+// 2) Return the value of the property
+
+function objectHasProperty(obj, str) {
+  for (var i in obj) {
+    if (i === str) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function incrementProperty(obj, str) {
+  if (objectHasProperty(obj, str)) {
+    obj[str] += 1;
+  } else {
+    obj[str] = 1;
+  }
+
+  return obj[str];
+}
+
+var wins = {
+  steve: 3,
+  susie: 4,
+};
+
+console.log(incrementProperty(wins, 'susie'));   // 5
+console.log(wins);                               // { steve: 3, susie: 5 }
+console.log(incrementProperty(wins, 'lucy'));    // 1
+console.log(wins);                               // { steve: 3, susie: 5, lucy: 1 }
+</script>
+</body>
+</html>

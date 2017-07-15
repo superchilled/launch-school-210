@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Working with Object Properties</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 5 -- Practice Problems: Working with Object Properties</h1>
+<h2>Exercise 1</h2>
+<p>Write a function named <code>objectHasProperty</code> that takes two arguments: an Object and a String. The function should return <code>true</code> if the Object contains a property with the name given by the String, false otherwise.</p>
+<script>
+// Input: An Object and a String
+// Output: A boolean
+// Algorithm:
+// 1) Iterate through each property in the object. On each iteration:
+//  - Compare the property for that iteration with the input string. 
+//    - If they match return true
+//    - If they don't match continue to the next iteration
+// 2) If all properties have been iterated through with no match, return false
+
+function objectHasProperty(obj, str) {
+  for (var i in obj) {
+    if (i === str) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+var pets = {
+  cat: 'Simon',
+  dog: 'Dwarf',
+  mice: null,
+};
+var test1 = objectHasProperty(pets, 'dog');       // true
+var test2 = objectHasProperty(pets, 'lizard');    // false
+var test3 = objectHasProperty(pets, 'mice');      // true
+
+console.log(test1);
+console.log(test2);
+console.log(test3);
+</script>
+</body>
+</html>

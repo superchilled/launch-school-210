@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Working with Dates</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- Working with Dates</h1>
+<h2>Exercise 5</h2>
+<p>Ideally, the suffix on the day number needs to adjust to the proper suffix for days like the <code>1st</code>, <code>22nd</code>, and <code>3rd</code>. Write a function named <code>dateSuffix</code> that takes the day of month as a numeric value and returns the formatted day of month and suffix. Make sure you use the correct suffixes.</p>
+<script>
+// Input: A date integer
+// Output: A string of the integer with the correct suffix for the date
+// Algorithm:
+// 1) Set a variable 'dateDigit' which is the return value of calling remainder on the input number with 10 as an argument
+// 2) Set a return variable
+// 3) Use a switch statement to check if the date digit is equal to 1, 2, or 3
+//  - if it is set the return variable to a string version of the input date plus 'st', 'nd', or 'rd' as appropraite
+//  - the default is string version of the input date plus 'th'
+// 4) return the return variable
+
+function dateSuffix(date) {
+  var returnDate;
+  var dateDigit;
+
+  if (date === 11 || date === 12 || date == 13) {
+    dateDigit = date;
+  } else {
+    dateDigit = date % 10;
+  }
+
+  switch (dateDigit) {
+    case 1:
+      returnDate = String(date) + 'st';
+      break;
+    case 2:
+      returnDate = String(date) + 'nd';
+      break;
+    case 3:
+      returnDate = String(date) + 'rd';
+      break;
+    default:
+      returnDate = String(date) + 'th';
+  }
+
+  return returnDate;
+}
+
+var test1 = dateSuffix(1);
+var test2 = dateSuffix(11);
+var test3 = dateSuffix(21);
+var test4 = dateSuffix(31);
+var test5 = dateSuffix(2);
+var test6 = dateSuffix(12);
+var test7 = dateSuffix(22);
+var test8 = dateSuffix(3);
+var test9 = dateSuffix(13);
+var test10 = dateSuffix(23);
+var test11 = dateSuffix(4);
+var test12 = dateSuffix(24);
+
+console.log(test1);
+console.log(test2);
+console.log(test3);
+console.log(test4);
+console.log(test5);
+console.log(test6);
+console.log(test7);
+console.log(test8);
+console.log(test9);
+console.log(test10);
+console.log(test11);
+console.log(test12);
+</script>
+</body>
+</html>
+
+<!-- 1st
+2nd
+3rd
+4th
+5th
+6th
+7th
+8th
+9th
+10th
+11th
+12th
+13th
+14th
+15th
+16th
+17th
+18th
+19th
+20th
+21st
+22nd
+23rd
+24th
+25th
+26th
+27th
+28th
+29th
+30th
+31st -->

@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Working with the Math Object</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 5 -- Working with the Math Object</h1>
+<h2>Exercise 5</h2>
+<p>Rounding numbers up or down in JavaScript is easy, but there are three methods that perform different types of rounding. <code>Math.round</code> takes any decimal value and rounds it to the nearest integer. If the fractional part of the number is less than 0.5, <code>Math.round</code> rounds the value downwards; otherwise, it rounds the value upwards. Note: if the fractional part is exactly 0.5, <code>Math.round</code> rounds upwards. <code>Math.floor</code> rounds any number downward to the next lower integer. <code>Math.ceil</code> rounds any number upward to the next higher integer.</p>
+
+<p>Use the appropriate method on each of these variables to return a value of 50. Make sure you use each method once.</p>
+<script>
+var a = 50.72;
+var b = 49.2;
+var c = 49.86;
+
+console.log(Math.floor(a));
+console.log(Math.ceil(b));
+console.log(Math.round(c));
+</script>
+</body>
+</html>

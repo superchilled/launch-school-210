@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Working with the Math Object</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 5 -- Working with the Math Object</h1>
+<h2>Exercise 1</h2>
+<p>The <code>Math</code> methods that deal with angle measurements all expect and return values in radians instead of degrees. Mathematically, radians are easier to work with, so nearly all languages use radians for circle and arc calculations. To read more about radians, <a href="http://www.mathsisfun.com/geometry/radians.html">check out this article</a>. Use the <code>Math.PI</code> property to create a function that converts radians to degrees.</p>
+<script>
+// Input: An numeric value representing the radian of an angle
+// Output: An numeric value representing the degree of the same angle
+// Algorithm:
+// 1) Multiply the input radians by 180 / Pi and return this value
+
+function radiansToDegrees(radian) {
+  return radian * (180 / Math.PI);
+}
+
+var test1 = radiansToDegrees(0.524); // should retrun approx 30
+var test2 = radiansToDegrees(0.785); // should retrun approx 45
+var test3 = radiansToDegrees(1.047); // should retrun approx 60
+var test4 = radiansToDegrees(1.571); // should retrun approx 90
+var test5 = radiansToDegrees(3.142); // should retrun approx 180
+var test6 = radiansToDegrees(4.712); // should retrun approx 270
+var test7 = radiansToDegrees(6.283); // should retrun approx 360
+
+console.log(test1);
+console.log(test2);
+console.log(test3);
+console.log(test4);
+console.log(test5);
+console.log(test6);
+console.log(test7);
+</script>
+</body>
+</html>

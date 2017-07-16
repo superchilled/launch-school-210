@@ -8,12 +8,32 @@
 <h2>Exercise 3</h2>
 <p>Write a function named <code>copyProperties</code> that takes two Objects as arguments. The function should copy all properties from the first object to the second. The function should return the number of properties copied.</p>
 <script>
-// Input: 
-// Output:
+// Input: Two objects, one with properties and an empty object
+// Output: The number of properties 'copied' from the first object o the second
 // Algorithm:
-// 1) 
+// 1) Loop through the first object. On each iteration:
+//  - Create a property in the second object with the same property name and value as the property for that iteration in the first object
+// 2) Return the length of the second object
 
+function copyProperties(obj1, obj2) {
+  var itemsCopiedCount = 0;
+  for (var i in obj1) {
+    obj2[i] = obj1[i];
+    itemsCopiedCount++;
+  }
 
+  return itemsCopiedCount;
+}
+
+var hal = {
+  model: 9000,
+  enabled: true,
+};
+var sal = {};
+var test1 = copyProperties(hal, sal);  // 2
+
+console.log(test1);
+console.log(sal);                       // { model: 9000, enabled: true }
 </script>
 </body>
 </html>

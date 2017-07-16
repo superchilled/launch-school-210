@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Working with Dates</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- Working with Dates</h1>
+<h2>Exercise 4</h2>
+<p>Let's add the calendar date (the day of month) to our log message: "Today's date is Mon, the 6th". Use the <code>getDate</code> method to obtain the current day of month. Don't worry about using different suffixes for numbers that end with <code>1</code>, <code>2</code>, or <code>3</code> just yet; we'll deal with that in the next problem.</p>
+<script>
+var today = new Date();
+var string = "Today's date is ";
+var daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+console.log(string + daysOfWeek[today.getDay()] + ', the ' + String(today.getDate()) + 'th');
+</script>
+</body>
+</html>

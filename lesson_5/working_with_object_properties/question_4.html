@@ -8,12 +8,33 @@
 <h2>Exercise 4</h2>
 <p>Write a function named <code>wordCount</code> that takes a single String as an argument. The function should return an Object that contains the counts of each word that appears in the provided String. In the returned Object, you should use the words as keys, and the counts as values.</p>
 <script>
-// Input: 
-// Output:
+// Input: A string
+// Output: An object contining a count of each unique word in the string, with words as keys and the count as values
 // Algorithm:
-// 1) 
+// 1) Define and empty return object
+// 2) Split the string into an array of separate words
+// 3) Iterate through the array, on each iteration:
+//  - Check if the object contains a property equal to the string
+//    - If yes, increment the value of the propert by 1
+//    - If no, create a new property equal to the string and set its value to 1
+// 4) Return the object
 
+function wordCount(str) {
+  var returnObject = {};
+  var wordArray = str.split(' ');
+  for (var i = 0; i < wordArray.length; i++) {
+    if (returnObject[wordArray[i]]) {
+      returnObject[wordArray[i]] += 1;
+    } else {
+      returnObject[wordArray[i]] = 1;
+    }
+  }
 
+  return returnObject;
+}
+
+var test1 = wordCount('box car cat bag box');    // { box: 2, car: 1, cat: 1, bag: 1 }
+console.log(test1);
 </script>
 </body>
 </html>

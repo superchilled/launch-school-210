@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Working with the Math Object</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 5 -- Working with the Math Object</h1>
+<h2>Exercise 6</h2>
+<p><code>Math.random</code> returns a random floating-point number between 0 and 1, excluding the exact value of 1. This isn't helpful on its own, since you usually want a random integer between two other integer values. Create a function that takes two arguments, a minimum and a maximum value, and returns a random integer between those numbers (including both of the numbers).</p>
+<script>
+// Input: Two numeric values, a minimum and a maximum
+// Output: A random integer in the range of the two input values (inclusive of the two values)
+// Algorithm:
+// 1) Convert the input values to closest integers within the range using the Math.ceil and Math.floor methods
+// 2) Generate a random number between 0 and 1 using the Math.random method
+// 3) Multiply the random number by max minus min and then add min to get a number in the range
+// 4) Round the result using the Math.round method to get an integer
+
+function generateRandomInteger(min, max) {
+  var min = Math.ceil(min);
+  var max = Math.floor(max);
+  var random = Math.random();
+
+  return Math.floor((random * (max - min + 1)) + min);
+}
+
+var test1 = generateRandomInteger(5, 9); // should be in range 5-9 inclusive
+var test2 = generateRandomInteger(6.2, 10.4); // should be in range 7-10 inclusive
+
+console.log(test1);
+console.log(test2);
+</script>
+</body>
+</html>

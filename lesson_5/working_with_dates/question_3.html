@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Working with Dates</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- Working with Dates</h1>
+<h2>Exercise 3</h2>
+<p>The <code>getDay</code> method, like many of the get methods on the date object, returns a zero-based index of the current day of week instead of the day name. This enables support for multiple locales and formats. Modify the output message of the previous problem to show the 3-letter day name abbreviation. You may use the following array:</p>
+<script>
+var today = new Date();
+var string = "Today's day is ";
+var daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+console.log(string + daysOfWeek[today.getDay()]);
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Welcome Stranger</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- Practice Problem: Welcome Stranger</h1>
+<p>Write a function that takes two arguments, an array and an object. The array will contain two or more elements that, when combined with spaces, produce a person's full name. The object will contain two keys, <code>title</code> and <code>occupation</code>, and suitable values for both items. Your function should log a greeting to the console that uses the person's full name, and mentions the person's title and occupation.</p>
+<script>
+// Input: An array of strings representing parts of a name and an object with title and occupation
+// Output: A string containing the values from the array and object, concatenated with some other words
+// Algorithm:
+// 1) Declare an empty string variable for name
+// 2) Iterate through the array adding each item to the name string separated by a space except the last one
+// 3) Return the name string appropriately concatenated with the set words and the object values.
+
+function greetings(arr, obj) {
+  var name = '';
+  for (var i = 0; i < arr.length; i++) {
+    name += arr[i];
+
+    if (i < arr.length - 1) {
+      name += ' ';
+    }
+  }
+
+  return 'Hello, ' + name + '! Nice to have a ' + obj.title + ' ' + obj.occupation + ' around.';
+}
+
+console.log(greetings(['John', 'Q', 'Doe'], { title: 'Master', occupation: 'Plumber' }));
+// console output
+// Hello, John Q Doe! Nice to have a Master Plumber around.
+</script>
+</body>
+</html>

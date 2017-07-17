@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Repeated Characters</title>
+</head>
+<body>
+<h1>Launch School 210 | Lesson 4 -- Practice Problem: Repeated Characters</h1>
+<p>Implement a function that takes a <code>String</code> as an argument and returns an object that contains a count of the repeated characters.</p>
+
+<p>Note that <code>repeatedCharacters</code> does a bit more than simply count the frequency of each character: it determines the counts, but only returns counts for characters that have a count of 2 or more. It also ignores the case.</p>
+<script>
+// Input: A string
+// Output: An object, the keys should be any repeated letters from the string and the values the number of repetitions
+// Algorithm:
+// 1) Declare a varaible which is a downcased version of the input string
+// 2) Declare a variable which is an empty object
+// 3) Iterate through the string. On each iteration:
+//  - check to see if the object has a property equal to the character for that iteration
+//    - if yes, increment the value of that property by 1
+//    - if no add a property to the object with a value equal to 1
+// 4) Remove any properties from the object where the value is 1:
+//  - Declare an empty array variable
+//  - Iterate through the object, if the value is one, add the object key to the array
+//  - iterate through the array, delete any property name in the array from the object
+// 5) Return the object
+
+function createObject(str) {
+  var returnObject = {};
+
+  for (var i = 0; i < str.length; i++) {
+    if (returnObject[str[i]]) {
+      returnObject[str[i]] += 1;
+    } else {
+      returnObject[str[i]] = 1;
+    }
+  }
+
+  return returnObject;
+}
+
+function repeatedCharacters(string) {
+  var lowerCasedString = string.toLowerCase();
+  var returnObject = createObject(lowerCasedString);
+
+  for (var prop in returnObject) {
+    if (returnObject[prop] === 1) {
+      delete returnObject[prop];
+    }
+  }
+  
+  return returnObject;
+}
+
+var test1 = repeatedCharacters('Programming');    // { r: 2, g: 2, m: 2 }
+var test2 = repeatedCharacters('Combination');    // { o: 2, i: 2, n: 2 }
+var test3 = repeatedCharacters('Pet');            // {}
+var test4 = repeatedCharacters('Paper');          // { p: 2 }
+var test5 = repeatedCharacters('Baseless');       // { s: 3, e: 2 }
+
+console.log(test1);
+console.log(test2);
+console.log(test3);
+console.log(test4);
+console.log(test5);
+</script>
+</body>
+</html>

@@ -8,12 +8,55 @@
 <h2>Exercise 8</h2>
 <p>Our call to <code>console.log</code> is getting cluttered. Let's clean things up a bit and refactor the code into a few formatting functions that we can call from anywhere in our code. Create <code>formattedMonth</code> and <code>formattedDay</code> functions to format the month and day, then write a <code>formattedDate</code> function that pulls everything together and logs the fully formatted date.</p>
 <script>
-// Input: 
-// Output: 
-// Algorithm:
-// 1) 
+function dateSuffix(date) {
+  var returnDate;
+  var dateDigit;
 
+  if (date === 11 || date === 12 || date == 13) {
+    dateDigit = date;
+  } else {
+    dateDigit = date % 10;
+  }
 
+  switch (dateDigit) {
+    case 1:
+      returnDate = String(date) + 'st';
+      break;
+    case 2:
+      returnDate = String(date) + 'nd';
+      break;
+    case 3:
+      returnDate = String(date) + 'rd';
+      break;
+    default:
+      returnDate = String(date) + 'th';
+  }
+
+  return returnDate;
+}
+
+function formattedMonth(date) {
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  return months[date.getMonth()];
+}
+
+function formattedDay(date) {
+  var daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  return daysOfWeek[date.getDay()];
+}
+
+function formattedDate(date) {
+  return "Today's date is " +
+  formattedDay(date) +
+  ', ' +
+  formattedMonth(date) +
+  ' ' +
+  dateSuffix(date.getDate())
+}
+
+var today = new Date();
+
+console.log(formattedDate(today));
 </script>
 </body>
 </html>

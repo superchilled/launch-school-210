@@ -8,12 +8,57 @@
 <h2>Exercise 11</h2>
 <p>Create a new date object variable named <code>tomorrow</code> that contains a Date object. Initialize the variable by setting it to the value of <code>today</code>. You can get the value of <code>today</code> using the <code>getTime</code> method. Next, change the date on the <code>tomorrow</code> object to the day after today: you should use <code>setDate</code> to change the date. Finally, log the <code>tomorrow</code> object with your <code>formattedDate</code> function.</p>
 <script>
-// Input: 
-// Output: 
-// Algorithm:
-// 1) 
+function dateSuffix(date) {
+  var returnDate;
+  var dateDigit;
 
+  if (date === 11 || date === 12 || date == 13) {
+    dateDigit = date;
+  } else {
+    dateDigit = date % 10;
+  }
 
+  switch (dateDigit) {
+    case 1:
+      returnDate = String(date) + 'st';
+      break;
+    case 2:
+      returnDate = String(date) + 'nd';
+      break;
+    case 3:
+      returnDate = String(date) + 'rd';
+      break;
+    default:
+      returnDate = String(date) + 'th';
+  }
+
+  return returnDate;
+}
+
+function formattedMonth(date) {
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  return months[date.getMonth()];
+}
+
+function formattedDay(date) {
+  var daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  return daysOfWeek[date.getDay()];
+}
+
+function formattedDate(date) {
+  return "Today's date is " +
+  formattedDay(date) +
+  ', ' +
+  formattedMonth(date) +
+  ' ' +
+  dateSuffix(date.getDate())
+}
+
+var today = new Date();
+var tomorrow = new Date(today.getTime());
+tomorrow.setDate(today.getDate() + 1);
+
+console.log(formattedDate(tomorrow));
 </script>
 </body>
 </html>

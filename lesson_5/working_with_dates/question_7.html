@@ -8,12 +8,39 @@
 <h2>Exercise 7</h2>
 <p>Let's make the month readable. Using the same technique we used in problem 3, convert the month number in the output string to a 3-letter month name abbreviation. You may use the following array:</p>
 <script>
-// Input: 
-// Output: 
-// Algorithm:
-// 1) 
+function dateSuffix(date) {
+  var returnDate;
+  var dateDigit;
 
+  if (date === 11 || date === 12 || date == 13) {
+    dateDigit = date;
+  } else {
+    dateDigit = date % 10;
+  }
+
+  switch (dateDigit) {
+    case 1:
+      returnDate = String(date) + 'st';
+      break;
+    case 2:
+      returnDate = String(date) + 'nd';
+      break;
+    case 3:
+      returnDate = String(date) + 'rd';
+      break;
+    default:
+      returnDate = String(date) + 'th';
+  }
+
+  return returnDate;
+}
+
+var today = new Date();
+var string = "Today's date is ";
+var daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+console.log(string + daysOfWeek[today.getDay()] + ', ' +  months[today.getMonth()] + ' ' + dateSuffix(today.getDate()));
 </script>
 </body>
 </html>

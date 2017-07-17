@@ -8,12 +8,38 @@
 <h2>Exercise 6</h2>
 <p>Change your output to include the value from the <code>getMonth</code> method. Thus, the logged string will read "Today's date is Mon, 11 6th", where <code>11</code> is the month number returned by <code>getMonth</code>.</p>
 <script>
-// Input: 
-// Output: 
-// Algorithm:
-// 1) 
+function dateSuffix(date) {
+  var returnDate;
+  var dateDigit;
 
+  if (date === 11 || date === 12 || date == 13) {
+    dateDigit = date;
+  } else {
+    dateDigit = date % 10;
+  }
 
+  switch (dateDigit) {
+    case 1:
+      returnDate = String(date) + 'st';
+      break;
+    case 2:
+      returnDate = String(date) + 'nd';
+      break;
+    case 3:
+      returnDate = String(date) + 'rd';
+      break;
+    default:
+      returnDate = String(date) + 'th';
+  }
+
+  return returnDate;
+}
+
+var today = new Date();
+var string = "Today's date is ";
+var daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+console.log(string + daysOfWeek[today.getDay()] + ', ' +  String(today.getMonth()) + ' ' + dateSuffix(today.getDate()));
 </script>
 </body>
 </html>

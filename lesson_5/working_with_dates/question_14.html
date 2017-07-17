@@ -8,12 +8,32 @@
 <h2>Exercise 14</h2>
 <p>Finally, write a function named <code>formatTime</code> that returns a string formatted with the hours and minutes as "15:30". Make sure you handle the case where the hours or minutes has only one digit: you need to pad the value with a leading zero in such cases, e.g., "03:04". You can use the <code>getHours</code> and <code>getMinutes</code> methods to obtain the hours and minutes.</p>
 <script>
-// Input: 
-// Output: 
+// Input: A date object
+// Output: the time for the date object formatted in hours and minutes like '15:30'
 // Algorithm:
-// 1) 
+// 1) Obtain an hours value from the date using the getHours method, convert to a string and assign to an hoursString variable
+// 2) Obtain an hours value from the date using the getMinutes method, convert to a string and assign to an minutesString  variable
+// 3) Ascertain the length of the hours & munutes strings, if 1 then prepend a '0'
+// 4) Return the hours and minutes separated by a semi-colon ':'
 
+function formatTime(date) {
+  var hoursString = String(date.getHours());
+  var minutesString = String(date.getMinutes());
 
+  if (hoursString.length === 1) {
+    hoursString = '0' + hoursString;
+  }
+
+  if (minutesString.length === 1) {
+    minutesString = '0' + minutesString;
+  }
+
+  return hoursString + ':' + minutesString;
+}
+
+var today = new Date();
+
+console.log(formatTime(today));
 </script>
 </body>
 </html>

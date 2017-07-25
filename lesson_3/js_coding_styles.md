@@ -18,7 +18,7 @@
   * Place no space between the argument list and function name in function calls and declarations
   * Set off operators with spaces
   * Do not add spaces inside parens
-  * Unaray special-character operators (`!`, ¬++`, etc) must not have spaces between then and their operand
+  * Unaray special-character operators (`!`, `++`, etc) must not have spaces between then and their operand
   * No preceding spaces before `,` and `;`
   * No whitespace at the end of line or blank lines
   * The `?` and `:` in a ternary conditional must have space on both sides
@@ -86,7 +86,7 @@ if (test) {
   * Use semi-colons after every statement except for statements ending with blocks
 
 ### Naming Conventions
-  
+
   * Use camelCase var and function names
 
 **Examples:**

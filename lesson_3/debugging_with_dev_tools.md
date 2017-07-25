@@ -2,7 +2,7 @@
 
 ## Accessing Dev Tools
 
-  *To access Dev Tools in Chrome browser, you can:
+  * To access Dev Tools in Chrome browser, you can:
     * Right-click on a web page and select 'Inspect'
     * Select 'More Tools > Developer Tools' from the Chrome menu button (top right)
 
@@ -40,21 +40,21 @@
   * Debugger controls are visible in the right-hand window
   * Step Through controls are displayed along the top of the debugger controls
   * The 'Play/ Pause' button is used along with the debugger. Clicking on it when paused will continue running from where it was paused until it hits another breakpoint or the program completes
-    * When a script is paused, the values of local variables defined in the code at the current point of execution will be displayed (highlighted in orange). These also show in the 'Scope' 
+    * When a script is paused, the values of local variables defined in the code at the current point of execution will be displayed (highlighted in orange). These also show in the 'Scope'
   * The 'Step Over Next Function Call' control allows you to step through the code and evaluate each function one at a time. Clicking it once moves forward a step.
-  * The 'Step into Next Function Call' control is similar, but allows to to drill into a function to see what is happening within it rather than just evaluating what happens when it runs 
+  * The 'Step into Next Function Call' control is similar, but allows to to drill into a function to see what is happening within it rather than just evaluating what happens when it runs
   * The 'Step Out of Current Function' control moves out of a function the you have stepped into
   * Rather than stepping through every line one by one, you can right click on a line and select 'Continue to here'. DevTools runs all of the code up to that point, and then pauses on that line.
   * The 'Pause on Exceptions' control causes the program to automatically pause when an exception is encountered. When active it is highlighted in blue. If active and an exception is encountered, execution pauses at the line of code that is abiout to rais the exception and provides the error within the 'Call Stack' area. Clicking on the 'Play/ Pause' button then runs the code and the exception is raised
 
 #### Current State controls
-  
+
   * 'Call Stack' indicates where in the program execution is currently paused, and the rest of the functions up the stack. This allows you to step back through the execution of the program
   * 'Scope Values' displays the values of local variables defined in the code at the current point of execution
   * 'Breakpoints' displays any breakpoints that you have set in your code. Yiou can manage your breakpoints here bby disabling/ enabling or removing them (either check or uncheck a specific breakpoint, or right-click on a specific breakpoint or in the 'Breakpoints' window for a contextual menu)
 
 #### Creating a Line of Code Breakpoint
-  
+
   * A Line of Code Breakpoint marks a place that the browser is going to stop executing the code and pause in order to allow a developer to inspect the state of the page. Execution is stopped *before* the line of code is executed
   * A Breakpoint can be set by clicking on line number in the code window (breakpoint line numbers are displayed in blue)
   * After adding a Breakpoint the page should be reloaded, which then re-run the js until the the breakpoint is reached

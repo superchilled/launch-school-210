@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: JavaScript Basics</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: JavaScript Basics</h1>
+<h2>Exercise 3: Conditional</h2>
+<p>One of the ways to manage the flow of a program is through the use of conditionals. Go over the code below and specify how many possible flows/paths there are.</p>
+<h3>Answer</h3>
+<p>There are nested conditionals here, so that creates a number of paths. Within the outer <code>if</code> condition, there are two branches, an <code>if</code> and an <code>else</code>. Within the outer <code>else</code> condition, there are two levels of nesting, both <code>if</code> conditions, so that is three, making 5 branches overall.</p>
+<h3>Discussion</h3>
+<ul>
+  <li>Path1: condition1 - condition2</li>
+  <li>Path2: condition1 - not condition2</li>
+  <li>Path3: not condition1</li>
+  <li>Path4: not condition1 - condition4</li>
+  <li>Path5: not condition1 - condition4 - condition5</li>
+</ul>
+<script>
+if (condition1) {
+  // some code
+  if (condition2) {
+    // some code
+  } else {
+    // some code
+  }
+} else {
+  // some code
+  if (condition4) {
+    // some code
+    if (condition5) {
+    // some code
+    }
+  }
+}
+</script>
+</body>
+</html>

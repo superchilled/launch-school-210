@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: JavaScript Basics</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: JavaScript Basics</h1>
+<h2>Exercise 2: Truthy Falsey</h2>
+<p>Go over the program. What does it log to the console at lines 7, 11, 15, and 19? Is it what you expected? Why or why not?</p>
+<h3>Answer</h3>
+<p>Line 7 logs 'Hello', since <code>myBoolean</code> evaluates as true. Line 11 doesn't log 'World', since <code>myString</code> is truthy but is negated by the bang in the condition. Line 15 does log 'World' since the empty array <code>myArray</code> is truthy, and the double bang converts this to the boolean true. Line 19 logs '!' since, although <code>myOtherString</code> is falsy, the right hand side of the 'or' condition, <code>myArray</code> is truthy</p>
+<h3>Discussion</h3>
+<p>Recall that it is only the following values that are <code>falsey</code>:
+  <ul>
+    <li><code>false</code></li>
+    <li><code>null</code></li>
+    <li><code>undefined</code></li>
+    <li><code>0</code></li>
+    <li><code>NaN</code></li>
+    <li><code>''</code></li>
+  </ul>
+If it isn't any of those, consider the value to be <code>truthy</code>.
+<script>
+var myBoolean = true;
+var myString = 'hello';
+var myArray = [];
+var myOtherString = '';
+
+if (myBoolean) {
+  console.log('Hello');
+}
+
+if (!myString) {
+  console.log('World');
+}
+
+if (!!myArray) {
+  console.log('World');
+}
+
+if (myOtherString || myArray) {
+  console.log('!');
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: JavaScript Basics</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: JavaScript Basics</h1>
+<h2>Exercise 6: Counting the Number of Characters</h2>
+<p>In this exercise you will write a program that asks a user for a phrase and gives back the number of characters. Go over the documentation for string and find an appropriate method to use.</p>
+<p>
+  <code>
+Please write a phrase: walk<br />
+// console output<br />
+There are 4 characters in "walk".<br />
+<br />
+Please write a phrase: walk, don't run<br />
+// console output<br />
+There are 15 characters in "walk, don't run".<br />
+  </code>
+</p>
+<h3>Further Exploration</h3>
+<p>The solution counts all the characters including spaces. Rewrite it such that it ignores spaces.</p>
+
+<p>Since the refactored program shouldn't count spaces, you can use the String.prototype.replace() method to return a new string with all spaces removed from it. Go over the documentation and see how you can use this. The thing to note here is the first argument passed to replace(). That first argument is a regex pattern.</p>
+<script>
+// Input: A string
+// Output: An string comprising of some standard text concatenated with the input string and the number of characters in the input string.
+// Algorithm:
+// 1) Declare a variable and assign the input string to it using a prompt
+// 2) Declare another varaible and assign it to the length of the inoput string using the `length` property of the string.
+// 3) Log to the console the standard text concatenated with the input string and its length
+
+var inputString = prompt('Please write a phrase:');
+var strippedString = inputString.replace(/\s/g, '');
+var stringLength = inputString.length;
+var alphaString = inputString.replace(/\W/g, '');
+var strippedStringLength = strippedString.length;
+var alphaStringLength = alphaString.length;
+var output = 'There are ' + String(stringLength) + ' total characters, ' + String(strippedStringLength) +
+             ' non-white-space characters, and ' + String(alphaStringLength) +' alpha characters in ' + inputString + '.';
+console.log(output);
+
+</script>
+</body>
+</html>

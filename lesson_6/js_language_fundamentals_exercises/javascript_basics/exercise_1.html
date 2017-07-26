@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: JavaScript Basics</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: JavaScript Basics</h1>
+<h2>Exercise 1: Building Strings</h2>
+<p>The intention of the program below is to output a paragraph. Copy and paste the program into a JavaScript console (i.e from the Chrome Developer Tools). Run the program. Is the output what you expected? Are there bugs/errors?</p>
+
+<h3>Answer</h3>
+<p>This results in an <code>`Uncaught SyntaxError: Invalid or unexpected token`</code>, since thre are blank spaces after the backslash character on the 5th line of the paragraph.</p>
+<h3>Discussion</h3>
+<p>First off, there is an error in the program. There is a syntax error in assigning the paragraph to the paragraph variable. It may not be readily visible but there are whitespaces at the end of line 5 after the backward slash. The purpose of the backward slash is to escape the newline character at the end. However, with the extra whitespace this does not happen and thus leads to syntax error.</p>
+
+The program still has a bug after removing the extra whitespace at line 5. There are extra whitespaces in between some of the sentences. This is because it considers the whole string to be continuous. It counts the spaces at the beginning of each new line (line 2 to line 6) as part of the string.</p>
+<script>
+var paragraph = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sed \
+                ligula at risus vulputate faucibus. Aliquam venenatis nibh ut justo dignissim \
+                dignissim. Proin dictum purus mollis diam auctor sollicitudin. Ut in bibendum \
+                ligula. Suspendisse quam ante, dictum aliquam tristique id, porttitor pulvinar \
+                diam. Maecenas blandit aliquet ipsum. Integer vitae sapien sed nulla rutrum \
+                hendrerit ac a urna. Interdum et malesuada fames ac ante ipsum primis in faucibus.';
+
+console.log(paragraph);
+</script>
+</body>
+</html>

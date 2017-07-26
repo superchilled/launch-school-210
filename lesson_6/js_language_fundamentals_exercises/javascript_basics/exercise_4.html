@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: JavaScript Basics</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: JavaScript Basics</h1>
+<h2>Exercise 4: String Assignment</h2>
+<p>What does this code log to the console?</p>
+<h3>Answer</h3>
+<p>This should log <code>Bob Bob</code> to the console, since <code>name</code> and <code>saveName</code> both point to the same String <code>'Bob'</code>. The <code>toUpperCase()</code> method returns a new string representing the calling string converted to upper case, but neither variable is reassigned to this new string, so are still assigned to <code>'Bob'</code>.</p>
+<h3>Discussion</h3>
+<p>If you were thinking that at least one or both should have been uppercase then you would have been wrong. Don't worry, you are not alone, especially if you come from other programming languages where strings are mutable. However, as seen in the result, in JavaScript strings are primitive and thus immutable.</p>
+<h3>Further Exploration<h3>
+<p>Taking another look at the code, you will notice that in line 3 the name variable calls a method, the String.prototype.toUpperCase() method. How is it possible that strings are primitive but still able to call methods?</p>
+<h3>Answer</h3>
+<p>This is possible because when a method is called on a primitive, JavaScript automatically converts it to an object <a href="https://javascriptweblog.wordpress.com/2010/09/27/the-secret-life-of-javascript-primitives/">as this article explains</a>.</p>
+<script>
+var name = 'Bob';
+var saveName = name;
+name.toUpperCase();
+console.log(name, saveName);
+</script>
+</body>
+</html>

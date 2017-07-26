@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: JavaScript Basics</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: JavaScript Basics</h1>
+<h2>Exercise 5: Arithmetic Integer</h2>
+<p>In this program we're going to explore the basic arithmetic operations in JavaScript. The program below prompts the user for two positive integers and then logs the results of the following operations on those two numbers: addition, subtraction, product, quotient, remainder, and power. For this exercise, assume positive integers as inputs.</p>
+<p>Here is our expected result after running the program.<br /><br />
+  <code>
+  Enter the first number: 23<br />
+  Enter the second number: 17<br />
+<br />
+  23 + 17 = 40<br />
+  23 - 17 = 6<br />
+  23 * 17 = 391<br />
+  23 / 17 = 1<br />
+  23 % 17 = 6<br />
+  23 ** 17 = 1.4105003956066297e+23<br />
+  </code>
+  <br />
+Did the results of the program match what you expected? Why or why not? If not can you fix it?
+</p>
+<h3>Answer</h3>
+<p>The results did not match the 'expected results' due to the implicit coercion which takes place in JavaScript when using operators. The input to the prompts are strings, the operators are then used on these strings. The results and types of coercion that take place depend on the combination of operators and the data type of the operands. For example, <code>+</code> when used with two strings concatenates the strings and performs no type coercion, so the result of <code>'23' + '17'</code> is a new string <code>'2317'</code>, but the result of <code>'23' - '17'</code> is the integer <code>6</code> since when using the <code>-</code> operator with string operands, JavaScript coerces both of the string operands to integers.</p>
+<p>In order to correct the program, we can explicitly coerce the string input to numbers, e.g. by using <code>parseInt()</code> prior to usng those numbers in our calculations.</p>
+<h3>Discussion</h3>
+<p>JavaScript does a lot of implicit coercion behind the scenes that can lead to unexpected results. The solution makes use of explicit primitive type coercions, via parseInt, so that we have better control of the outcome. The second argument for parseInt is a radix that specifies the number parsed as base 10.</p>
+<script>
+var number1 = prompt('Enter the first number:');
+var number2 = prompt('Enter the second number:');
+
+console.log(number1 + ' + ' + number2 + ' = ' + (number1 + number2));
+console.log(number1 + ' - ' + number2 + ' = ' + (number1 - number2));
+console.log(number1 + ' * ' + number2 + ' = ' + (number1 * number2));
+console.log(number1 + ' / ' + number2 + ' = ' + Math.floor(number1 / number2));
+console.log(number1 + ' % ' + number2 + ' = ' + (number1 % number2));
+console.log(number1 + ' ** ' + number2 + ' = ' + Math.pow(number1, number2));
+</script>
+</body>
+</html>

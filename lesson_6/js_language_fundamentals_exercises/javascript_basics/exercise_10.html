@@ -5,10 +5,58 @@
 </head>
 <body>
 <h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: JavaScript Basics</h1>
-<h2>Exercise 10</h2>
-<p></p>
-<script>
+<h2>Exercise 10: Convert a Signed Number to a String</h2>
+<p>In the previous exercise, you reimplemented a function that converts non-negative numbers to strings. In this exercise, you're going to extend that function by adding the ability to represent negative numbers.</p>
 
+<p>You may not use any of the standard conversion functions available in JavaScript, such as String(), Number.prototype.toString() or doing ' ' + number. You may, however, use integerToString from the previous exercise.</p>
+<script>
+// Input: A number, can be either positive or negative, or zero
+// Output: A string version of the number, with a minus or plus sign prepended (or no sign if the number is zero)
+// Algorithm:
+// 1) Declare a variable sign which is an empty string
+// 2) Determine if the input number is positive or negative (greater than or less than 0)
+//  - If positive, set the sign to '+'
+//  - If negative, set the sign to '-'
+// 3) Call integerToString on the input number and return the result prepended by sign
+var DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+function integerToString(int) {
+  var numArray = [];
+  var remainder = 10;
+  var divisor = 1;
+  var i = 1;
+   do {
+    var num = int % remainder / divisor;
+    numArray.unshift(Math.floor(num));
+    remainder *= 10;
+    divisor *= 10;
+    i *= 10;
+  } while (i < int)
+  var numStrings = numArray.map(function(j) {
+    return DIGITS[j];
+  });
+  return numStrings.join('');
+}
+
+function signedIntegerToString(number) {
+  var sign = '';
+  if (number > 0) {
+    sign  = '+';
+  } else if (number < 0) {
+    sign = '-';
+  }
+
+  return sign + integerToString(Math.abs(number));
+}
+
+// Test cases
+var test1 = signedIntegerToString(4321);      // "+4321"
+var test2 = signedIntegerToString(-123);      // "-123"
+var test3 = signedIntegerToString(0);         // "0"
+
+console.log(test1);
+console.log(test2);
+console.log(test3);
 </script>
 </body>
 </html>

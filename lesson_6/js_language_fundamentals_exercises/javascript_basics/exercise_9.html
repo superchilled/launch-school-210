@@ -5,10 +5,60 @@
 </head>
 <body>
 <h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: JavaScript Basics</h1>
-<h2>Exercise 9</h2>
-<p></p>
-<script>
+<h2>Exercise 9: Convert a Number to a String</h2>
+<p>In the previous two exercises, you developed functions that convert simple numeric strings to signed integers. In this exercise and the next, you're going to reverse those functions.</p>
 
+<p>You will learn more about converting strings to numbers by writing a function that takes a positive integer or zero, and converts it to a string representation.</p>
+
+<p>You may not use any of the standard conversion functions available in JavaScript, such as String(), Number.prototype.toString() or doing ' ' + number. Your function should do this the old-fashioned way and construct the string by analyzing and manipulating the number.</p>
+<script>
+// Input: A number
+// Output: A string version of the number
+// Algorithm:
+// 1) Declare a numArray variable set to an empty array
+// 2) Declare a DIGITS variable set to an array of strings from '0' to '9'
+// 3) Declare a divisor variable and set it to the integer 1
+// 4) Declare a remainder varaible and set it to the integer 10
+// 5) Begin a loop. On each iteration:
+//  - Break out of the loop if the number remainder (remainder var) is equal to itself
+//  - Declare a variable 'num'
+//  - Set num to the input integer, remainder (remainder var), divided by (divisor var)
+//  - e.g. 4321 % 10 / 1
+//  - Calculate the nearest integer below the result (using Math.floor())
+//  - Add the resulting number to the start of the numArray using Array.unshift
+//  - Set remainder var to remainder var * 10
+//  - Set divisor var to divisor var * 10
+// 6) Map the digits in the numArray to string digits using the Array.map method and the DIGITS Array
+// 7) Join this mapped array and return it
+
+var DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+function integerToString(int) {
+  var numArray = [];
+  var remainder = 10;
+  var divisor = 1;
+  var i = 1;
+   do {
+    var num = int % remainder / divisor;
+    numArray.unshift(Math.floor(num));
+    remainder *= 10;
+    divisor *= 10;
+    i *= 10;
+  } while (i < int)
+  var numStrings = numArray.map(function(j) {
+    return DIGITS[j];
+  });
+  return numStrings.join('');
+}
+
+// Test cases
+var test1 = integerToString(4321);    // "4321"
+var test2 = integerToString(0);       // "0"
+var test3 = integerToString(5000);    // "5000"
+
+console.log(test1);
+console.log(test2);
+console.log(test3);
 </script>
 </body>
 </html>

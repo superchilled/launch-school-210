@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Functions</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Functions</h1>
+<h2>Exercise 2: Shadowing</h2>
+<p>What will the following code log to the console and why? Don't run the code until you have tried to answer.</p>
+<h2>Answer</h2>
+<p>This will log the String <code>'This is local'</code> because the <code>console.log()</code> call occurs <em>inside</em> the function. Within the function the <code>myVar</code> variable referenced is the one defined within the local 'inner' scope of the function, not the one defined in the 'outer' global scope.</p>
+<h2>Discussion</h2>
+<p>In this exercise there is only a slight change from the previous one. The console.log(myVar) is inside the function. Recall that the myVar variable is in both a global (line 1) and local (line 4) scope. Supposedly, variables in the global scope are accessible anywhere within the program. However, in this instance, JavaScript gives priority to the variable with the same name that is in a local scope. This type of behavior is called shadowing.</p>
+<script>
+var myVar = 'This is global';
+
+function someFunction() {
+  var myVar = 'This is local';
+  console.log(myVar);
+}
+
+someFunction();
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Functions</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Functions</h1>
+<h2>Exercise 8: Passing Objects</h2>
+<p>What will the following code log to the console and why? Don't run the code until you have tried to answer.</p>
+<h2>Answer</h2>
+<p>This code will log the Array <code>[1, 2, 10]</code> to the console. The variable <code>a</code> is declared in the global scope and assigned to the array object <code>[1, 2, 3]</code>. This variable acts as a pointer to the array; when <code>a</code> is passed in as an argument ot the function, the function parameter <code>b</code> is assigned to the array. Since objects are mutable, the operation to set the value at index 2 of the array mutates the array itself. It is the mutated array that is logged on line 8.</p>
+<h2>Discussion</h2>
+<p>Recall that JavaScript is pass-by-value. In this exercise, the tricky part is understanding the "value" passed. For JavaScript, when passing "objects" (i.e arrays) the value is the reference to it. As such, when the program executes the statement b[2] += 7 on line 4 it actually executes it on the object pointed at by a in the outer scope since it a got a reference to it on line 7. Consequently, when it logs the value of a on line 8 it logs [1, 2, 10].</p>
+<script>
+var a = [1, 2, 3];
+
+function myValue(b) {
+  b[2] += 7;
+}
+
+myValue(a);
+console.log(a);
+</script>
+</body>
+</html>

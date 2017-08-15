@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Arrays</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Arrays</h1>
+<h2>Exercise 5: Array Pop and Push</h2>
+<p>In this exercise, you will implement your own version of two array methods: Array.prototype.pop() and Array.prototype.push(). pop removes the last element in an array and returns it. If the array is empty when it calls pop, it returns undefined. push, on the other hand, adds one or more elements to the end of an array and returns the new length.</p>
+<script>
+// pop
+// Input: an array
+// Output: removes the last element from the array and returns it
+// Algorithm:
+//  1) Determine the length of the array
+//  2) Define a return variable which is the item in the array at length minus 1
+//  3) Set a new length which is length minus 1
+//  4) return the return element
+
+// push
+// Input: An array and one or more elements
+// Output: Adds the additional elements to the array
+// Algorithm:
+//  1) Set a variable to the length of the array. This is the current array index
+//  2) Iterate through the arguments array, starting from index 1. On each iteration
+//    - Set the index of the array equal to the current array index to the item for that iteration
+//  3) return the length of the array
+function pop(arr) {
+  var returnItem = arr[arr.length - 1];
+  if (arr.length > 0) {
+    arr.length =   arr.length - 1;
+  }
+  return returnItem;
+}
+
+function push() {
+  var arr = arguments[0];
+  var currentIndex = arr.length;
+
+  for (var i = 1; i < arguments.length; i++) {
+    arr[currentIndex] = arguments[i];
+    currentIndex++;
+  }
+
+  return arr.length;
+}
+
+var array = [1, 2, 3];
+pop(array);                   // 3
+console.log(array);           // [1, 2]
+pop([]);                      // undefined
+pop([1, 2, ['a', 'b', 'c']]); // [ 'a', 'b', 'c' ]
+
+var array = [1, 2, 3];
+push(array, 4, 5, 6);         // 6
+console.log(array);           // [1, 2, 3, 4, 5, 6]
+push([1, 2], ['a', 'b']);     // 3
+push([], 1);                  // 1
+push([]);                     // 0
+</script>
+</body>
+</html>

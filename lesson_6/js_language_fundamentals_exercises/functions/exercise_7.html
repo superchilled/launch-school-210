@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Functions</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Functions</h1>
+<h2>Exercise 7: Pass by Value with Shadowing</h2>
+<p>What will the following code log to the console and why? Don't run the code until you have tried to answer.</p>
+<p>The following code will log the Number <code>7</code>. The variable <code>a</code> is passed in to the the function <code>myValue</code> as an argument. This variable acts as a pointer to the Number <code>7</code>. Within the function definition, a parameter, also called <code>a</code> acts as a pointer to the the value of the argument that is passed in (i.e. the Number <code>7</code>). This parameter exists as a local variable within the scope of the function and <em>shadows</em> the <code>a</code> declared in the global scope. When <code>a</code> gets reassigned within the body of the function, it is this local variable <code>a</code> which is reassiged, not the golabl one.</p>
+<h2>Discussion</h2>
+<p>In JavaScript, parameters of a function are local to them. This means that the a inside of the function is a local variable to that function. As such, the addition of 10 to the value of a does not affect the global variable a.</p>
+<script>
+var a = 7;
+
+function myValue(a) {
+  a += 10;
+}
+
+myValue(a);
+console.log(a);
+</script>
+</body>
+</html>

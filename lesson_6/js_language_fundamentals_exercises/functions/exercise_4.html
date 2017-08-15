@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Functions</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Functions</h1>
+<h2>Exercise 4: Variable Lookup</h2>
+<p>What will the following code log to the console and why? Don't run the code until you have tried to answer.</p>
+<h2>Answer</h2>
+<p>The following code will log the String <code>'This is global'</code> to the console. The <code>someFunction</code> function has access to the 'outer' veraiable <code>myvar</code> which exists in the global scope and it logs this variable to the console.</p>
+<h2>Discussion</h2>
+<p>When <code>console.log</code> tries to log the value of <code>myVar</code> it will start to check within its current scope for its value. If it doesn't exist, it will look at the next outer scope and see if the variable exists at that scope. It will continue doing this until reaches the outer most (global) scope.</p>
+
+<p>Given the sample code, it goes up one scope level and logs the value 'This is global'.</p>
+<script>
+var myVar = 'This is global';
+
+function someFunction() {
+  console.log(myVar);
+}
+
+someFunction();
+</script>
+</body>
+</html>

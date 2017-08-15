@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Functions</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Functions</h1>
+<h2>Exercise 5: Accidentally Global</h2>
+<p>What will the following code log to the console and why? Don't run the code until you have tried to answer.</p>
+<h2>Answer</h2>
+<p>This code will log the String <code>'This is global'</code> to the console. The variable <code>myVar</code> is assigned within the function <code>someFuction</code>, but since it is not declared there it gets hoisted to the global scope, so the <code>console.log</code> on line 6 has access to it.</p>
+<h2>Discussion</h2>
+<p>Notice that in line 2 there is no variable declaration for <code>myVar</code> (a <code>var</code> keyword before <code>myVar</code>). As a result of this, JavaScript does a lookup in an outer scope for the declaration. Since there is none in the outer scopes, JavaScript binds it to be a "property" of the <code>global</code> object. This is "almost" the same as if <code>myVar</code> was globally declared. We will discuss more about why it is "almost" and not "exactly" the same in a later course when we cover the <code>global/window</code> object.</p>
+<script>
+function someFunction() {
+  myVar = 'This is global';
+}
+
+someFunction();
+console.log(myVar);
+</script>
+</body>
+</html>

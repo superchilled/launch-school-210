@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Functions</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Functions</h1>
+<h2>Exercise 3: Accessing Global</h2>
+<p>What will the following code log to the console and why? Don't run the code until you have tried to answer.</p>
+<h2>Answer</h2>
+<p>This code will log the String <code>'This is local'</code> because the variable <code>myVar</code> referenced within the function is the same as the one in the global scope (no new variable is declared within the function). When the function is called, it reassigns the variable to a new value, so that when it is logged on line 9, it is the new value which is logged.</p>
+<h2>Discussion</h2>
+<p>The someFunction function changes the value of myVar when it gets reassigned a new value. This is because JavaScript variables at the global scope can be accessed and changed inside an inner scope.</p>
+<script>
+var myVar = 'This is global';
+
+function someFunction() {
+  myVar = 'This is local';
+}
+
+someFunction();
+
+console.log(myVar);
+</script>
+</body>
+</html>

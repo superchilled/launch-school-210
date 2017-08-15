@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Functions</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Functions</h1>
+<h2>Exercise 1: Local vs Global</h2>
+<p>What will the following code log to the console and why? Don't run the code until you have tried to answer.</p>
+<h2>Answer</h2>
+<p>This code should log the String <code>'This is global'</code> because the <code>myVar</code> variable declared inside the function is different from the variable of the same name declared outside the function (in the global scope). The one declared inside the function is only available locally (i.e. inside the function itself).</p>
+<h2>Discussion</h2>
+<p>JavaScript uses lexical scope. This means that it determines the scope of a variable by the structure of the program. In this particular scenario, the program defines the myVar variable in two places. The first is outside of any function. In this instance it has a global scope. The second place is inside the someFunction function. Functions in JavaScript create a new scope - in this case it is a scope that is 'local' to the function. Furthermore, it also becomes an "inner" scope to the global "outer" scope.</p>
+<p>Going back, console.log(myVar) on line 9 logs This is global. This is because the myVar in line 1 and line 4 belong in different scopes; someFunction has its own, "local", scope and the myVar declaration done in its scope does not have an impact to an outer scope.</p>
+<script>
+var myVar = 'This is global';
+
+function someFunction() {
+  var myVar = 'This is local';
+}
+
+someFunction();
+
+console.log(myVar);
+</script>
+</body>
+</html>

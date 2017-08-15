@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Arrays</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Arrays</h1>
+<h2>Exercise 4: Array Concat 2</h2>
+<p>In the previous exercise, the concat version implemented only concatenated 2 arrays. In this exercise you are going to extend on the functionality by allowing concatenation of 2 or more arrays.</p>
+<script>
+// Input: two or more arguments, an array and one or more other values (array, string, number, or object)
+// Output: A new array, comprising of the first array concatenated with the other arrays or containing the other values as an items in the array
+// Algorithm:
+//  1) Create a new array from the first argument using slice()
+//  2) Iterate through the remaining arguments, on each iteration:
+//    - Determine if the second argment is an array.
+//      - If yes, iterate through it, pushing each item in turn to the new array
+//      - If no, just push the item to the new array
+//  3) Return the new array
+function concat() {
+  var returnArr = arguments[0].slice();
+
+  for (var i = 1; i < arguments.length; i++) {
+    if (Array.isArray(arguments[i])) {
+      for (var j = 0; j < arguments[i].length; j++) {
+        returnArr.push(arguments[i][j]);
+      }
+    } else {
+      returnArr.push(arguments[i]);
+    }
+  }
+
+  return returnArr;
+}
+
+var test1 = concat([1, 2 ,3], [4, 5, 6], [7, 8, 9]);           // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+var test2 = concat([1, 2], "a", ["one", "two"]);               // [ 1, 2, "a", "one", "two" ]
+var test3 = concat([1, 2], ["three"], 4);                      // [ 1, 2, "three", 4 ]
+
+console.log(test1);
+console.log(test2);
+console.log(test3);
+</script>
+</body>
+</html>

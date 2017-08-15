@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Functions</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Functions</h1>
+<h2>Exercise 10: Hoisting Functions</h2>
+<p>What will the following code log to the console and why? Don't run the code until you have tried to answer.</p>
+<h2>Answer</h2>
+<p>This code will log the String <code>'Hello, world!'</code> to the console. Although the function is called before it is declared, function declarations are hoisted to the top of the scope and so the function can be called without error.</p>
+<h2>Disscussion</h2>
+<p>Recall in the previous exercise that hoisting is the process of finding and associating variable declarations with their respective scope prior to the execution of all other code. Just like it hoists variables, the JavaScript interpreter also hoists function declarations. However, unlike the way it hoists variables, it hoists entire function declarations including the code blocks. This means that the program can execute functions even before declaring it.</p>
+<script>
+logValue();
+
+function logValue() {
+  console.log('Hello, world!');
+}
+</script>
+</body>
+</html>

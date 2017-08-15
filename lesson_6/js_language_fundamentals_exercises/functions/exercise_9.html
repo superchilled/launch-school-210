@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Functions</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Functions</h1>
+<h2>Exercise 9: Hoisting Variables</h2>
+<p>What will the following code log to the console and why? Don't run the code until you have tried to answer.</p>
+<h2>Answer</h2>
+<p>This code will log the <code>undefined</code>. Even though the variable <code>a</code> is declared after the <code>console.log</code>, the variable declaraion is <em>hoisted</em> to the top of the global scope and so the variable <code>a</code> exists at this point but it has not been assigned a value, since variable assignments (unlike variable declaration) are <strong>not</strong> hoisted.</p>
+<h2>Discussion</h2>
+<p>Behind the scenes, the JavaScript interpreter performs many things, and one of them is Hoisting. To begin to understand this concept, let's dissect what happens during variable declaration.</p>
+
+<p>On line 3 the program assigns the value of 1 to the variable a. Dissecting this, there are actually two things happening: (1) it declares the variable a and (2) it assigns the value of 1 to it.</p>
+
+<p>With this we can now define hoisting. First, the JavaScript interpreter doesn't "immediately" execute code line by line. It goes over the code first to find and associate variable declarations with their appropriate scope. Visually, this is as if JavaScript moves ("hoists") the variable declaration to the top of its scope. The assignment operation is not hoisted.</p>
+<script>
+console.log(a);
+
+var a = 1;
+</script>
+</body>
+</html>

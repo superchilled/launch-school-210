@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Arrays</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Arrays</h1>
+<h2>Exercise 2: Array Copy 2</h2>
+<p>In the previous exercise, the value of the reference gets copied. Implement two(2) alternative ways of copying just the values and not the reference.</p>
+<script>
+var myArray = [1, 2, 3, 4];
+var myOtherArray = [];
+
+// method 1
+for (var i = 0; i < myArray.length; i++) {
+  myOtherArray[i] = myArray[i]; // could use push here
+}
+
+// method 2
+var myThirdArray = Array.from(myArray); // could also use slice here
+
+console.log(myOtherArray);
+console.log(myThirdArray);
+myArray.pop();
+console.log(myArray);
+console.log(myOtherArray);
+console.log(myThirdArray);
+</script>
+</body>
+</html>

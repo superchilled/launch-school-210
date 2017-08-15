@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Functions</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Functions</h1>
+<h2>Exercise 6: Pass by Value</h2>
+<p>What will the following code log to the console and why? Don't run the code until you have tried to answer.</p>
+<h2>Answer</h2>
+<p>This code will log the Number <code>7</code> to the console. The variable <code>a</code> is passed in to the the function <code>myValue</code> as an argument. This variable acts as a pointer to the Number <code>7</code>. Within the function definition, the parameter <code>b</code> acts as a pointer to the the value of the argument that is passed in (i.e. the Number <code>7</code>). Within the function body, the parameter, which is a local variable within the scope of the function, is reassigned to the return value of the operation to sum the Number to which <code>b</code> is pointing (i.e. <code>7</code>) and the Number <code>10</code>, which is the other operand. So <code>b</code> is assigned to <code>17</code> but <code>a</code> remains unchanged and so is still assigned to <code>7</code> (which is what is logged).</p>
+<h2>Discussion</h2>
+<p>JavaScript is "pass-by-value". Passing variable a to myValue binds the local variable b to its value of 7 and this doesn't interfere with the outer variable a. Thus, when the program logs the value of a to the console its value remains the same.</p>
+<script>
+var a = 7;
+
+function myValue(b) {
+  b += 10;
+}
+
+myValue(a);
+console.log(a);
+</script>
+</body>
+</html>

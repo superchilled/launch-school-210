@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Arrays</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Arrays</h1>
+<h2>Exercise 1: Array Copy 1</h2>
+<p>Read through the code given below. What does it log to the console at lines 5 and 8?</p>
+<h2>Answer</h2>
+<p>Line 5 will log the array <code>[1, 2, 3]</code> since the two variables <code>myArray</code> and <code>myOtherArray</code> are both pointed at a same object, when <code>pop</code> is called on <code>myArray</code> it mutates the array object to which <code>myOtherArray</code> is pointed, so when this varaible is passed to <code>console.log</code>, the mutated array is what is logged.</p>
+<p>Line 8 will also log the array <code>[1, 2, 3]</code> since the variable <code>myOtherArray</code> is still pointed to this array object; the variable <code>myArray</code> being reassigned on line 7 doesn't affect the object to which <code>myOtherArray</code> is assigned.</p>
+<h2>Discussion</h2>
+<p>The value logged for myOtherArray at line 5 is the same as that of the value of myArray. This is because the value stored with the variable myArray is the reference to the location of the values and not the values itself. As such, when the program pops a value from myArray, myOtherArray mirrors the change.</p>
+
+<p>For line 8, the value of myOtherArray did not change because the value of the reference stored in line 7 is different. Performing a reassignment operation changes the value of the reference stored. As a result of line 7, myArray and myOtherArray now have different (reference) values stored and the change becomes local to myArray only.</p>
+<script>
+var myArray = [1, 2, 3, 4];
+var myOtherArray = myArray;
+
+myArray.pop();
+console.log(myOtherArray);
+
+myArray = [1, 2];
+console.log(myOtherArray);
+</script>
+</body>
+</html>

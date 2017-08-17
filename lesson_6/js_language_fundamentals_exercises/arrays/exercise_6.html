@@ -6,13 +6,41 @@
 <body>
 <h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Arrays</h1>
 <h2>Exercise 6: Array and String Reverse</h2>
-<p>What will the following code log to the console and why? Don't run the code until you have tried to answer.</p>
-<h2>Answer</h2>
-<p></p>
-<h2>Discussion</h2>
-<p></p>
+<p>For this exercise you will re-implement the Array.prototype.reverse() method. This implementation differs from the built-in, in that it can take either a string or an array as an argument and consequently it returns a new string or array.</p>
 <script>
+// Input: A string or array
+// Output: A new string or array, which is a 'reversed' version of the input string or array
+// Algorithm:
+//  1) Declare a return variable assigned to an empty array
+//  2) Iterate backwards through the input string or array. On each iteration:
+//    - push the item to that iteration to the return array
+//  3) Check if the input argument is a string.
+//    - If yes, join the array and return it
+//    - If no just return the array
 
+function reverse(inputForReversal) {
+  var reversedArr = [];
+
+  for (var i = inputForReversal.length - 1; i >= 0; i--) {
+    reversedArr.push(inputForReversal[i])
+  }
+
+  if (typeof(inputForReversal) === 'string') {
+    return reversedArr.join('');
+  } else {
+    return reversedArr;
+  }
+}
+
+var test1 = reverse('Hello');          // olleH
+var test2 = reverse('a');              // a
+var test3 = reverse([1, 2, 3, 4]);     // [4, 3, 2, 1]
+var test4 = reverse([]);               // []
+
+console.log(test1);
+console.log(test2);
+console.log(test3);
+console.log(test4);
 </script>
 </body>
 </html>

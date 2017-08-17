@@ -6,13 +6,45 @@
 <body>
 <h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Arrays</h1>
 <h2>Exercise 10: Array Comparison</h2>
-<p>What will the following code log to the console and why? Don't run the code until you have tried to answer.</p>
-<h2>Answer</h2>
-<p></p>
-<h2>Discussion</h2>
-<p></p>
+<p>In the arrays lesson, we implemented a version of comparing arrays that had an implicit assumption that elements are in the same indices when compared. In this exercise, the objective is to implement the same function but this time it compares the values of the arrays from any index (i.e. [1, 2, 3] === [3, 2 ,1] will return true).</p>
 <script>
+// Input: Two arrays
+// Output: A boolean. True is the two arrays contain the same elements (regardless of order); false otherwise
+// Algorithm:
+//  1) Determine if the arrays are of equal length. If not return false
+//  2) Declare a variable and set it to a sorted version of array1
+//  3) Declare another variable and set it to a sorted version of array2
+//  4) Iterate through array1. On each iteration:
+//    - Compare the item at the index for that iteration to the  equivalent item in array2
+//      - If they are not equal, return false
+//  5) Return true
+function areArraysEqual(array1, array2) {
+  if (array1.length !== array2.length) { return false }
+  var sorted1 = array1.sort();
+  var sorted2 = array2.sort();
 
+  for (var i = 0; i < array1.length; i++) {
+    if (sorted1[i] !== sorted2[i]) { return false }
+  }
+
+  return true;
+}
+
+var test1 = areArraysEqual([1, 2, 3], [1, 2, 3]);                  // true
+var test2 = areArraysEqual([1, 2, 3], [3, 2, 1]);                  // true
+var test3 = areArraysEqual(['a', 'b', 'c'], ['b', 'c', 'a']);      // true
+var test4 = areArraysEqual(['1', 2, 3], [1, 2, 3]);                // false
+var test5 = areArraysEqual([1, 1, 2, 3], [3, 1, 2, 1]);            // true
+var test6 = areArraysEqual([1, 2, 3, 4], [1, 1, 2, 3]);            // false
+var test7 = areArraysEqual([1, 1, 2, 2], [4, 2, 3, 1]);            // false
+
+console.log(test1);
+console.log(test2);
+console.log(test3);
+console.log(test4);
+console.log(test5);
+console.log(test6);
+console.log(test7);
 </script>
 </body>
 </html>

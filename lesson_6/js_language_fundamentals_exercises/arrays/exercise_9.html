@@ -5,14 +5,24 @@
 </head>
 <body>
 <h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Arrays</h1>
-<h2>Exercise 8: Oddities</h2>
-<p>What will the following code log to the console and why? Don't run the code until you have tried to answer.</p>
+<h2>Exercise 9: Oddities</h2>
+<p>The oddities function returns an Array that contains every other element of an Array that passed as an argument. The values in the returned list are those values that are in the 1st, 3rd, 5th, and so on elements of the argument Array. Below is a sample run of the program that uses the output as part of a comparison. Can you explain the results of the comparison?</p>
 <h2>Answer</h2>
-<p></p>
-<h2>Discussion</h2>
-<p></p>
+<p>The reason both tests return false is that comparison operators only consider arrays to be equal if they are the same object.</p>
 <script>
+function oddities(array) {
+  var oddElements = [];
+  for (var i = 0; i < array.length; i += 2) {
+    oddElements.push(array[i]);
+  }
+  return oddElements;
+}
 
+var test1 = oddities([2, 3, 4, 5, 6]) === [2, 4, 6]   // false
+var test2 = oddities(['abc', 'def']) === ['def']      // false
+
+console.log('test1', test1);
+console.log('test2', test2);
 </script>
 </body>
 </html>

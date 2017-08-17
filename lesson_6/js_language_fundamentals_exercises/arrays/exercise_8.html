@@ -6,13 +6,147 @@
 <body>
 <h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Arrays</h1>
 <h2>Exercise 8: Array Slice and Splice</h2>
-<p>What will the following code log to the console and why? Don't run the code until you have tried to answer.</p>
-<h2>Answer</h2>
-<p></p>
-<h2>Discussion</h2>
-<p></p>
-<script>
+<p>Re-implement the Array.prototype.slice() and Array.prototype.splice() methods of the Array object.</p>
 
+<p>The slice function takes an array as an argument and two indices representing a begin and an end index. It returns a new array containing the extracted elements starting from begin up to but not including end. The slice function does not mutate the array.</p>
+
+<p>The splice function changes the elements of an array by deleting and/or adding new elements. It takes an array, a start, a deleteCount, and optional items as arguments. It returns an array containing the deleteCount elements removed starting from start. If no elements are removed, it returns an empty array ([]). If the optional items are provided, splice inserts it starting from start. The splice function mutates the original array.</p>
+
+<p>In solving this exercise, you may assume the following:</p>
+
+<h3>Slice:</h3>
+  <ul>
+    <li>The values passed for begin and end are integers greater than or equal to 0.</li>
+    <li>If begin or end is greater than the length of the array set it to equal the length.</li>
+  </ul>
+
+<h3>Splice:</h3>
+  <ul>
+    <li>The values passed for start and deleteCount are integers greater than or equal to 0.</li>
+    <li>If the value for start is greater than the length of the array set it to equal the length.</li>
+    <li>If the value of deleteCount is greater than the number of elements from start up to the end, set the value of deleteCount to the difference between the array length and start</li>
+  </ul>
+</p>
+<script>
+// slice
+// Input: an array, a 'begin' index, and 'end' index
+// Output: A new array, containing the extracted elements from the 'begin' index upto but not including the 'end' index of the input array
+// Algorithm:
+//  1) Determine if begin is greater than the array length. If so set it to array length
+//  2) Determine if end is greater than array length. IF so set it to array length
+//  3) Set a return variable to an empty array
+//  4) Iterate through the array from begin, incrementing by 1 each time until gte end minus 1. On each iteration:
+//    - push the item for that iteration to the return array
+//  5) return the return array
+
+
+// splice
+// Input: An array, a start index, a delete count, optional items as arguments
+// Output: A new array containing the removed elements (starting from the start index, sequentially for the number of delete count). If delete count is 0, an empty array is returned. The orginal array has the items removed. If optional arguments are passed, the original array hsa those items inserted at the point of the start index
+// Algorithm:
+//  1) Declare a return variable set to an empty array
+//  2) If delete count is greater than zero, iterate through the array from start up to start plus delete count. On each iteration:
+//    - push the item for that iteration to the return array
+//    - set the item at that index to the index for that iteration plus delete count
+//  3) Set the length of the array to length minus delete count
+//  4) If the number of optional items is greater than zero,
+//    - iterate through the array backwards down to start point. On each iteration:
+//      - Set the item at the index for that iteration plus the number of optional items to the item for that iteration
+//    - Create an optional items array using the slice method, passing in the arguments array as the array, 3 as begin, and arguments array length as end
+//    - Iterate through the optional items array, on each iteration:
+//      - set the item at the 'begin' index of the original array to the item at the current index of the optional items array
+//      - increment the begin index by 1
+//  5) return the return array
+
+function slice(array, begin, end) {
+  begin = Math.min(array.length, begin);
+  end = Math.min(array.length, end);
+  var returnArr = [];
+
+  for (var i = begin; i < end; i++) {
+    returnArr.push(array[i]);
+  }
+
+  return returnArr;
+}
+
+function splice() {
+  var inputArr = arguments[0];
+  var startIndex = arguments[1];
+  var deleteCount = arguments[2];
+  var endIndex = Math.min(startIndex + deleteCount, inputArr.length);
+  var optionalItemsCount = arguments.length - 3;
+  var optionalItems = slice(arguments, 3, optionalItemsCount + 3);
+  var returnArr = [];
+  if (deleteCount > 0) {
+    for (var i = startIndex; i < endIndex; i++) {
+      returnArr.push(inputArr[i]);
+      inputArr[i] = inputArr[i + deleteCount];
+    }
+    inputArr.length = inputArr.length - deleteCount;
+  }
+
+  if (optionalItemsCount > 0) {
+    var lastIndex = inputArr.length - 1;
+    for (var j = lastIndex; j >= startIndex; j--) {
+      inputArr[j + optionalItemsCount] = inputArr[j];
+    }
+
+    for (var k = 0; k < optionalItems.length; k++) {
+      inputArr[startIndex] = optionalItems[k];
+      startIndex++;
+    }
+  }
+
+  return returnArr;
+}
+
+var test1 = slice([1, 2, 3], 1, 2);           // [2]
+var test2 = slice([1, 2, 3], 2, 0);           // []
+var test3 = slice([1, 2, 3], 5, 1);           // []
+
+console.log('test1', test1);
+console.log('test2', test2);
+console.log('test3', test3);
+
+var arr = [1, 2, 3];
+var test4 = slice(arr, 1, 3);                 // [2, 3]
+console.log('test4', test4);
+console.log(arr);                              // [1, 2, 3]
+
+var test5 = splice([1, 2, 3], 1, 2);                   // [2, 3]
+var test6 = splice([1, 2, 3], 1, 3);                   // [2, 3]
+var test7 = splice([1, 2, 3], 1, 0);                   // []
+var test8 = splice([1, 2, 3], 0, 1);                   // [1]
+var test9 = splice([1, 2, 3], 1, 0, 'a')               // []
+
+console.log('test5', test5);
+console.log('test6', test6);
+console.log('test7', test7);
+console.log('test8', test8);
+console.log('test9', test9);
+
+var arr = [1, 2, 3];
+var test10 = splice(arr, 1, 1, 'two');                  // [2]
+console.log('test10', test10);
+console.log(arr);                                       // [1, 'two', 3];
+
+var arr = [1, 2, 3];
+var test11 = splice(arr, 1, 2, 'two', 'three')          // [2 ,3]
+console.log('test11', test11);
+console.log(arr);                                       // [1, "two", "three"]
+
+var arr = [1, 2, 3];
+var test12 = splice(arr, 1, 0);                         // []
+var test13 = splice(arr, 1, 0, 'a');                    // []
+console.log('test12', test12);
+console.log('test13', test13);
+console.log(arr);                                        // [1, 'a', 2, 3]
+
+var arr = [1, 2, 3];
+var test14 = splice(arr, 0, 0, 'a');                    // []
+console.log('test14', test14);
+console.log(arr);                                       // ['a', 1, 2, 3]
 </script>
 </body>
 </html>

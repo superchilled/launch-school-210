@@ -6,13 +6,80 @@
 <body>
 <h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Arrays</h1>
 <h2>Exercise 7: Array Shift and Unshift</h2>
-<p>What will the following code log to the console and why? Don't run the code until you have tried to answer.</p>
-<h2>Answer</h2>
-<p></p>
-<h2>Discussion</h2>
-<p></p>
+<p>Let's build our version of the Array.prototype.shift() and Array.prototype.unshift() methods that manipulates the contents of an array starting from the first index. The shift function removes the first element of an array and returns it. The unshift function adds one or more elements to the start of an array and returns the new length. Both shift and unshift mutate the original array.</p>
+<p>Return undefined if the array passed to shift has length 0.</p>
 <script>
+// shift
+// Input: An array
+// Output: The removed, first element of the array
+// Algorigthm:
+//  1) Set a return variable to the item at index zero
+//  2) Iterate thorugh the array starting at index 1. On each iteration:
+//    - Set the previous index to the item for the index of that iteration
+//  3) Set the length of the array to length minus 1
+//  4) Return the return variable
 
+// unshift
+// Input: An array and one or more elements to add
+// Output: Length of the array with new elements added
+// Algorithm:
+//  1) Determine the number of new elements and set this as a variable (length of arguments array minus 1)
+//  2) Iterate through the input array backwards. On each iteration:
+//    - Set the index plus number of new elements to the value at the index for that iteration
+//  3) Iterate through the arguments array starting from index 1. On each iteration:
+//    - Set the item at index for that iteration minus 1 of the input array to the item for that iteration
+//  4) return the length of the array
+
+function shift(arr) {
+  var returnItem = arr[0];
+
+  for (var i = 1; i < arr.length; i++) {
+    arr[i- 1] = arr[i];
+  }
+  if (arr.length > 0) {
+    arr.length = arr.length - 1;
+  }
+  return returnItem
+}
+
+function unshift() {
+  var newElemCount = arguments.length - 1;
+  var inputArr = arguments[0];
+  var lastIndex = inputArr.length - 1;
+
+  for (var i = lastIndex; i >= 0; i--) {
+    inputArr[i + newElemCount] = inputArr[i]
+  }
+
+  for (var i = 1; i < arguments.length; i++) {
+    inputArr[i - 1] = arguments[i];
+  }
+
+  return inputArr.length;
+}
+
+var test1 = shift([1, 2, 3]);                // 1
+var test2 = shift([]);                       // undefined
+var test3 = shift([[1, 2, 3], 4 ,5]);        // [1, 2, 3]
+
+var test4 = unshift([1, 2, 3], 5, 6);        // 5
+var test5 = unshift([1, 2, 3]);              // 3
+var test6 = unshift([4, 5], [1, 2 ,3]);      // 3
+
+console.log(test1);
+console.log(test2);
+console.log(test3);
+console.log(test4);
+console.log(test5);
+console.log(test6);
+
+var testArray = [1, 2, 3];
+var test7 = shift(testArray);                // 1
+console.log(test7);
+console.log(testArray);                      // [2, 3]
+var test8 = unshift(testArray, 5);           // 3
+console.log(test8);
+console.log(testArray);                      // [5, 2, 3]
 </script>
 </body>
 </html>

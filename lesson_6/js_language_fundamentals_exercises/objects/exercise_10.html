@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Objects</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Objects</h1>
+<h2>Exercise 10: After Midnight Part 2</h2>
+<p>As seen in the previous exercise, the time of day can be represented as the number of minutes before or after midnight. If the number of minutes is positive, the time is after midnight. If the number of minutes is negative, the time is before midnight.</p>
+
+<p>The functions below do the reverse of the previous exercise. It takes a 24hour time argument and returns the number of minutes before and after midnight, respectively. Both methods should return a value in the range of 0..1439.</p>
+
+<p>Refactor the functions below so that it uses the Date object.</p>
+<p>Note: Disregard Daylight Savings and Standard Time and other irregularities.</p>
+<h2>Answer</h2>
+<p></p>
+<script>
+var MINUTES_PER_HOUR = 60;
+var HOURS_PER_DAY = 24;
+var MINUTES_PER_DAY = HOURS_PER_DAY * MINUTES_PER_HOUR;
+var MILLISECONDS_PER_MINUTE = 60000;
+
+function afterMidnight(timeStr) {
+  var midnight = new Date(1970, 0)
+  var myDate = new Date('1/1/1970' + ' ' + timeStr);
+
+  return (Date.parse(midnight) + Date.parse(myDate)) / MILLISECONDS_PER_MINUTE;
+}
+
+function beforeMidnight(timeStr) {
+  var deltaMinutes = MINUTES_PER_DAY - afterMidnight(timeStr);
+  if (deltaMinutes === MINUTES_PER_DAY) {
+    deltaMinutes = 0;
+  }
+  return deltaMinutes;
+}
+
+console.log(afterMidnight('00:00'));        // 0
+console.log(beforeMidnight('00:00'));       // 0
+console.log(afterMidnight('12:34'));        // 754
+console.log(beforeMidnight('12:34'));       // 686
+</script>
+</body>
+</html>

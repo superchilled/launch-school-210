@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Objects</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Objects</h1>
+<h2>Exercise 2: Literal Method</h2>
+<p>A user created a person object literal as seen in the code. The user assigned methods to return the first and last name of the person. The user tried out the code. What was the result?</p>
+<h2>Answer</h2>
+<p>This will result in the functions themselves being logged. In order to call a function expressions that is a property value of an object, you need to call the property name as a function; e.g. for the <code>firstName</code> property you would need to call <code>firstName()</code>.</p>
+<script>
+var person = {
+  firstName: function() {
+    return 'Victor';
+  },
+  lastName: function() {
+    return 'Reyes';
+  },
+};
+
+console.log(person.firstName + ' ' + person.lastName);
+</script>
+</body>
+</html>

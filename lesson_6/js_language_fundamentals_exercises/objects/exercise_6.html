@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Objects</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Objects</h1>
+<h2>Exercise 6: Array Object 2</h2>
+<p>The function below takes an array as argument and returns its average. The user of the function put in the statements below and was expecting the function to return 5 to test it. What is the value returned?</p>
+<h2>Answer</h2>
+<p>The value returned will be <code>10</code>, since the <code>for</code> loop references the <code>-2</code> and <code>-1</code> properties as well as the array items, it sums <code>5</code> 4 times, making a total of <code>20</code>, which it then divides by <code>array.length</code>, which is <code>2</code>, producing <code>10</code>.</p>
+<h2>Discussion</h2>
+<p>A non-positive integer key is not considered as part of an array's length. As such the length is only 2 when the sum of the elements were divided (20 / 2).</p>
+<script>
+var myArray = [5, 5];
+myArray[-1] = 5;
+myArray[-2] = 5;
+function average(array) {
+  var sum = 0;
+  for (var i = -2; i < array.length; i++) {
+    sum += array[i];
+  }
+
+  return sum / array.length;
+}
+
+average(myArray);
+</script>
+</body>
+</html>

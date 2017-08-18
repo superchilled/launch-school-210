@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Objects</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Objects</h1>
+<h2>Exercise 5: Array Object 1</h2>
+<p>Read the code and say what values it will log to the console.</p>
+<h2>Answer</h2>
+<p>Line 2 will log <code>'a'</code>, since this is the value at index 0 of <code>myArray</code>. Line 3 will log <code>undefined</code>, since using a negative index returns <code>undefined</code> unless there is a matching property in the array (which is an object). Line 8 will log <code>'d'</code>, since <code>-1</code> was added to the object as a property on line 4, with a value of <code>'d'</code>. Line 9 will log <code>5</code>, since this is the value of the object property <code>'e'</code> added on line 5; since arrays are objects we can add properties to them, but these properties are not array items. Line 10 will log <code>['a', 'b', 'c', 'f', '-1': 'd', , 'e': 5]</code> since this will show all the array items, and then the properties the properties (index 3 was assigned to <code>'f'</code> on line 6).</p>
+<script>
+var myArray = ['a', 'b', 'c'];
+console.log(myArray[0]);
+console.log(myArray[-1]);
+myArray[-1] = 'd';
+myArray['e'] = 5;
+myArray[3] = 'f';
+
+console.log(myArray[-1]);
+console.log(myArray['e']);
+console.log(myArray);
+</script>
+</body>
+</html>

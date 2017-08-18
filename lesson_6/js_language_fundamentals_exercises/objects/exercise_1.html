@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Objects</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Objects</h1>
+<h2>Exercise 1: Literal</h2>
+<p>Read the code and identify the bug in it. Think about it first before running it.</p>
+<h2>Answer</h2>
+<p>The bug is that the <code>a</code> in <code>myObject[a];</code> is not in quote marks so JavaScript thinks its a variable and not a property of the <code>myObject</code> object.</p>
+<h2>Discussion</h2>
+<p>myObject[a] triggers a <code>ReferenceError</code>. In order to access the value of a key using square bracket notation ([someKey]), the key has to be a string value. When the value is numeric it gets converted to a string using the toString() method. If it's a variable, it looks up the value (converting it to a string if necessary) and uses the value to get the corresponding property value for it. The statement myObject[a] triggered a ReferenceError because it tried to get the value of a variable that isn't declared.</p>
+<script>
+var myObject = {
+  a: 'name',
+  'b': 'test',
+  123: 'c',
+  1: 'd'
+};
+myObject[1];
+myObject[a];
+myObject.a;
+</script>
+</body>
+</html>

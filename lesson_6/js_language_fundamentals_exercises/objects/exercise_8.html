@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Objects</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Objects</h1>
+<h2>Exercise 8: The End is Near But Not Here</h2>
+<p>The penultimate function returns the next to the last word in the String passed to it. The function assumes that "words" are any sequence of non-blank characters. It also assumes that the input String will always contain at least two words. Currently, the solution provided does not match expected result. Run the program, check the current result, identify the problem, explain what the problem is, and provide a working solution.</p>
+<h2>Answer</h2>
+<p>Currently it will return <code>undefined</code>, since <code>-2</code> doesn't reference actual array items, but a property that does not exist in the array <em>object</em>. Non-working solution commented out and a working solution below it. The working solution reverses the array created from the split string and references the item at index 1 (i.e. the second last item).</p>
+<h2>Discussion</h2>
+<p>In JavaScript, unlike other programming languages like Ruby, providing a negative index will not start getting the values from the end. It does not also return an error but it instead returns undefined. This is the result because in JavaScript Arrays are Objects. By passing in -1 (i.e myArray[-1]) we are actually telling JavaScript to return the value of the property with -1 as the key.</p>
+<script>
+penultimate('last word')               // 'last'
+penultimate('Launch School is great!') // 'is'
+
+// function penultimate(string) {
+//   return string.split(' ')[-2];
+// }
+
+function penultimate(string) {
+  return string.split(' ').reverse()[1];
+}
+</script>
+</body>
+</html>

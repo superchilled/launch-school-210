@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Objects</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Objects</h1>
+<h2>Exercise 3: Mutation</h2>
+<p>What will the following code log to the console, and why? Don't run the code until you have tried to answer.</p>
+<h2>Answer</h2>
+<p>This will log the value of <code>array2</code> which is the array <code>['Moe', 'Larry', 'Curly', 'Chemp', 'Harpo', 'Chico', 'Groucho', 'Zeppo']</code>. The second loop reassigns all of the items in <code>array1</code>, but this does not affect <code>array2</code></p>
+<h2>Discussion</h2>
+<p>If you were expecting that array2 remains unchanged then you are correct. But why should this be the case if array1 is an object? This is because even though the array is an object and is mutable, the values passed to array1 were strings and, as such, are immutable.</p>
+<script>
+var array1 = ['Moe', 'Larry', 'Curly', 'Chemp', 'Harpo', 'Chico', 'Groucho', 'Zeppo'];
+var array2 = [];
+
+for (var i = 0; i < array1.length; i++) {
+  array2.push(array1[i]);
+}
+
+for (var i = 0; i < array1.length; i++) {
+  if (array1[i].startsWith('C')) {
+    array1[i] = array1[i].toUpperCase();
+  }
+}
+
+console.log(array2);
+</script>
+</body>
+</html>

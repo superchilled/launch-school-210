@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Objects</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Objects</h1>
+<h2>Exercise 4: Dynamic</h2>
+<p>Read through the sample code below. What gets logged by lines 11 and 12?</p>
+<h2>Answer</h2>
+<p>Line 11 logs <code>'678'</code>, since this is referencing the <code>'456'</code> property created on line 9, when the <code>prop2</code> variable is used to create a new property in the <code>myObject</code> object with a value of <code>'678'</code>.</p>
+<p>Line 12 logs <code>'456'</code> which is set as the value of the <code>prop2</code> property (that already exists in the object) on line 8.</p>
+<h2>Discussion</h2>
+<p>Was the result what you expected? The tricky part here are the names of the properties, the variable name, and of course the fact that you can use an expression to create and access properties. The difference of line 11 to line 12, while they may look the same, is that in line 11 it's the value of prop used as the key ('456'). This did not return undefined because it was also added as a property on line 9 where it got assigned the value of '678'. Line 12's value is different from its original assignment in the object literal at line 3 because of the reassignment at line 8.</p>
+<script>
+var myObject = {
+  prop1: '123',
+  prop2: '234',
+  'prop 3': '345',
+};
+
+var prop2 = '456';
+myObject['prop2'] = '456';
+myObject[prop2] = '678';
+
+console.log(myObject[prop2]);
+console.log(myObject.prop2);
+</script>
+</body>
+</html>

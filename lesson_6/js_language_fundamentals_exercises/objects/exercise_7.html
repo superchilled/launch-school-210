@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Objects</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Objects</h1>
+<h2>Exercise 7: What's my Bonus</h2>
+<p>The calculateBonus function calculates the bonus for a given salary. It makes use of two parameters for determining the bonus: a salary amount and a boolean switch. If the boolean is true, the bonus should be half of the salary; otherwise the bonus should be 0. Fill in the blanks in the function so that it will work. Explain why it works.</p>
+<h2>Answer</h2>
+<p>This works because we can pass a variable number of arguments into the function and reference them using the arguments array. By replacing the blanks with <code>arguments</code>. Within the ternary operation, we are first evaluating the truthiness of the item at index 1 of the <code>arguments</code> array (i.e.) the second argument passed to the function, which is a boolean); if it is true, then the first branch of the ternary operation is executed, which references the item at index 0 of the <code>arguments</code> array (i.e. the salaray amount) and divides it by 2; if the boolean is false then the second branch of the ternary is executed, which returns 0.</p>
+<h2>Discussion</h2>
+<p>Notice that while no parameters are explicitly defined for the calculateBonus function there are still arguments that are available locally within the function. This is because all functions have an arguments object that is available locally. The arguments object contains an entry for every argument passed to the function.</p>
+<script>
+function calculateBonus() {
+  return arguments[1] ? arguments[0] / 2 : 0;
+}
+
+calculateBonus(2800, true)      // 1400
+calculateBonus(1000, false)     // 0
+calculateBonus(50000, true)     // 25000
+</script>
+</body>
+</html>

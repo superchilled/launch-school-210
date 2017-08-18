@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Medium 1</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Medium 1</h1>
+<h2>Exercise 8: Product of Sums</h2>
+<p>The following program returns the product of the totals of two arrays of numbers. Review the code. Is it producing the expected behavior? Why or why not?</p>
+<h2>Answer</h2>
+<p>This won't work for two reasons: 1) because the <code>total()</code> function doesn't assign an iniital value to the <code>sum</code> variable, and so each iteration is just adding the number for that iteration to <code>undefined</code> which results in <code>sum</code> being <code>NaN</code>; 2) even if you fix that, <code>sum</code> is not explicitly returned, so <code>productOfSums()</code> will be multiplying <code>undefined</code> with <code>undefined</code>, which results in <code>NaN</code>.</p>
+<h2>Discussion</h2>
+<p>The current implementation returns NaN. There are two things that are problematic with this code. The first is that the total function does not have an explicit return value, therefore it returns undefined. Since it is undefined the product of total(array1) * total(array2) becomes undefined * undefined, which evaluates to NaN. The second issue is that the sum variable in the total function is not assigned with a value and is therefore undefined. With this, the value of sum in the loop after every iteration is NaN because undefined + numbers[i] is NaN.</p>
+<script>
+function productOfSums(array1, array2) {
+  var result;
+  result = total(array1) * total(array2);
+  return result;
+}
+
+function total(numbers) {
+  var sum;
+  for (var i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+
+  sum;
+}
+</script>
+</body>
+</html>

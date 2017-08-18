@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Medium 1</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Medium 1</h1>
+<h2>Exercise 1: Logical Operation</h2>
+<p>Review the code below and tell what the output will be? Don't run the code until you've tried to process it yourself first.</p>
+<h2>Answer</h2>
+<p>Logical operators in JavaScript return the value of one of the operands.
+<p><code>test1</code> will log <code>false</code> since logical and returns the first operand if it can be converted to <code>false</code> which it can in this case since it is already <code>false</code></p>
+<p><code>test2</code> will log <code>undefined</code> since logial or returns the second operand if the first operand is falsy.</p>
+<p><code>test3</code> will log <code>undefined</code> since, when parsed, this is the equivalent of <code>test2</code>.</p>
+<p><code>test4</code> will log <code>false</code> since, when parsed, this is the equivalent of <code>test2</code> but with the operands reversed (i.e. <code>false</code> woudl be the last operand).</p>
+<p><code>test5</code> will log <code>false</code> since, when parsed, this is the equivalent of <code>test1</code>.</p>
+<p><code>test6</code> will log <code>undefined</code> since, when parsed, this is the equivalent of <code>test1</code>,  but with the operands reversed.</p>
+<p><code>test7</code> will log <code>'a'</code> since <code>, when parsed, this is the equivalent of <code>'a'</code> is truthy and is on the left-most side of logical or (so the rest of the operands are not evaluated).</p>
+<p><code>test8</code> will log <code>'a'</code> since <code>, when parsed, this is the equivalent of <code>test1</code>.</code> is truthy (the first set of operands returns <code>false</code>, but when the second operand, <code>'a'</code> is evaluated the operation returns <code>'a'</code> at this point without evaluating the third operand, which is falsy).</p>
+<p><code>test9</code> will log <code>undefined</code> since the middle 'set' of operands resolves to <code>undefined</code> and then this and the last operand (<code>''</code>) is then evaluated, which also resolves to <code>undefined</code> (since this can be converted to <code>false</code>). Since <code>'a'</code> is truthy, <code>undefined</code> is then returned since it is the last operand.</p>
+<p><code>test10</code> will log <code>undefined</code> for the same reasons as <code>test9</code>, although the positions of the operands are changed. The first 'set' resolves as <code>undefined</code>, <code>'a' && ''</code>. the remainder of the expression is irrelevant in this case, since <code>undefined</code> can be converted to <code>false</code> and is the first operand in a logical and operation and so is returned.</p>
+<h2>Discussion</h2>
+<p>Logical operators || and && don't always return boolean values. They return the value of one of the expressions that they are comparing. You can check the logic operator rules on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators).
+
+To reach the solutions, iteratively evaluate each expression until there is only one value. </p>
+<script>
+var test1 = (false && undefined);
+var test2 = (false || undefined);
+var test3 = ((false && undefined) || (false || undefined));
+var test4 = ((false || undefined) || (false && undefined));
+var test5 = ((false && undefined) && (false || undefined));
+var test6 = ((false || undefined) && (false && undefined));
+var test7 = ('a' || (false && undefined) || '');
+var test8 = ((false && undefined) || 'a' || '');
+var test9 = ('a' && (false || undefined) && '');
+var test10 = ((false || undefined) && 'a' && '');
+
+console.log(test1);
+console.log(test2);
+console.log(test3);
+console.log(test4);
+console.log(test5);
+console.log(test6);
+console.log(test7);
+console.log(test8);
+console.log(test9);
+console.log(test10);
+</script>
+</body>
+</html>

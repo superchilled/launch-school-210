@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Medium 1</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Medium 1</h1>
+<h2>Exercise 7: Invoice</h2>
+<p>We have a function that can compute the amount total for an invoice with four line items. How can you refactor the function so that it'll work with invoices with any number of line items?</p>
+<h2>Answer</h2>
+<p>You can refactor this by using the <code>arguments</code> array and iterating through it to sum the amounts. (Original commented out, refactored version below)</p>
+<h2>Discussion</h2>
+<p>It may seem that the refactored function is not accepting parameters but in fact it does. In JavaScript, it is possible to have more or less arguments passed in than the defined parameters and there will be no error (refer to this lesson for a refresher). In addition to this, JavaScript also makes an arguments object available inside any function while it's invoked. The arguments object is array-like and it contains all the arguments passed in.</p>
+
+<p>The solution leveraged these two characteristics of Functions to refactor the invoiceTotal to accept a variable number of amounts to add up.</p>
+<script>
+// function invoiceTotal(amount1, amount2, amount3, amount4) {
+//   return amount1 + amount2 + amount3 + amount4;
+// }
+
+function invoiceTotal() {
+  var sum = 0;
+  for (var i = 0; i < arguments.length; i++) {
+    sum += arguments[i];
+  }
+  return sum;
+}
+
+var test1 = invoiceTotal(20, 30, 40, 50);             // works
+var test2 = invoiceTotal(20, 30, 40, 50, 40, 40);     // doesn't work; how can you make it work?
+
+console.log(test1);
+console.log(test2);
+</script>
+</body>
+</html>

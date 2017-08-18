@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Medium 1</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Medium 1</h1>
+<h2>Exercise 4: Selected Columns</h2>
+<p>The getSelectedColumns function selects and extracts specific columns to a new array. Currently, it is not producing the expected behavior. Go over the function and the sample runs. What do you think is the problem?</p>
+<h2>Answer</h2>
+<p>The problem is that the inner and outer <code>for</code> loops are both using the same variable <code>length</code>. The value of this variable starts off as <code>3</code> on the outer loop (i.e. the number of columns in the array passed in in each test case), but then gets changed to the number of columns required (1 or 2) from the second argument. This  results in the outer loop only completing that number of iterations.</p>
+<h2>Discussion</h2>
+<p>The intention for declaring the variable length is to save on the repetitive calls to the .length property. However, in the course of declaring the length variable for the second (inner) loop the length variable in the first (outer) loop got reassigned. This behavior is caused by the fact that "blocks" don't create their own scope in JavaScript. Even though there was a second variable declaration for length, it doesn't create a new variable. After hoisting, the two declarations become one and the same, effectively making the second a reassigment.</p>
+<script>
+function getSelectedColumns(numbers, cols) {
+  var result = [];
+  for (var i = 0, length = numbers.length; i < length; i++) {
+    for (var j = 0, innerlength = cols.length; j < innerlength; j++) {
+      if (!result[j]) {
+        result[j] = [];
+      }
+
+      result[j][i] = numbers[i][cols[j]];
+    }
+  }
+
+  return result;
+}
+
+// Given array of number arrays
+var array1 = [[1, 2, 3], [4, 5 ,6], [7, 8 ,9]];
+var array2 = [[1, 2, 3], [1, 2, 3], [1, 2, 3]];
+
+// array1 in row/column format
+// [[1, 2, 3],
+//  [4, 5, 6],
+//  [7, 8, 9]]
+
+var test1 = getSelectedColumns(array1, [0]);     // [[1]]; expected [[1, 4, 7]]
+var test2 = getSelectedColumns(array1, [0, 2]);  // [[1, 4], [3, 6]]; expected [[1, 4, 7], [3, 6, 9]]
+var test3 = getSelectedColumns(array2, [1, 2]);  // [[2, 2], [3, 4]]; expected [[2, 2, 2], [3, 3, 3]]
+
+console.log(test1);
+console.log(test2);
+console.log(test3);
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Medium 1</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Medium 1</h1>
+<h2>Exercise 2: Conditional Loop</h2>
+<p>Review the code below. The program should log numbers that are multiples of 3 from 0 to 9. Will the expected behavior happen? Why or why not?</p>
+<h2>Answer</h2>
+<p>NO, because the first time the <code>while</code> loop hits a number for which <code>number % 3</code> equals 0, the <code>else</code> branch of the conditional will not be executed, and so the value of <code>i</code> will not be incrmented. It will result in an infinite loop. in fact this will happen from the first loop since <code>0 % 3 === 0</code> is <code>true</code>.</p>
+<h2>Discussion</h2>
+<p>It becomes an infinite loop because the value of i is never incremented. The expression (i % 3 === 0) will always be true and as such the else clause that contains the incrementer never gets executed. When using a while loop, you have to be wary about managing the variables involved with the iteration and the stopping condition. In the case of this exercise, i should have been incremented at every iteration.</p>
+<script>
+var i = 0;
+while (i < 10) {
+  if (i % 3 === 0) {
+    console.log(i);
+  } else {
+    i += 1;
+  }
+}
+</script>
+</body>
+</html>

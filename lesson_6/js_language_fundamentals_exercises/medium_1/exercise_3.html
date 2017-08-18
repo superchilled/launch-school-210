@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Medium 1</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Medium 1</h1>
+<h2>Exercise 3: Multiplication Table</h2>
+<p>The following program is expected to log a multiplication table for the numbers 1 up to 10 to the console. Read through the code. Will the given code produce the expected result? Why or why not?</p>
+<h2>Answer</h2>
+<p>No, because the outer <code>for</code> loop only increments up until <code>9</code>, (the condition is while <code>i</code> is ;es than <code>10</code>, so <code>i</code> never actually reaches <code>10</code>.)</p>
+<h2>Discussion</h2>
+<p>This is an example of an off-by-one bug. The value of i, which is responsible for the rows of the table, only goes up to 9. As such, the entire row for the values of 10 x 1, 10 x 2...10 x 10 is not logged.</p>
+<script>
+var row;
+var i;
+var j;
+
+function padLeft(num) {
+  return String(num).length <= 1 ? ' ' + num : num;
+}
+
+for (i = 1; i < 10; i++) {
+  row = '';
+  for (j = 1; j <= 10; j++) {
+    row += padLeft(i * j) + ' ';
+  }
+  console.log(row + '\n');
+}
+</script>
+</body>
+</html>

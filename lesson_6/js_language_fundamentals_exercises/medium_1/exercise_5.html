@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Medium 1</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Medium 1</h1>
+<h2>Exercise 5: Counter</h2>
+<p>What will the following code snippets log?</p>
+<h2>Answer</h2>
+<p>Snippet 1 will log <code>'The total value is 15'</code>. When <code>console.log</code> is called, it has access to both <code>counter</code> and <code>rate</code> variables, the values of which it multiplies together to give <code>15</code>; this is then implicitly converted to a string and concatenated with <code>'The total value is ''</code> by the <code>+</code>operator.</p>
+<p>Snippet 2 will log <code>'The total value is NaN'</code>. When <code>console.log</code> is called, it has access to both <code>counter</code> and <code>rate</code> variables, since the variable declarations are hoisted above the method calls, but their values at this stage are <code>undefined</code> since they varaible assignments occur after the method calls. These <code>undefined</code> values multiplied together to give <code>NaN</code>; this is then implicitly converted to a string and concatenated with <code>'The total value is ''</code> by the <code>+</code>operator.</p>
+<p>Snippet 3 will log the same as snippet 1 for the same reasons.</p>
+<h2>Discussion</h2>
+<p>There are two concepts that come into play here; one is hoisting and the second is function declaration.</p>
+<p>With regards to function declaration, the key thing to note is that it is similar to a variable declaration. A function declaration creates a variable with its name being the name of the function.</p>
+<p>For hoisting, remember that a function declaration gets moved together with its body; while for variables, only the variable declaration part gets moved.</p>
+<p>Finally, while both function and variable "declarations" are hoisted, it is functions that are hoisted first with the succeeding variable declaration with a similar name (i.e. counter) considered as duplicate.</p>
+<p>Notice that with hoisting that the first and third code snippets effectively become the same. Notice, also, that in all three code snippets that the variable declaration for counter is forgone since there is a function declaration with the same name. The differentiating factor for the second code snippet is the position of the console.log with respect to the "variable assignment". For code snippet 2, the assignment happens after the log and as such results in a NaN value when it evaluates counter * rate.</p>
+<script>
+// Code Snippet 1
+var counter = 5;
+var rate = 3;
+console.log('The total value is ' + (counter * rate));
+
+function counter(count) {
+  // ...
+}
+
+// Code Snippet 2
+function counter(count) {
+  // ...
+}
+
+console.log('The total value is ' + (counter * rate));
+
+var counter = 5;
+var rate = 3;
+
+// Code Snippet 3
+var counter = 5;
+var rate = 3;
+
+function counter(count) {
+  // ...
+}
+
+console.log('The total value is ' + (counter * rate));
+</script>
+</body>
+</html>

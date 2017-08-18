@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Medium 1</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Medium 1</h1>
+<h2>Exercise 6: Logger</h2>
+<p>Read and understand the code below. Why will it log debugging?</p>
+<h2>Answer</h2>
+<p>It will log <code>'debugging'</code> because <code>debugIt()</code> is called on line 10, this in turn calls <code>logger()</code> which calls <code>console.log()</code> passing <code>status</code> as an argument. Since the value of status is <code>'debugging'</code>, this is what is logged.</p>
+<h2>Discussion</h2>
+<p>The status variable on line 4 is debugging because of JavaScript's lexical scoping rules.</p>
+<p>The debugIt function creates a local variable called status and a function called logger. logger is an inner function with access to variables declared in its outer/parent function due to lexical scoping rules.</p>
+<script>
+function debugIt() {
+  var status = 'debugging';
+  function logger() {
+    console.log(status);
+  }
+
+  logger();
+}
+
+debugIt();
+</script>
+</body>
+</html>

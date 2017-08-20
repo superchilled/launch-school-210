@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Medium 2</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Medium 2</h1>
+<h2>Exercise 5: What's My Value?</h2>
+<p>What will the following program log to the console? Can you explain why?</p>
+<h2>Answer</h2>
+<p>Line 4 will log 3. <code>3.4</code> is not a valid index, so this will be added as a property of the Array obejct rather than <code>'Oranges'</code> being added as an array item. Since only array items contribute to the length of an array, the length remains 3.</p>
+<p>Line 5 will log 4. Even though the <code>3.4: 'Oranges'</code> pair doe not contribute to the array length, <code>3.4</code> is a key of the array object and so is counted along with the array indices by <code>Object.keys</code></p>
+<p>Line 8 will log 3, for the same reasons given for line 4(<code>-2</code>) is not a valid index so will not count towards the array length.</p>
+<p>Line 9 will log 5, for the same reasons given for line 5 (<code>-2</code> counts as an object key).</p>
+<h2>Discussion</h2>
+<p>Recall that Arrays are implemented with Objects internally in JavaScript. One thing that differentiates the two is that arrays have a length property, but objects don't. In a way, you can see arrays as special objects with only integer values (from 0 up to 2 32 - 1) as keys and with an extra length property that tracks how many such key/value pairs exist in the object.</p>
+<script>
+var arr = ['Apples', 'Peaches', 'Grapes'];
+
+arr[3.4] = 'Oranges';
+console.log(arr.length);
+console.log(Object.keys(arr).length);
+
+arr[-2] = 'Watermelon';
+console.log(arr.length);
+console.log(Object.keys(arr).length);
+</script>
+</body>
+</html>

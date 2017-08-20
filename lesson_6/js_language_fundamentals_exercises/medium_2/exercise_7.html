@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Medium 2</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Medium 2</h1>
+<h2>Exercise 7: The Red Pill</h2>
+<p>Read the code below and determine what the output is. You may need to look up the ASCII Table for character values.</p>
+<h2>Answer</h2>
+<p>The function <code>one()</code> is called on line 24. This function calls two other functions: <code>anotherAnotherOne</code> on line 19, and <code>anotherOne</code> on line 20 (passing in the numbers <code>116, 104, 101, 32</code>) as arguments.</p>
+<p><code>anotherAnotherOne</code> logs the return of <code>fromCharCode</code> with <code>87, 101, 108, 99, 111, 109, 101, 32</code> as arguments; which is the string <code>"Welcome "</code>. This function then calls the <code>anotherOne()</code> with the numbers <code>116, 111, 32</code> as arguments; this logs the String <code>"to "</code> to the console.</p>
+<p>The call to <code>anotherOne</code> on line 20 logs the String <code>"the "</code> to the console.</p>
+<p>On line 21, the function <code>one()</code> then returns the function <code>anotherOne</code> to the original function call on line 24; this is called by passing the numbers <code>77, 97, 116, 114, 105, 120, 33</code> in parenthese as arguments to that returned function. This logs the String <code>"Matrix!"</code>.</p>
+<h2>Discussion</h2>
+<p></p>
+<script>
+function one() {
+  function log(result) {
+    console.log(result);
+  }
+
+  function anotherOne() {
+    var result = '';
+    for (var i = 0; i < arguments.length; i++) {
+      result += String.fromCharCode(arguments[i]);
+    }
+
+    log(result);
+  }
+
+  function anotherAnotherOne() {
+    console.log(String.fromCharCode(87, 101, 108, 99, 111, 109, 101, 32));
+    anotherOne(116, 111, 32);
+  }
+
+  anotherAnotherOne();
+  anotherOne(116, 104, 101, 32);
+  return anotherOne;
+}
+
+one()(77, 97, 116, 114, 105, 120, 33);
+</script>
+</body>
+</html>

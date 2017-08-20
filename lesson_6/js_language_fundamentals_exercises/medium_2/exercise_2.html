@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Medium 2</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Medium 2</h1>
+<h2>Exercise 2:  	Equal</h2>
+<p>Read the code below. Currently, it does not log the result that we want. Can you explain why?</p>
+<p>If in our code, we want to be able to have the two person variables return true when we do person === otherPerson, what do we need to do?</p>
+<h2>Answer</h2>
+<p>The issue here is that the variables point to the objects. Since when objects are compared using <code>===</code>, unless they are the same object, <code>false</code> is returned.</p>
+<p>To fix this, we need to compare the values of the <code>name</code> property of the objects</p>
+<h2>Discussion</h2>
+<p>We'll have to make sure the two variables reference the same object, not two different objects with the same keys and values.</p>
+<p>In JavaScript, every object literal creates a new object, and when it's assigned to a variable, the variable holds the reference to that object. In our example above, the only way to make the two variables compare equally is to have them reference the same object.</p>
+<script>
+var person = {name: 'Victor'};
+var otherPerson = {name: 'Victor'};
+
+console.log(person === otherPerson);  // false; but we want this to be true
+
+// fixed version
+var otherPerson = person;
+console.log(person === otherPerson);
+</script>
+</body>
+</html>

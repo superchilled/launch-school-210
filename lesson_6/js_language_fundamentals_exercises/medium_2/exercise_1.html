@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Medium 2</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Medium 2</h1>
+<h2>Exercise 1: Defaults</h2>
+<p>The processOrder function allows you to pass in price, quantity, discount, serviceCharge and tax as arguments. It's also possible to omit those parameters when you call the function, and in that case, the function has to use default values. This function uses conditionals to test whether arguments got passed. If an argument is not passed in, its value is going to be undefined, in which case we'll assign it with a default value inside of the function.</p>
+<p>You can also use the alternate version for the same purpose</p>
+<p>Those two solutions, however, have a limitation that can lead to the wrong result for certain inputs. Can you explain how?</p>
+<h2>Answer</h2>
+<p>One limitation here is that you can't, say, omit <code>quantity</code> without also ommiting <code>discount</code>, <code>serviceCharge</code>, and <code>tax</code>. That is to say, if you pass in two arguments, the function will assume the first is price and the second is quantity. Similarly for three it will assume the first three parameters in the method definition.</p>
+<p>Another limitation, is that if you pass in a <code>0</code>, since this is falsy in JavaScript, the default would be used instead (e.g. a <code>serviceCharge</code> of <code>0</code> would be charged at <code>-1</code>).
+<h2>Discussion</h2>
+<p>The solutions lead to problems when one of the inputs is 0. This happened because 0 is falsy in JavaScript and therefore the value gets re-assigned. To work around this, it's better to explicitly test whether the input arguments are undefined, instead of relying on them being falsy.</p>
+<script>
+// Original version
+function processOrder(price, quantity, discount, serviceCharge, tax) {
+  if (!quantity) {
+    quantity = 1;
+  }
+
+  if (!discount) {
+    discount = 0;
+  }
+
+  if (!serviceCharge) {
+    serviceCharge = 0.1;
+  }
+
+  if (!tax) {
+    tax = 0.15;
+  }
+
+  return (price * quantity) * (1 - discount) * (1 + serviceCharge) * (1 + tax);
+}
+
+processOrder(100);      // 126.5
+
+// Alternate version
+function processOrder(price, quantity, discount, serviceCharge, tax) {
+  quantity = quantity || 1;
+  discount = discount || 0;
+  serviceCharge = serviceCharge || 0.1;
+  tax = tax || 0.15;
+  return (price * quantity) * (1 - discount) * (1 + serviceCharge) * (1 + tax);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Medium 2</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Medium 2</h1>
+<h2>Exercise 6: Length</h2>
+<p>Read through the code below. What values will it log to the console? Can you explain why these are the values?</p>
+<h2>Answer</h2>
+<p>Line 2 will log the Array <code>['JavaScript', 'Ruby', 'Python']</code> since this is what is assigned to the variable <code>languages</code> at that point.</p>
+<p>Line 3 will log <code>3</code> since this is the value of the <code>length</code> atribute of the array as there are three items in the array.</p>
+<p>Line 6 will log the Array <code>['JavaScript', 'Ruby', 'Python', undefined]</code> since line 5 changed the length attribute of the array to 4, but only the first three items in the array have been defined.</p>
+<p>Line 7 will log <code>4</code> since line 5 changed the length attribute of the array to 4.</p>
+<p>Line 10 will log the Array <code>['JavaScript']</code> since line 9 set the length of the array to <code>1</code>, this removes all of the array items after the first.</p>
+<p>Line 11 will log <code>1</code> since line 9 set the length of the array to <code>1</code>.</p>
+<p>Line 14 will log the Array <code>['JavaScript', undefined, undefined]</code> since line 13 changed the length attribute of the array to 3, but only the first item in the array is defined.</p>
+<p>Line 15 will log <code>3</code> since line 13 changed the length attribute of the array to 3.</p>
+<p>Line 19 will log the Array <code>['JavaScript', undefined, 'Python']</code> since line 17 set the length to <code>1</code>, and line 18 set the item at index <code>2</code> to <code>'Python'</code>, thereby changing the length to <code>3</code> but leaving the item at index <code>1</code> undefined.</p>
+<p>Line 20 will log <code>undefined</code> for the reasons explained above.</p>
+<p>Line 21 will log <code>3</code> for the reasons explained above.</p>
+<h2>Discussion</h2>
+<p>The key takeaway for this exercise is that the length property can be set (remember that arrays are 0-based). Setting the length to a value that is shorter than the number of elements stored truncates the array; re-setting to a higher value does not bring back the truncated elements. Setting it to a higher a value than the current length adds indices that have undefined as the value of the element. Furthermore, since the value of the length will always be equal to the last index + 1, adding an element to index 2 of a 1 element array will make the length of the array be 3 even if only 2 of 3 index positions have a defined value.</p>
+<script>
+var languages = ['JavaScript', 'Ruby', 'Python'];
+console.log(languages);
+console.log(languages.length);
+
+languages.length = 4;
+console.log(languages);
+console.log(languages.length);
+
+languages.length = 1;
+console.log(languages);
+console.log(languages.length);
+
+languages.length = 3;
+console.log(languages);
+console.log(languages.length);
+
+languages.length = 1;
+languages[2] = 'Python';
+console.log(languages);
+console.log(languages[1]);
+console.log(languages.length);
+</script>
+</body>
+</html>

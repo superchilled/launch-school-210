@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Medium 2</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Medium 2</h1>
+<h2>Exercise 4: Caller</h2>
+<p>The doubler function takes two arguments: a number that it's going to double and return, and a string that indicates the caller of the function.</p>
+<p>Can you create a makeDoubler function, which returns a function that's functionally equivalent to doubler, but with the caller preset?</p>
+<h2>Answer</h2>
+<p></p>
+<h2>Discussion</h2>
+<p>What's interesting here is that the returned function expression that's assigned to variable doubler still retains access to the caller variable in its closure, even after the makeDoubler function returns.</p>
+<script>
+function doubler(number, caller) {
+  console.log('This function was called by ' + caller + '.');
+  return number + number;
+}
+
+// doubler(5, 'Victor');       // 10
+// This function was called by Victor.
+
+function makeDoubler(caller) {
+  return function(number) {
+    console.log('This function was called by ' + caller + '.');
+    return number + number;
+  };
+}
+
+var doubler = makeDoubler('Victor');
+test1 = doubler(5);                 // 10
+// This function was called by Victor.
+console.log(test1);
+</script>
+</body>
+</html>

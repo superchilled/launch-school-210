@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | JavaScript Language Fundamentals: Medium 2</title>
+</head>
+<body>
+<h1>Launch School 210 | Exercises -- JavaScript Language Fundamentals: Medium 2</h1>
+<h2>Exercise 3: Amount Payable</h2>
+<p>What does the code below log? Why is this so?</p>
+<h2>Answer</h2>
+<p>Line 10 will log 40 (5 x 7 plus the <code>startingBalance</code> of 5)</p>
+<p>Line 13 will log 45 (5 x 7 plus the <code>startingBalance</code> of 10)</p>
+<h2>Discussion</h2>
+<p>The code logs 40 and 45. You want to review the concept of closures. Closures have functions retain access to variables that are defined in an "enclosing scope". In the case of our program, the enclosing scope is the global (window) scope which contains the variables startingBalance, chicken, and chickenQuantity. By retaining access, it means that the value of the variable is not fixed at the time when the function gets declared or first executed. The value is, instead, dynamically looked up only at the time when the function is called. With this, the value of startingBalance at line 6 is not 1 but a reference to the value stored in the startingBalance variable in the global scope. As a result, when the totalPayable function is called for the first time, the value of startingBalance is 5; when the function is called for the second time, the value of startingBalance is 10.</p>
+<script>
+var startingBalance = 1;
+var chicken = 5;
+var chickenQuantity = 7;
+
+var totalPayable = function(item, quantity) {
+  return startingBalance + (item * quantity);
+}
+
+startingBalance = 5;
+console.log(totalPayable(chicken, chickenQuantity));
+
+startingBalance = 10;
+console.log(totalPayable(chicken, chickenQuantity));
+</script>
+</body>
+</html>

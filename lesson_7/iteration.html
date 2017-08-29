@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | List Processing and Functional Abstractions</title>
+</head>
+<body>
+<h1>Launch School 210 | List Processing and Functional Abstractions: Iteration</h1>
+
+<p>Write a Function named myForEach that is similar to the built-in Array.prototype.forEach method. Your Function should take an array and another Function as arguments. The Function passed to myforEach should mutate a variable in the outer scope. In the code fragment below, the Function passed to myForEach mutates the min variable.</p>
+<script>
+// Input: an array and a function
+// Output: return 'undefined' and perform whatever action is defined by the function passed in
+// Algorithm:
+//  1) Loop through the array passed in. On each iteration:
+//    - Call the function passed in, passing the array item for that iteration into the function as an argument
+
+function myForEach(array, func) {
+  for (var i = 0; i < array.length; i++) {
+    func(array[i]);
+  }
+  return undefined; // note, the function will implicitly return undefined anyway
+}
+
+var min = Infinity;
+var getMin = function(value) {
+  min = value <= min ? value : min;
+};
+
+var test1 = myForEach([4, 5, 12, 23, 3], getMin);     // undefined
+console.log(test1);
+console.log(min);                         // 3
+</script>
+</body>
+</html>

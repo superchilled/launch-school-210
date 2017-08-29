@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | List Processing and Functional Abstractions</title>
+</head>
+<body>
+<h1>Launch School 210 | List Processing and Functional Abstractions: Reducing</h1>
+
+<p>Write a function named myReduce that's similar to the Array.prototype.reduce method. It takes an array and a function as arguments, and optionally, a third argument that serves as an initial value. If the caller omits the initial value, myReduce should use the first element of the Array as the initial value. myReduce should return the value returned by the last invocation of the callback function.</p>
+<script>
+// Input: an array, a function, and an optional initial value
+// Output: a single value that is the result of the function on the items in the array and the intial value (if passed in)
+// Algorithm:
+//  1) Declare a variable for the accumulator
+//  2) Check if initial is defined:
+//    - if so set the accumulator to initial
+//    - if not set the accumulator to the item at index 0 of the array
+//  3) If initial is defined, iterate through each item in the array. On each iteration:
+//    - Call the passed in function, passing in the accumulator and the array item for the current iteration
+//  4) If initial is not defined, loop through the array starting at index 1. On each iteration:
+//    - Call the passed in function, passing in the accumulator and the array item for the current iteration
+//  5) Return the accumulator
+
+function myReduce(array, func, initial) {
+  var accumulator;
+  if (initial) {
+    accumulator = initial;
+  } else {
+    accumulator = array[0];
+  }
+
+  if (accumulator === initial) {
+    array.forEach(function(element) {
+      accumulator = func(accumulator, element);
+    });
+  } else {
+    for (var i = 1; i < array.length; i++) {
+      accumulator =  func(accumulator, array[i])
+    }
+  }
+  return accumulator;
+}
+
+var smallest = function(result, value) {
+  return result <= value ? result : value;
+};
+
+var sum = function(result, value) {
+  return result + value;
+};
+
+var test1 = myReduce([5, 12, 15, 1, 6], smallest);           // 1
+var test2 = myReduce([5, 12, 15, 1, 6], sum, 10);            // 49
+console.log(test1);
+console.log(test2);
+</script>
+</body>
+</html>

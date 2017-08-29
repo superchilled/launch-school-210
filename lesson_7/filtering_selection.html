@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | List Processing and Functional Abstractions</title>
+</head>
+<body>
+<h1>Launch School 210 | List Processing and Functional Abstractions: Filtering / Selection</h1>
+
+<p>Write a function that's similar to Array.prototype.filter. It takes an array and a function as arguments and returns an array whose values are only those that the function passed returns as true.</p>
+<script>
+// Input: an array and a function
+// Output: A new array whose elements are those for which the passed in function returns true
+// Algorithm:
+//  1) Declare a return variable assigned to an empty array
+//  2) Loop thorugh the array. On each iteration:
+//    - Call the function for the item in the array equivalent to the index for that iteration
+//    - If the function returns true for that item, push it to the return array
+//  3) Return the return array
+
+function myFilter(array, func) {
+  var returnArray = [];
+  for (var i = 0; i < array.length; i++) {
+    if (func(array[i])) {
+      returnArray.push(array[i]);
+    }
+  }
+  return returnArray;
+}
+
+var isPythagoreanTriple = function(triple) {
+  return Math.pow(triple.a, 2) + Math.pow(triple.b, 2) === Math.pow(triple.c, 2);
+};
+
+var test1 = myFilter([{a: 3, b: 4, c: 5}, {a: 5, b: 12, c: 13},
+          {a: 1, b: 2, c: 3}], isPythagoreanTriple);
+// returns [{a: 3, b: 4, c: 5}, {a: 5, b: 12, c: 13}]
+console.log(test1);
+</script>
+</body>
+</html>

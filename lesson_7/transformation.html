@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | List Processing and Functional Abstractions</title>
+</head>
+<body>
+<h1>Launch School 210 | List Processing and Functional Abstractions: Transformation</h1>
+
+<p>Write a Function named myMap that is similar to the built-in Array.prototype.map method. Your Function should take an array and another Function (the callback) as arguments, and return a new Array. The new Array's values should be the return values of the callback Function.</p>
+<script>
+// Input: an array and a function
+// Output: A new array whose elements are the return value of the function for each element
+// Algorithm:
+//  1) Declare a return variable and assign it to an empty array
+//  2) Iterate through the array passed in. On each iteration:
+//    - Call the cuntion passed in with the array item for that iteration as an argument to the function
+//    - Push the return value of the function to the return array
+//  3) Return the return array
+
+function myMap(array, func) {
+  var returnArray = [];
+  array.forEach(function(element) {
+    returnArray.push(func(element));
+  });
+  return returnArray;
+}
+
+var plusOne = function(n) { return n + 1; };
+
+var test1 = myMap([1, 2, 3, 4], plusOne);       // [2, 3, 4, 5]
+console.log(test1);
+</script>
+</body>
+</html>

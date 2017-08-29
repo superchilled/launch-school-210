@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | List Processing and Functional Abstractions</title>
+</head>
+<body>
+<h1>Launch School 210 | List Processing and Functional Abstractions: Interrogation</h1>
+
+<p>Write a function named myOwnEvery that's similar to the Array.prototype.every method. It should take an array and a function as arguments and return true if every element passed to the function evaluates as truthy.</p>
+<script>
+// Input: an array and a function
+// Output: a boolean, true if every element in the array returns true when passed to the passed in function; false otherwise
+// Algorithm:
+//  1) Iterate through the array. On each iteration:
+//    - call the passed in function, with the array element for that iteration as an argument
+//    - if the function returns false, then return false
+//  2) If the array is iterated through without returning false, return true
+
+function myOwnEvery(array, func) {
+  array.forEach(function(element) {
+    if (func(element) === false) {
+      return false;
+    }
+  });
+  return true;
+}
+
+var isAString = function(value) {
+  return typeof value === 'string';
+};
+
+var test1 = myOwnEvery(['a', 'a234', '1abc'], isAString);       // true
+console.log(test1);
+
+</script>
+</body>
+</html>

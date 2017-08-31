@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | List Processing and Functional Abstractions</title>
+</head>
+<body>
+<h1>Launch School 210 | List Processing and Functional Abstractions: Practice Problem - Total Square Area</h1>
+
+<p>For this practice problem, we'll represent rectangles as Arrays with two elements: a height and a width.</p>
+<p>Write a Function named totalArea that takes an Array of rectangles as an argument. The Function should return the total area covered by all the rectangles.</p>
+<p>Now, write a second Function named totalSquareArea. This Function should calculate the total area of a set of rectangles, just like totalArea. However, it should only include squares in its calculations: it should ignore rectangles that aren't square.</p>
+<script>
+// Total Area
+// Input: An array of arrays (nested arrays contain 2 elements: numbers representing height and width)
+// Output: A single number representing the total area of all the rectangles
+// Algorithm:
+//  1) Declare a function totalArea, that takes an array as an argument
+//  2) Within the function, call Array.reduce on the input array
+//    - The callback passed to reduce should return sum + (value[0] x value[1])
+//    - The callback should use 0 as the intital value
+//  3) The total area function should return the return value of the reduce method
+
+function totalArea(rectangles) {
+  return rectangles.reduce(function(sum, rectangle) {
+    return sum + (rectangle[0] * rectangle[1]);
+  }, 0);
+}
+
+var rectangles = [[3, 4], [6, 6], [1, 8], [9, 9], [2, 2]];
+
+var test1 = totalArea(rectangles); // 141
+console.log(test1);
+
+// Total Square Area
+// Input: An array of arrays (nested arrays contain 2 elements: numbers representing height and width)
+// Output: A single number representing the total area of all the rectangles that are squares (i.e. the length is equal to the height)
+// Algorithm:
+//  1) Declare a function totalSquareArea, that takes an array as an argument
+//  2) Within the function, call Array.reduce on the input array
+//    - The callback passed to reduce should return sum + (value[0] x value[1]) if value[0] === value[1], otherwise it should return sum
+//    - The callback should use 0 as the intital value
+//  3) The total area function should return the return value of the reduce method
+
+function totalSquareArea(rectangles) {
+  return rectangles.reduce(function(sum, rectangle) {
+    if (rectangle[0] === rectangle[1]) {
+      return sum + (rectangle[0] * rectangle[1]);
+    } else {
+      return sum;
+    }
+  }, 0);
+}
+
+var rectangles = [[3, 4], [6, 6], [1, 8], [9, 9], [2, 2]];
+
+var test2 = totalSquareArea(rectangles); // 121
+console.log(test2);
+</script>
+</body>
+</html>

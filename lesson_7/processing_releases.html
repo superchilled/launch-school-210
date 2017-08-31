@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | List Processing and Functional Abstractions</title>
+</head>
+<body>
+<h1>Launch School 210 | List Processing and Functional Abstractions: Practice Problem - Processing Releases</h1>
+
+<p>Write a Function named processReleaseData that processes the following movie release data.</p>
+<p>The Function should generate an Array of Objects that contain only the id and title key/value pairs. You may assume that id, when existing, is an integer greater than 0. Here are the rules:
+<ul>
+  <li>Keep only releases that have both id and title data present.</li>
+  <li>Keep only the id and title data for each release.</li>
+</ul>
+</p>
+<script>
+// Input: An array of objects with id, title, boxart, uri, rating, and bookmark properties
+// Output: An array of objects with only the id and title properties, but only if those objects have both properties intitally
+// Algorithm:
+//  1) Declare a new variable assigned to the return value of filetering the newReleases array to exclude any that don't have both id and title
+//  2) Map the filtered array, the return value of the map callback should be a new object with the id and title of the original objects
+//  3) return the mapped array
+
+
+function processReleaseData(data) {
+  var filteredArr = data.filter(function(release) {
+    var props = Object.keys(release);
+    return props.includes('id') && props.includes('title');
+  });
+
+  return filteredArr.map(function(release) {
+    return { id: release.id, title: release.title };
+  });
+}
+
+var newReleases = [
+  {
+    'id': 70111470,
+    'title': 'Die Hard',
+    'boxart': 'http://cdn-0.nflximg.com/images/2891/DieHard.jpg',
+    'uri': 'http://api.netflix.com/catalog/titles/movies/70111470',
+    'rating': [4.0],
+    'bookmark': [],
+  },
+  {
+    'id': 654356453,
+    'boxart': 'http://cdn-0.nflximg.com/images/2891/BadBoys.jpg',
+    'uri': 'http://api.netflix.com/catalog/titles/movies/70111470',
+    'rating': [5.0],
+    'bookmark': [{ id:432534, time:65876586 }],
+  },
+  {
+    'title': 'The Chamber',
+    'boxart': 'http://cdn-0.nflximg.com/images/2891/TheChamber.jpg',
+    'uri': 'http://api.netflix.com/catalog/titles/movies/70111470',
+    'rating': [4.0],
+    'bookmark': [],
+  },
+  {
+    'id': 675465,
+    'title': 'Fracture',
+    'boxart': 'http://cdn-0.nflximg.com/images/2891/Fracture.jpg',
+    'uri': 'http://api.netflix.com/catalog/titles/movies/70111470',
+    'rating': [5.0],
+    'bookmark': [{ id:432534, time:65876586 }],
+  },
+];
+
+
+var test1 = processReleaseData(newReleases);
+console.log(test1); // [{ id: 70111470, title: 'Die Hard'}, { id: 675465, title: 'Fracture' }];
+</script>
+</body>
+</html>

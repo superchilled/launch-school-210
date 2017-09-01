@@ -1,0 +1,269 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | List Processing and Functional Abstractions</title>
+</head>
+<body>
+<h1>Launch School 210 | List Processing and Functional Abstractions: Practice Problem - Class Records Summary</h1>
+<p>At the end of each term, faculty members need to prepare a class record summary for students based on the weighted scores of exams and exercises. In this practice problem, we will prepare one such summary from some provided student records.</p>
+<p>Grading areas include exams and exercises, with the following weights:
+<table>
+  <tr>
+    <td><strong>Grading Area</strong></td>
+    <td><strong>Weight</strong></td>
+  </tr>
+  <tr>
+    <td>Exam</td>
+    <td>65%</td>
+  </tr>
+  <tr>
+    <td>Exercises</td>
+    <td>35%</td>
+  </tr>
+</table>
+</p>
+<p>Each term has four exams, and several exercises. Every exam has a fixed maximum score of 100, while exercises have varied maximum score values and counts. The total maximum point value for all exercises in any term is always 100, regardless of how many exercises the students had to complete. For example, a term may have five exercises with possible score maximums of [30, 20, 10, 20, 20] while another term may have three exercises with possible score maximums of [20, 30, 50].</p>
+<p>To determine a student's grade, we first determine the student's average score from the four exams, then sum all the exercise scores. We then apply the weights to compute the student's final percent grade. Finally, we determine the letter equivalent grade from the student's percent grade we just computed.
+<table>
+  <tr>
+    <td><strong>Percent Grade</strong></td>
+    <td><strong>Letter Equivalent</strong></td>
+  </tr>
+  <tr>
+    <td>93 - 100</td>
+    <td>A</td>
+  </tr>
+  <tr>
+    <td>85 - 92</td>
+    <td>B</td>
+  </tr>
+  <tr>
+    <td>77 - 84</td>
+    <td>C</td>
+  </tr>
+  <tr>
+    <td>69 - 76</td>
+    <td>D</td>
+  </tr>
+  <tr>
+    <td>60 - 68</td>
+    <td>E</td>
+  </tr>
+  <tr>
+    <td>0 - 59</td>
+    <td>F</td>
+  </tr>
+</table>
+</p>
+<p>For example, let's assume a term with three exercises with maximum scores of [20, 30, 50]. A student got [90, 80, 95, 71] on her four exams, and [20, 15, 40] on her exercises. To determine her final grade, we follow these steps:
+<ol>
+  <li>Compute the student's average exam score: (90 + 80 + 95 + 71) / 4 = 84</li>
+  <li>Compute the student's total exercise score: 20 + 15 + 40 = 75</li>
+  <li>Apply weights to determine the final percent grade: 84 * .65 + 75 * .35 = 80.85</li>
+  <li>Round the percent grade to the nearest integer: 81</li>
+  <li>Lookup the letter grade in the table above: C</li>
+  <li>Combine the percent grade and letter grade: "81 (C)"</li>
+</ol>
+</p>
+<p>Given this information, implement a function that takes a studentScores object and returns a class record summary object.</p>
+<script>
+// Input: A studentScores objects containing student objects with id and scores properties; the value of scores is an object with exam and exercises properties, the values for which are arrays of scores
+// Output: An object with studentGrades and exams properties; studentGrades is an array of strings comprising of the overall grade for each student (based on exams and exercises) and the letter equivalent for that grade in parenthesis; exams is an array of 4 objects (one for each exam), the objects have average, minimum, and maximum properties
+// Algorithm:
+//  1) Declare classRecordSummary variable set to an object witht he structure of the final object, but with empty/ nil values
+//  2) Iterate through the studentScores object (using the keys) to:
+//    a) Calculate the value of the overall student Grade using a calculateStudentGrade function
+//      - The function should take two arguments: exams and exercises, which are the values of the exams and exercises properties of the scores object in each student object (both of which are arrays of numbers)
+//        - The function should reduce the exam scores by adding them together, the reduced value should then be divided by 4
+//        - The function should reduce the exercise score by adding them together
+//        - The two resultant values should then be weighted by the appropriate amount, summed, and rounded to the nearest integer
+//        - The resultant value of all these operations should be returned by calculateStudentGrade
+//        - The returned value should be pushed to a studentGrades temporary array
+//    b) Record the exam grades for each exam in an examGrades temporary array (nested array of 4 arrays)
+//      - Declare the varaible for the array
+//      - As you are iterating through each student object, use a pushExamGrades function to push the grade for each exam to the examGrades matrix
+//        - This function should take two arguments: the exam grades matrix, the exams array for the student for that iteration
+//        - Iterate through the student exam grades array, on each iteration push the grade for that iteration to the equivalent sub-array in the matrix
+//  3) The value of the studentGrades property of the classRecordSummary object should be set to a mapped version of the studentGrades temporary array
+//      - The mapping should take the grade at each array element and return a string which is a string representation of the numerical value concatenated with a letter representation of that value
+//      - The letter representation of the value should be calculated using a calculateLetter function. This takes one argument - the number grade - and uses a swtich statement to retrun the appropriate letter
+//  4) The value of the exams property of classRecordSummary object should be set to a mapped version of the examGrades temporary array.
+//      - The return value of the mapping for each sub-array should be an object with three properties: average, minimum, maximum
+//      - The value for each property should be calculated by performing an appropriate reduce operation on the sub-array for that iteration (the reduce operations can be extracted to appropriate functions)
+//  5) Return the classRecordSummary object
+
+var studentScores = {
+  student1: {
+    id: 123456789,
+    scores: {
+      exams: [90, 95, 100, 80],
+      exercises: [20, 15, 10, 19, 15],
+    },
+  },
+  student2: {
+    id: 123456799,
+    scores: {
+      exams: [50, 70, 90, 100],
+      exercises: [0, 15, 20, 15, 15],
+    },
+  },
+  student3: {
+    id: 123457789,
+    scores: {
+      exams: [88, 87, 88, 89],
+      exercises: [10, 20, 10, 19, 18],
+    },
+  },
+  student4: {
+    id: 112233445,
+    scores: {
+      exams: [100, 100, 100, 100],
+      exercises: [10, 15, 10, 10, 15],
+    },
+  },
+  student5: {
+    id: 112233446,
+    scores: {
+      exams: [50, 80, 60, 90],
+      exercises: [10, 0, 10, 10, 0],
+    },
+  },
+};
+
+function sumArrayValues(arr) {
+  return arr.reduce(function(sum, value) {
+    return sum + value;
+  });
+}
+
+function calculateExamScore(exams) {
+  return sumArrayValues(exams) / 4;
+}
+
+function calculateExercisesScore(exercises) {
+  return sumArrayValues(exercises);
+}
+
+function weightExams(score) {
+  return score * .65;
+}
+
+function weightExercises(score) {
+  return score * .35;
+}
+
+function pushExamGrades(examsArr, student) {
+  var studentExams = student.scores.exams;
+  studentExams.forEach(function(examGrade, index) {
+    examsArr[index].push(examGrade);
+  });
+}
+
+function calculateStudentGrade(student) {
+  var examScore = calculateExamScore(student.scores.exams);
+  var exercisesScore = calculateExercisesScore(student.scores.exercises);
+  var overallScore = weightExams(examScore) + weightExercises(exercisesScore);
+  return Math.round(overallScore);
+}
+
+function calculateLetter(grade) {
+  var letter;
+  switch (true) {
+    case (grade >= 92):
+      letter = 'A';
+      break;
+    case (grade >= 85):
+      letter = 'B';
+      break;
+    case (grade >= 77):
+      letter = 'C';
+      break;
+    case (grade >= 69):
+      letter = 'D';
+      break;
+    case (grade >= 60):
+      letter = 'E';
+      break;
+    default:
+      letter = 'F'
+  }
+  return letter;
+}
+
+function mapStudentGrades(grade) {
+  return String(grade) + ' (' + calculateLetter(grade) + ')';
+}
+
+function calculateAverage(arr) {
+  return sumArrayValues(arr) / arr.length;
+}
+
+function calculateMin(arr) {
+  return arr.reduce(function(lowest, current) {
+    if (current < lowest) {
+      return current;
+    } else {
+      return lowest;
+    }
+  });
+}
+
+function calculateMax(arr) {
+  return arr.reduce(function(highest, current) {
+    if (current > highest) {
+      return current;
+    } else {
+      return highest;
+    }
+  });
+}
+
+function roundToOneDecimalPlace(number) {
+  return Math.round(number * 10) / 10;
+}
+
+function mapExams(exam) {
+  return {
+    average: roundToOneDecimalPlace(calculateAverage(exam)),
+    minimum: calculateMin(exam),
+    maximum: calculateMax(exam),
+  };
+}
+
+function generateClassRecordSummary(scores) {
+  var studentGrades = [];
+  var exams = [[], [], [], []];
+  var classRecordSummary = {};
+
+  Object.values(scores).forEach(function(student) {
+    studentGrades.push(calculateStudentGrade(student));
+    pushExamGrades(exams, student);
+  });
+
+  classRecordSummary.studentGrades = studentGrades.map(function(grade) {
+    return mapStudentGrades(grade)
+  });
+
+  classRecordSummary.exams = exams.map(function(exam) {
+    return mapExams(exam)
+  });
+
+  return classRecordSummary;
+};
+
+var test1 = generateClassRecordSummary(studentScores);
+console.log(test1);
+// returns:
+
+// {
+//   studentGrades: [ '87 (B)', '73 (D)', '84 (C)', '86 (B)', '56 (F)' ],
+//   exams: [
+//     { average: 75.6, minimum: 50, maximum: 100 },
+//     { average: 86.4, minimum: 70, maximum: 100 },
+//     { average: 87.6, minimum: 60, maximum: 100 },
+//     { average: 91.8, minimum: 80, maximum: 100 },
+//   ],
+// }
+</script>
+</body>
+</html>

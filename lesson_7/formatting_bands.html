@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | List Processing and Functional Abstractions</title>
+</head>
+<body>
+<h1>Launch School 210 | List Processing and Functional Abstractions: Practice Problem - Formatting Bands</h1>
+<p>We have an Array of information for some popular bands. There are problems with this data, though, so we first have to clean it up before we can use it:
+  <ul>
+    <li>The band countries are wrong: all the bands should have 'Canada' as the country.</li>
+    <li>The band name should have all words capitalized.</li>
+    <li>Remove all dots from the band names.</li>
+  </ul>
+Write a function that can process the input band Array and return an Array that contains the fixed information</p>
+<script>
+// Input: An array of objects with properties for name (string), country (string), and active (boolean)
+// Output: An array of objects, but with the data fixed/ processed as per the requirments
+// Algorithm:
+//  1) Map the objects in the array. During the mapping, set:
+//    - active to active
+//    - country to 'Canada'
+//    - process name using another fucntion which:
+//      - Maps the string to a new string by:
+//        - Splitting it into words, Uppercasing the first letter of each word, joining back into a string, replacing '.' with ''
+//  2) return the mapped array
+
+var bands = [
+  { name: 'sunset rubdown', country: 'UK', active: false },
+  { name: 'women', country: 'Germany', active: false },
+  { name: 'a silver mt. zion', country: 'Spain', active: true },
+];
+
+function capitalize(word) {
+  return word.slice(0, 1).toUpperCase() + word.slice(1);
+}
+
+function processName(name) {
+  return name.split(' ').map(function(word) {
+    return capitalize(word);
+  }).join(' ').replace(/\./g, '');
+}
+
+function processBands(data) {
+  return data.map(function(band) {
+    return {
+      name: processName(band.name),
+      country: 'Canada',
+      active: band.active,
+    }
+  });
+}
+
+var test1 = processBands(bands);
+console.log(test1);
+
+// should return:
+
+// [
+//   { name: 'Sunset Rubdown', country: 'Canada', active: false },
+//   { name: 'Women', country: 'Canada', active: false },
+//   { name: 'A Silver Mt Zion', country: 'Canada', active: true },
+// ]
+</script>
+</body>
+</html>

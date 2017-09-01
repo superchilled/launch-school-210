@@ -190,7 +190,7 @@ function calculateLetter(grade) {
   return letter;
 }
 
-function mapStudentGrades(grade) {
+function mapStudentGrade(grade) {
   return String(grade) + ' (' + calculateLetter(grade) + ')';
 }
 
@@ -222,7 +222,7 @@ function roundToOneDecimalPlace(number) {
   return Math.round(number * 10) / 10;
 }
 
-function mapExams(exam) {
+function mapExam(exam) {
   return {
     average: roundToOneDecimalPlace(calculateAverage(exam)),
     minimum: calculateMin(exam),
@@ -241,11 +241,11 @@ function generateClassRecordSummary(scores) {
   });
 
   classRecordSummary.studentGrades = studentGrades.map(function(grade) {
-    return mapStudentGrades(grade)
+    return mapStudentGrade(grade)
   });
 
   classRecordSummary.exams = exams.map(function(exam) {
-    return mapExams(exam)
+    return mapExam(exam)
   });
 
   return classRecordSummary;

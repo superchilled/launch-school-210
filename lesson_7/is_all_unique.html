@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | List Processing and Functional Abstractions</title>
+</head>
+<body>
+<h1>Launch School 210 | List Processing and Functional Abstractions: Low Level Abstractions</h1>
+
+<p>This top-down, abstraction-focused problem solving approach won't always yield the best results. Sometimes, you won't be able to find a good abstraction. Let's examine one such case.</p>
+
+<p>Implement a function that determines whether a string has any character that appears more than once. The function should return true if, and only if, all characters in the string are unique. We should ignore multiple spaces and case differences; focus instead on the non-space characters without regard to case.</p>
+<script>
+// Input: A string
+// Output: A boolean, true if the string contains only unique characters, false otherwise
+// Algorithm:
+//  1) Declare a variable that is an array of the string characters, changed to lower-case with the spaces removed
+
+function isAllUnique(string) {
+  var characters = string.toLowerCase().split(' ').join('').split('');
+  var characterCount = {};
+
+  for (var i = 0; i < characters.length; i++) {
+    if (characterCount[characters[i]]) {
+      return false;
+    } else {
+      characterCount[characters[i]] = true;
+    }
+  }
+  return true;
+}
+
+var test1 = isAllUnique('The quick brown fox jumped over a lazy dog');     // false
+var test2 = isAllUnique('123,456,789');                                    // false
+var test3 = isAllUnique('The big apple');                                  // false
+var test4 = isAllUnique('The big apPlE');                                  // false
+var test5 = isAllUnique('!@#$%^&*()');                                     // true
+var test6 = isAllUnique('abcdefghijklmnopqrstuvwxyz');                     // true
+
+console.log(test1);
+console.log(test2);
+console.log(test3);
+console.log(test4);
+console.log(test5);
+console.log(test6);
+</script>
+</body>
+</html>

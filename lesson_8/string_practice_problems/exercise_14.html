@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | String and Text Processing</title>
+</head>
+<body>
+<h1>Launch School 210 | String and Text Processing: Practice Problems - 14</h1>
+<p>Create a variable named boxNumber and set it to the result of 356.toString(), and log the result. Before moving on, try to run your program.</p>
+<p></p>
+<p></p>
+<script>
+// var boxNumber = 356.toString();
+
+// You should receive an error. If you can call toString on a variable that contains a number, why can't you call it directly on a number? JavaScript interprets the period immediately after a number as a decimal point, not a method separator. One way to avoid this is to use two periods instead of one. Replace 356.toString() with 356..toString(), and try running it again.
+
+// var boxNumber = 356..toString();
+
+// This time, the program works and logs the String '356' to the console. Adding a second period acts as a method separator, which lets you call the method directly on a number.. Some "linter" programs reject this usage, and instead suggest that you use parentheses. Update your program again: eliminate the second period, and place 356 in parentheses, then run the program again.
+
+var boxNumber = (356).toString();
+
+console.log(boxNumber);
+</script>
+</body>
+</html>

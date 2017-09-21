@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | String and Text Processing</title>
+</head>
+<body>
+<h1>Launch School 210 | String and Text Processing: Reverse a String</h1>
+<p>Implement a function that takes a string as an argument and returns a new string that contains the original string in reverse.</p>
+<script>
+// input: A string
+// output: A new string which is the original string with all the characters reversed
+// algorithm:
+//  1) Declare a return varaible which is an empty string
+//  2) iterate through the input string backwards. At each iteration:
+//    - Add the letter for that iteration to the return string
+//  3) Return the return string
+
+function reverse(string) {
+  var returnString = '';
+
+  for (var i = string.length - 1; i >= 0; i--) {
+    returnString += string[i];
+  }
+
+  return returnString;
+}
+
+var test1 = reverse('hello');               // returns "olleh"
+var test2 = reverse('The quick brown fox'); // returns "xof nworb kciuq ehT"
+
+console.log(test1);
+console.log(test2);
+</script>
+</body>
+</html>

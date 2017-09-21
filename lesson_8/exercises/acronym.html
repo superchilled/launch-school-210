@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | String and Text Processing</title>
+</head>
+<body>
+<h1>Launch School 210 | String and Text Processing: Acronym</h1>
+<p>Write a function that generates and returns an acronym from a string of words. For example, the function should return "PNG" for the string "Portable Network Graphics". Count compound words (words connected with a dash) as separate words.</p>
+<script>
+// input: A string
+// output: A new string which is comprised of the first letters of each 'word', capitalized (a word is delimited by either a blank space or a dash)
+// algorithm:
+//  1) Declare a variable that is the acronym and assign to an empty string
+//  2) Split the input string into words, delimiting on either an empty space or a dash, decare a variable and assign the split string to this
+//  3) Map the split string so that each element is the first letter of the word for that element uppercased
+//  4) Return the acronym
+
+function acronym(string) {
+  var acronym = string.split(/ |-/g).map(function(word) {
+    return word[0].toUpperCase();
+  }).join('');
+
+  return acronym;
+}
+
+var test1 = acronym('Portable Network Graphics');                 // "PNG"
+var test2 = acronym('First In, First Out');                       // "FIFO"
+var test3 = acronym('PHP: HyperText Preprocessor');               // "PHP"
+var test4 = acronym('Complementary metal-oxide semiconductor');   // "CMOS"
+var test5 = acronym('Hyper-text Markup Language');                // "HTML"
+
+console.log(test1);
+console.log(test2);
+console.log(test3);
+console.log(test4);
+console.log(test5);
+</script>
+</body>
+</html>

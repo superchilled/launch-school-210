@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | String and Text Processing</title>
+</head>
+<body>
+<h1>Launch School 210 | String and Text Processing: Email Validation</h1>
+<p>Implement a function that checks whether an email address is valid. An email address has two parts: A "local part" and a "domain part." An @ sign separates the two parts: local-part@domain-part. The local part is the name of the mailbox; this is usually a username. The domain part is the domain name (i.e., gmail.com, yahoo.com.ph, or myCompanyName.com). The domain name contains a server name (sometimes called the mail server name) and a top-level domain (.com, .ph, etc.).</p>
+
+<p>For this practice problem, use the following criteria to determine whether an email address is valid:</p>
+<ul>
+  <li>There must be one @ sign.</li>
+  <li>The local part must contain one or more letters (A-Z, a-z) and/or digits (0-9). It may not contain any other characters.</li>
+  <li>The domain part must contain two or more components with a single dot (.) between each component. Each component must contain one or more letters (A-Z, a-z).</li>
+</ul>
+<p>To keep things simple, you don't need to check whether the domain part or top-level domain is "real" or "official".</p>
+
+<p>Note: don't use this criteria for real email validation logic in your programs. We are using greatly simplified criteria to let you concentrate on the fundamentals of JavaScript, not the specifics of email addresses.</p>
+<script>
+// input: A string, which may or may not be a valid email address
+// output: a boolean, true for valid email addresses, false for invalid
+// rules:
+//  - must have two 'parts' separated by an '@' sign: a local part and a domain part
+//  - the local part must contain one or more letters and/ or digits, but no other characters
+//  - the domain part must have two parts separated by a '.' Each part must contain one or more letters
+// algorithm:
+//  1) Use regex to check if the input string matches the pattern using the 'String.match' method
+//  2) Return the return value of teh 'String.match' method coerced to a boolean
+
+function isValidEmail(string) {
+  return !!string.match(/^[a-z0-9]+@[a-z]+(\.[a-z]+)+$/i);
+}
+
+var test1 = isValidEmail('Foo@baz.com.ph');          // returns true
+var test2 = isValidEmail('Foo@mx.baz.com.ph');       // returns true
+var test3 = isValidEmail('foo@baz.com');             // returns true
+var test4 = isValidEmail('foo@baz.ph');              // returns true
+var test5 = isValidEmail('HELLO123@baz');            // returns false
+var test6 = isValidEmail('foo.bar@baz.to');          // returns false
+var test7 = isValidEmail('foo@baz.');                // returns false
+var test8 = isValidEmail('foo_bat@baz');             // returns false
+var test9 = isValidEmail('foo@bar.a12');             // returns false
+var test10 = isValidEmail('foo_bar@baz.com');         // returns false
+var test11 = isValidEmail('foo@bar.....com');         // returns false
+
+console.log(test1);
+console.log(test2);
+console.log(test3);
+console.log(test4);
+console.log(test5);
+console.log(test6);
+console.log(test7);
+console.log(test8);
+console.log(test9);
+console.log(test10);
+console.log(test11);
+</script>
+</body>
+</html>

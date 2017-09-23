@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | String and Text Processing</title>
+</head>
+<body>
+<h1>Launch School 210 | String and Text Processing: Mail Count</h1>
+<p>The objective of this practice problem is to build a function that parses a string of email data. The function takes an argument that contains the data, parses it, then produces two basic statistics about the email:</p>
+<ul>
+  <li>The number of email messages found in the string </li>
+  <li>The date range of the email messages </li>
+</ul>
+<p>The email messages string has the following characteristics:</p>
+<ul>
+  <li>The string contains multiple email messages separated by the delimiter string ##||##.</li>
+  <li>Each email message has five parts. The delimiter string #/# separates the parts.</li>
+  <li>The five parts are:
+    <ul>
+      <li>Sender</li>
+      <li>Subject</li>
+      <li>Date</li>
+      <li>Recipient</li>
+      <li>Body</li>
+    </ul>
+  </li>
+  <li>All five parts occur in the sequence shown above.</li>
+</ul>
+<script src="http://dbdwvr6p7sskw.cloudfront.net/210/files/email_data_v2.js"></script>
+<script>
+// input: A string representing email data
+//  - Each 'email' is delimited by ##||##
+//  - Each email 'part' is delimited by #/#
+//  - The date is the third part
+// output: logging to the console:
+//   - The number of emails
+//   - The date range of the emails
+// algorithm:
+//  1) Split the string into separate emails
+//  2) Map the emails to only the date part
+//  3) Sort the mapped dates
+//  4) Log to console:
+//    - The length of the mapped dates array
+//    - The first and last elements (dates) to give the range in the correct format
+
+function formatDate(dateString) {
+  var dateObject = new Date(dateString);
+
+  return dateObject.toDateString();
+}
+
+function mailCount(emailData) {
+  var emails = emailData.split(/##\|\|##/);
+  var dates = emails.map(function(email) {
+    return email.split(/#\/#/)[2].replace(/[^\d-]/g, '');
+  }).sort();
+  var startDate = dates[0];
+  var endDate = dates[dates.length - 1];
+
+  console.log('Count of Email: ' + String(emails.length));
+  console.log('Date Range: ' + formatDate(startDate) + ' - ' + formatDate(endDate));
+}
+
+var test = mailCount(emailData);
+
+console.log(test);
+
+// console output
+// Count of Email: 5
+// Date Range: Sat Jun 25 2016 - Thu Aug 11 2016
+</script>
+</body>
+</html>

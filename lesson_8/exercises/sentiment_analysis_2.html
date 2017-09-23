@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | String and Text Processing</title>
+</head>
+<body>
+<h1>Launch School 210 | String and Text Processing: Sentiment Analysis 2</h1>
+<p>Re-implement the sentiment analysis with regex-based positive and negative word lists. The use of regex to process text-based data is extremely powerful. In the previous practice problem, we did not count words that were just different forms of the words in the positive and negative word lists. For instance, we didn't count "scorns" since it isn't an exact match for "scorn".</p>
+
+<p>We could add the variations of each word; for example: fortune --> fortunes, respect --> respected, oppress --> oppressed, or death --> deaths. This works, but we can use regex to make the relationship between variants more evident:</p>
+<script>
+// input: A string, containing 'positive' and 'negative' words.
+// output: a log of 5 things to the console:
+//  1) A string containing the number of positive words
+//  2) A string containing a list of the positive words
+//  3) A string containing the number of positive words
+//  4) A string containing a list of the positive words
+//  5) A string containing the overall sentiment of the words (positive, negative, neutral)
+//  Note: 2& 3 and 4& 5 are separated by a space
+// algorithm:
+//  1) Declare two variables, positiveWordsCaptured and negativeWordsCaptured and assign them to empty arrays
+//  2) Downcase the string, remove all puntuation and split the string to create an array of words (split on spaces and new lines)
+//  3) Iterate through the array of words, for each iteration:
+//    - check the word for that iteration against the existing arrays of positive and negative words:
+//      - if it is positive add it to the positiveWordsCaptured array
+//      - if it is negative add it to the negativeWordsCaptured array
+//  4) Log the followingto the console:
+//    - A count of positiveWordsCaptured to the console
+//    - A concatenated list of the positiveWordsCaptured to the console
+//    - A count of negativeWordsCaptured to the console
+//    - A concatenated list of the negativeWordsCaptured to the console
+//    - The overall sentiment depending on which count is higher
+
+var textExcerpt = 'To be or not to be-that is the question:\n' +
+  'Whether \'tis nobler in the mind to suffer\n' +
+  'The slings and arrows of outrageous fortune,\n' +
+  'Or to take arms against a sea of troubles,\n' +
+  'And, by opposing, end them. To die, to sleep-\n' +
+  'No more-and by a sleep to say we end\n' +
+  'The heartache and the thousand natural shocks\n' +
+  'That flesh is heir to-\'tis a consummation\n' +
+  'Devoutly to be wished. To die, to sleep-\n' +
+  'To sleep, perchance to dream. Aye, there\'s the rub,\n' +
+  'For in that sleep of death what dreams may come,\n' +
+  'When we have shuffled off this mortal coil,\n' +
+  'Must give us pause. There\'s the respect\n' +
+  'That makes calamity of so long life.\n' +
+  'For who would bear the whips and scorns of time,\n' +
+  'Th\' oppressor\'s wrong, the proud man\'s contumely, [F: poor]\n' +
+  'The pangs of despised love, the law’s delay, [F: disprized]\n' +
+  'The insolence of office, and the spurns\n' +
+  'That patient merit of the unworthy takes,\n' +
+  'When he himself might his quietus make\n' +
+  'With a bare bodkin? Who would fardels bear, [F: these Fardels]\n' +
+  'To grunt and sweat under a weary life,\n' +
+  'But that the dread of something after death,\n' +
+  'The undiscovered country from whose bourn\n' +
+  'No traveler returns, puzzles the will\n' +
+  'And makes us rather bear those ills we have\n' +
+  'Than fly to others that we know not of?\n' +
+  'Thus conscience does make cowards of us all,\n' +
+  'And thus the native hue of resolution\n' +
+  'Is sicklied o\'er with the pale cast of thought,\n' +
+  'And enterprises of great pitch and moment, [F: pith]\n' +
+  'With this regard their currents turn awry, [F: away]\n' +
+  'And lose the name of action.-Soft you now,\n' +
+  'The fair Ophelia.-Nymph, in thy orisons\n' +
+  'Be all my sins remembered';
+
+  var positiveRegex = /(fortunes?)|(dream(s|t|ed)?)|(love(s|d)?)|(respect(s|ed)?)|(patien(ce|t)?)|(devout(ly)?)|(nobler?)|(resolut(e|ion)?)/gi;
+  var negativeRegex = /(die(s|d)?)|(heartached?)|(death)|(despise(s|d)?)|(scorn(s|ed)?)|(weary)|(troubles?)|(oppress(es|ed|or('s)?)?)/gi;
+
+function sentiment(text) {
+  var words = text.toLowerCase().replace(/\W/g, ' ').split(/ |\n/);
+  var positiveWordsCaptured = textExcerpt.toLocaleLowerCase().match(positiveRegex);
+  var negativeWordsCaptured = textExcerpt.toLocaleLowerCase().match(negativeRegex);
+  var analysedSentiment;
+
+  if (positiveWordsCaptured.length > negativeWordsCaptured.length) {
+    analysedSentiment = 'Positive';
+  } else if (negativeWordsCaptured.length > positiveWordsCaptured.length) {
+    analysedSentiment = 'Negative';
+  } else {
+    analysedSentiment = 'Neutral';
+  }
+
+  console.log('There are ' + String(positiveWordsCaptured.length) + ' positive words in the text.');
+  console.log('Positive sentiments: ' + positiveWordsCaptured.join(', '));
+  console.log('');
+  console.log('There are ' + String(negativeWordsCaptured.length) + ' negative words in the text.');
+  console.log('Positive sentiments: ' + negativeWordsCaptured.join(', '));
+  console.log('');
+  console.log('The sentiment of the text is ' + analysedSentiment + '.');
+}
+
+sentiment(textExcerpt);
+
+// console output
+
+// There are 9 positive type words in the text.
+// Positive sentiments: nobler, fortune, devoutly, dream, dreams, respect, love, patient, resolution
+//
+// There are 10 negative type words in the text.
+// Negative sentiments: troubles, die, heartache, die, death, scorns, oppressor's, despised, weary, death
+//
+// The sentiment of the text is Negative.
+</script>
+</body>
+</html>

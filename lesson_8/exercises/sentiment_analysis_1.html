@@ -16,9 +16,26 @@
 <p>Here's an excerpt of some text taken from a Wikipedia article that compares different versions of "To be, or not to be".</p>
 <script>
 // input: A string, containing 'positive' and 'negative' words.
-// output:
+// output: a log of 5 things to the console:
+//  1) A string containing the number of positive words
+//  2) A string containing a list of the positive words
+//  3) A string containing the number of positive words
+//  4) A string containing a list of the positive words
+//  5) A string containing the overall sentiment of the words (positive, negative, neutral)
+//  Note: 2& 3 and 4& 5 are separated by a space
 // algorithm:
-//  1)
+//  1) Declare two variables, positiveWordsCaptured and negativeWordsCaptured and assign them to empty arrays
+//  2) Downcase the string, remove all puntuation and split the string to create an array of words (split on spaces and new lines)
+//  3) Iterate through the array of words, for each iteration:
+//    - check the word for that iteration against the existing arrays of positive and negative words:
+//      - if it is positive add it to the positiveWordsCaptured array
+//      - if it is negative add it to the negativeWordsCaptured array
+//  4) Log the followingto the console:
+//    - A count of positiveWordsCaptured to the console
+//    - A concatenated list of the positiveWordsCaptured to the console
+//    - A count of negativeWordsCaptured to the console
+//    - A concatenated list of the negativeWordsCaptured to the console
+//    - The overall sentiment depending on which count is higher
 
 var textExcerpt = 'To be or not to be-that is the question:\n' +
   'Whether \'tis nobler in the mind to suffer\n' +
@@ -56,24 +73,47 @@ var textExcerpt = 'To be or not to be-that is the question:\n' +
   'The fair Ophelia.-Nymph, in thy orisons\n' +
   'Be all my sins remembered';
 
-  var positiveWords = ['fortune', 'dream', 'love', 'respect', 'patience', 'devout', 'noble', 'resolution'];
-  var negativeWords = ['die', 'heartache', 'death', 'despise', 'scorn', 'weary', 'trouble', 'oppress'];
+var positiveWords = ['fortune', 'dream', 'love', 'respect', 'patience', 'devout', 'noble', 'resolution'];
+var negativeWords = ['die', 'heartache', 'death', 'despise', 'scorn', 'weary', 'trouble', 'oppress'];
 
-  function sentiment(text) {
-    // ...
+function sentiment(text) {
+  var words = text.toLowerCase().replace(/\W/g, ' ').split(/ |\n/);
+  var positiveWordsCaptured = words.filter(function(word) {
+    return positiveWords.includes(word);
+  });
+  var negativeWordsCaptured = words.filter(function(word) {
+    return negativeWords.includes(word);
+  });
+  var analysedSentiment;
+
+  if (positiveWordsCaptured.length > negativeWordsCaptured.length) {
+    analysedSentiment = 'Positive';
+  } else if (negativeWordsCaptured.length > positiveWordsCaptured.length) {
+    analysedSentiment = 'Negative';
+  } else {
+    analysedSentiment = 'Neutral';
   }
 
-  sentiment(textExcerpt);
+  console.log('There are ' + String(positiveWordsCaptured.length) + ' positive words in the text.');
+  console.log('Positive sentiments: ' + positiveWordsCaptured.join(', '));
+  console.log('');
+  console.log('There are ' + String(negativeWordsCaptured.length) + ' negative words in the text.');
+  console.log('Positive sentiments: ' + negativeWordsCaptured.join(', '));
+  console.log('');
+  console.log('The sentiment of the text is ' + analysedSentiment + '.');
+}
 
-  // console output
+sentiment(textExcerpt);
 
-  // There are 5 positive words in the text.
-  // Positive sentiments: fortune, dream, respect, love, resolution
-  //
-  // There are 6 negative words in the text.
-  // Negative sentiments: die, heartache, die, death, weary, death
-  //
-  // The sentiment of the text is Negative.
+// console output
+
+// There are 5 positive words in the text.
+// Positive sentiments: fortune, dream, respect, love, resolution
+//
+// There are 6 negative words in the text.
+// Negative sentiments: die, heartache, die, death, weary, death
+//
+// The sentiment of the text is Negative.
 </script>
 </body>
 </html>

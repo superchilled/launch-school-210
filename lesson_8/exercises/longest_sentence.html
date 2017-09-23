@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | String and Text Processing</title>
+</head>
+<body>
+<h1>Launch School 210 | String and Text Processing: Code Review: Longest Sentence </h1>
+<p>Write a program that determines the sentence with the most words in some text. Sentences may end with periods (.), exclamation points (!), or question marks (?). You should treat any sequence of characters that are not spaces or sentence-ending characters as a word. Log the longest sentence and its word count to the console.</p>
+<script>
+// input: A string containing multiple sentences
+//  input rules: sentences are delimited by '.', '!' or '?'
+// output: log to the console:
+//  - the longest sentence
+//  - an empty line
+//  - a string stating the number of words in the longest sentence
+// algorithm:
+//  1) Split the string into an array of sentences, splitting on spaces following '.', '!' and '?' (use positive look-behind?)
+//  2) Reduce the sentences array, comparing the current sentence to the inital value (starts as first sentence)
+//    - comparison is made by calling a helper function which compares the number of words in the two sentences being compared.
+//    - this helper function splits the sentence string on spaces and counts the elements (words) in the resulting array
+//  3) Assign the return of the reduce method to a variable and log this variable to the console
+//  4) Log an empty line to the console
+//  5) Log 'The longest sentence has n words.' to the console, where n is the number of words in the longest sentence
+
+
+var longText = 'Four score and seven years ago our fathers brought forth' +
+  ' on this continent a new nation, conceived in liberty, and' +
+  ' dedicated to the proposition that all men are created' +
+  ' equal.' +
+  ' Now we are engaged in a great civil war, testing whether' +
+  ' that nation, or any nation so conceived and so dedicated,' +
+  ' can long endure. We are met on a great battlefield of that' +
+  ' war. We have come to dedicate a portion of that field, as' +
+  ' a final resting place for those who here gave their lives' +
+  ' that that nation might live. It is altogether fitting and' +
+  ' proper that we should do this.' +
+  ' But, in a larger sense, we can not dedicate, we can not' +
+  ' consecrate, we can not hallow this ground. The brave' +
+  ' men, living and dead, who struggled here, have' +
+  ' consecrated it, far above our poor power to add or' +
+  ' detract. The world will little note, nor long remember' +
+  ' what we say here, but it can never forget what they' +
+  ' did here. It is for us the living, rather, to be dedicated' +
+  ' here to the unfinished work which they who fought' +
+  ' here have thus far so nobly advanced. It is rather for' +
+  ' us to be here dedicated to the great task remaining' +
+  ' before us -- that from these honored dead we take' +
+  ' increased devotion to that cause for which they gave' +
+  ' the last full measure of devotion -- that we here highly' +
+  ' resolve that these dead shall not have died in vain' +
+  ' -- that this nation, under God, shall have a new birth' +
+  ' of freedom -- and that government of the people, by' +
+  ' the people, for the people, shall not perish from the' +
+  ' earth.';
+
+function wordCount(sentence) {
+  return sentence.split(' ').length;
+}
+
+function sentenceComparison(sentence1, sentence2) {
+  return wordCount(sentence2) > wordCount(sentence1) ? sentence2 : sentence1;
+}
+
+function longestSentence(text) {
+  var sentences = text.split(/\. |\? |! /);
+
+  var longestSentence = sentences.reduce(function(longest, current) {
+    return sentenceComparison(longest, current);
+  });
+
+  console.log(longestSentence);
+  console.log('');
+  console.log('The longest sentence has ' + String(wordCount(longestSentence)) + ' words.');
+}
+
+longestSentence(longText);
+
+// console output
+
+// It is rather for us to be here dedicated to the great task remaining before us -- that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion -- that we here highly resolve that these dead shall not have died in vain -- that this nation, under God, shall have a new birth of freedom -- and that government of the people, by the people, for the people, shall not perish from the earth.
+//
+// The longest sentence has 86 words.
+</script>
+</body>
+</html>

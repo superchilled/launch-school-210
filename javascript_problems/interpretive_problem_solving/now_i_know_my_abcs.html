@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems</title>
+</head>
+<body>
+<h1>Launch School 210 | Small Problems: Now I Know My ABCs</h1>
+<p>A collection of spelling blocks has two letters per block, as shown in this list:</p>
+<code>
+B:O   X:K   D:Q   C:P   N:A<br />
+G:T   R:E   F:S   J:W   H:U<br />
+V:I   L:Y   Z:M
+</code>
+<p>This limits the words you can spell with the blocks to just those words that do not use both letters from any given block. You can also only use each block once.</p>
+
+<p>Write a function that takes a word as a string, and returns true if it can spell the argument passed in from the set of blocks, false otherwise. You can consider the letters to be case insensitive when you apply the rules.</p>
+<script>
+/*
+input: A string
+ input rules:
+   - string can be upper or lowercase
+output: a boolean
+ output rules:
+   - if the word can be spelled using teh letters in the blocks, using each block only once, output 'true'
+   - otherwise output false
+data structures:
+  - the input string split into an array of characters
+  - an object containing the 'letter blocks', where each 'block' is a key, and the intital value is 0, e.g.
+  {
+  'BO': 0,
+  'XK': 0,
+  ....
+}
+rules and edge cases:
+  - each 'block' can only be used once (either letter from a block can be used)
+algorithm:
+ 1) Convert the input string to uppercase and split into an array of characters
+ 2) Iterate through the characters, for each iteration:
+  - iterate through the keys in the letterBlocks object, if the key includes the letter for that iteration:
+    - check if it has been used before (i.e. it's value === 1)
+      - if so, then return false
+      - if not then set the value for that block to 1
+ 3) If the iteration completes without returning false, return true
+*/
+
+function isBlockWord(string) {
+  var letterBlocks = {
+    'BO': 0, 'XK': 0, 'DQ': 0, 'CP': 0, 'NA': 0, 'GT': 0, 'RE': 0,
+    'FS': 0, 'JW': 0, 'HU': 0, 'VI': 0, 'LY': 0, 'ZM': 0,
+  }
+
+  var characters = string.toUpperCase().split('');
+  var blockLetters = Object.keys(letterBlocks);
+
+  for (var i = 0; i < characters.length; i++) {
+    for (var j = 0; j < blockLetters.length; j++) {
+      var currentBlock = blockLetters[j];
+      if (currentBlock.includes(characters[i])) {
+        if (letterBlocks[currentBlock] === 1) {
+          return false;
+        } else {
+          letterBlocks[currentBlock] = 1;
+        }
+      }
+    }
+  }
+
+  return true;
+}
+
+var test1 = isBlockWord('BATCH'); // true
+var test2 = isBlockWord('BUTCH'); // false
+var test3 = isBlockWord('jest');  // true
+var test4 = isBlockWord('');  // true
+var test5 = isBlockWord('Bob'); // false
+var test6 = isBlockWord('bib'); // false
+
+console.log(test1);
+console.log(test2);
+console.log(test3);
+console.log(test4);
+console.log(test5);
+console.log(test6);
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 2</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 2</h1>
+<h2>Exercise 3: Stringy Strings</h2>
+<p>Write a function that takes one argument, a positive integer, and returns a string of alternating 1s and 0s, always starting with 1. The length of the string should match the given integer.</p>
+<script>
+/*
+Input: an integer
+Output: A string of 1s and 0s equal to the length of the input integer, starting with 1 and alternating
+Algorithm:
+  1) Declare a return variable to an empty string
+  2) Loop from 1 upto and inclusding the input number, incrementing by 1 each time (e.g. 1, 2, 3, etc.) On each iteration:
+    - Call % 2 on the number for that iteration, transform the return value of that operation to a string and concat to the return string
+  3) Returnt he return string
+*/
+
+function stringy(num) {
+  var returnString = '';
+  for (var i = 1; i <= num; i++) {
+    returnString += (i % 2);
+  }
+  return returnString;
+}
+
+console.log(stringy(6)) // '101010'
+console.log(stringy(9)) // '101010101'
+console.log(stringy(4)) // '1010'
+console.log(stringy(7)) // '1010101'
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 1</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 1</h1>
+<h2>Exercise 1: Odd Numbers</h2>
+<p>Log all odd numbers from 1 to 99, inclusive, to the console. Log all numbers on separate lines.</p>
+<h2>Answer</h2>
+<p>There are a number of ways to approach this problem. Part of the problem focuses on iterating through numbers starting at 1 and ending at 99; this part can be solved with a simple for loop within which the value of <code>i</code> can be incremented by 2, since every other number will be odd.</p>
+<p>Another option would be to increment through every number from 1 to 100 and use a conditional to check if it is odd and then log it if it is. This solution might be slightly les abstract, but would also be less efficient.</p>
+<script>
+for (var i = 1; i < 100; i += 2) {
+  console.log(i);
+}
+
+// Further exploration
+
+// Repeat this exercise with a technique different from the one that you used and different from the one provided. Consider also adding a way for the user to specify the limits of the odd numbers logged to the console.
+function logOdds(start, end) {
+  for (var i = start; i <= end; i++) {
+    if (i % 2 === 1) {
+      console.log(i);
+    }
+  }
+}
+
+// for the further exploration, since we don't know if the start point will be odd or even, we can't simply increment by 2. Here is makes sense to iterate through every number and use a conditonal).
+</script>
+</body>
+</html>

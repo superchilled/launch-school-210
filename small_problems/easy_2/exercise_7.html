@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 2</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 2</h1>
+<h2>Exercise 7: Double Doubles</h2>
+<p>A double number is an even length number whose left-side digits are exactly the same as its right-side digits. For example, 44, 3333, 103103, 7676 are all double numbers. 444, 334433, and 107 are not.</p>
+
+<p>Write a function that returns 2 times the number provided as an argument, unless the argument is a double number; return double numbers as-is.</p>
+<script>
+/*
+Input: An integer
+Output: Either double the integer or the number itself
+  - rules:
+    - If the number is a 'double number' return the number, otherwise multiply the number by two and return the result
+    - 'Double numbers' are numbers where the first 'half' of the number is identical to the second 'half' in terms of its digits
+      - The two 'halves' of the number are an equal number of didgits from either end to the 'middle' with no overlap.
+        - Only a number with an even number of digits can be split in half
+    Main Algorithm:
+      1) Use a helper function to determine if the input number is a 'double number'.
+        - If it is, return the input number
+        - If it isn't return the input number multiplied by 2
+    Helper function algorithm:
+      1) Convert the input number to a string
+      2) Determine if the string is of even length, if not return false
+      3) Split the number into two halves, assigning each to a variable
+      4) Compare the two halves.
+        - If they are identical return true
+        - If they are not identical return false
+*/
+
+function isDoubleNumber(num) {
+  var numString = String(num);
+  if (numString.length % 2 !== 0) {
+    return false;
+  }
+  var firstHalf = numString.slice(0, numString.length / 2);
+  var secondHalf = numString.slice(numString.length / 2);
+  return firstHalf === secondHalf;
+}
+
+function twice(num) {
+  if (isDoubleNumber(num)) {
+    return num;
+  } else {
+    return num * 2;
+  }
+}
+
+console.log(twice(37));                 // 74
+console.log(twice(44));                 // 44
+console.log(twice(334433));             // 668866
+console.log(twice(444));                // 888
+console.log(twice(107));                // 214
+console.log(twice(103103));             // 103103
+console.log(twice(3333));               // 3333
+console.log(twice(7676));               // 7676
+</script>
+</body>
+</html>

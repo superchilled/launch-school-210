@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 1</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 1</h1>
+<h2>Exercise 5: Sum or Product of Consecutive Integers</h2>
+<p>Write a program that asks the user to enter an integer greater than 0, then asks if the user wants to determine the sum or product of all numbers between 1 and the entered integer.</p>
+<p>Examples:</p>
+<code>
+  Please enter an integer greater than 0: 5<br/>
+  Enter "s" to compute the sum, "p" to compute the product. s<br/>
+  <br/>
+  The sum of the integers between 1 and 5 is 15.
+</code>
+<br/>
+<code>
+  Please enter an integer greater than 0: 6<br/>
+  Enter "s" to compute the sum, "p" to compute the product. p<br/>
+<br/>
+  The product of the integers between 1 and 6 is 720.
+</code>
+<script>
+var integer = Number.parseInt(prompt('Please enter an integer greater than 0:'), 10);
+var operationInput = prompt('Enter "s" to compute the sum, "p" to compute the product.');
+var rangeArray = Array.from({length: integer}, (element ,idx) => idx + 1);
+var sum;
+var operation;
+if (operationInput === 's') {
+  sum = rangeArray.reduce( (total, value) => total + value);
+  operation = 'sum';
+} else if (operationInput === 'p') {
+  sum = rangeArray.reduce( (total, value) => total * value);
+  operation = 'product';
+}
+
+console.log('The ' + operation + ' of the integers between 1 and ' +  String(integer) + ' is ' + String(sum));
+</script>
+</body>
+</html>

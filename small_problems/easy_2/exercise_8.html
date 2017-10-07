@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 2</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 2</h1>
+<h2>Exercise 8: Grade book</h2>
+<p>Write a function that determines the mean (average) of the three scores passed to it, and returns the letter value associated with that grade.</p>
+<p>Numerical score letter grade list:</p>
+<ul>
+  <li>90 <= score <= 100: 'A'</li>
+  <li>80 <= score < 90: 'B'</li>
+  <li>70 <= score < 80: 'C'</li>
+  <li>60 <= score < 70: 'D'</li>
+  <li>0 <= score < 60: 'F'</li>
+</ul>
+<p>Tested values are all between 0 and 100. There is no need to check for negative values or values greater than 100.</p>
+<script>
+/*
+Input: Three integer values between 0 and 100
+Output: A letter grade
+Rules:
+  - Letter grades are determined by the mean average of the three grades
+  - Grades go in sequence from A being the highest to F the lowest, with matching brackets of grade values
+Algorithm:
+  1) Declare a variable for average score, assigned to the sum of the three input vlues divided by 3 (the mean average)
+  2) Run the score through a series of conditionals based on ranges of values, if the score falls into a range return the appropraite grade
+*/
+
+function getGrade(score1, score2, score3) {
+  var averageScore = (score1 + score2 + score3) / 3;
+  if (averageScore > 90) {
+    return 'A';
+  } else if (averageScore > 80) {
+    return 'B';
+  } else if (averageScore > 70) {
+    return 'C';
+  } else if (averageScore > 60) {
+    return 'D';
+  } else {
+    return 'F'
+  }
+}
+
+console.log(getGrade(95, 90, 93)) // "A"
+console.log(getGrade(50, 50, 95)) // "D"
+</script>
+</body>
+</html>

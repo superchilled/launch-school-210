@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 1</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 1</h1>
+<h2>Exercise 9: Multiples of 3 and 5</h2>
+<p>Write a function that computes the sum of all numbers from 1 and some other number that are a multiple of 3 or 5. For instance, if the supplied number is 20, the result should be 98 (3 + 5 + 6 + 9 + 10 + 12 + 15 + 18 + 20).</p>
+
+<p>You may assume that the number passed in is an integer greater than 1.</p>
+<script>
+/*
+Input: An integer
+Output: The sum of al numbers between 1 and the input numbers that are multiples of 3 or 5
+Algorithm:
+  1) Generate an array of numbers between 1 and the input number minus 1
+  2) Filter the array to remove any numbers that aren't mulitples of 3 or 5
+  3) Reduce teh filtered array to sum all the numbers
+  4) return the reduced value of the array plus the original input number
+*/
+
+function multisum(num) {
+  var numbersArr = Array.from({length: num}, (element, idx) => idx + 1);
+  return numbersArr.filter(element => (element % 3 === 0) || (element % 5 === 0)).reduce((total, element) => total + element, 0);
+}
+
+
+console.log(multisum(3));      // 3
+console.log(multisum(5));      // 8
+console.log(multisum(10));     // 33
+console.log(multisum(1000));   // 234168
+</script>
+</body>
+</html>

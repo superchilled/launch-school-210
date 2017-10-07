@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 1</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 1</h1>
+<h2>Exercise 3: How Big is the Room</h2>
+<p>Build a program that asks a user for the length and width of a room in meters and then logs to the console the area of the room in both square meters and square feet.</p>
+<p>Note: 1 square meter == 10.7639 square feet</p>
+<p>Do not worry about validating the input at this time. Use the prompt() function to collect user input.</p>
+<code>
+  Enter the length of the room in meters:<br>
+  10<br>
+  Enter the width of the room in meters:<br>
+  7<br>
+  The area of the room is 70.0 square meters (753.47 square feet).
+</code>
+<script>
+var roomLength = prompt('Enter the length of the room in meters:');
+var roomWidth = prompt('Enter the width of the room in meters:');
+var roomSizeInSquareMetres = Number.parseInt(roomLength, 10) * Number.parseInt(roomWidth, 10);
+var roomSizeInSquareFeet = roomSizeInSquareMetres * 10.7639;
+
+console.log('The area of the room is ' +  String(roomSizeInSquareMetres.toFixed(2)) +
+    ' square meters (' + String(roomSizeInSquareFeet.toFixed(2)) + ' square feet).');
+</script>
+</body>
+</html>

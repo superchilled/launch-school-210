@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 2</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 2</h1>
+<h2>Exercise 9: Clean Up the Words</h2>
+<p>Given a string that consists of some words and an assortment of non-alphabetic characters, write a function that returns that string with all of the non-alphabetic characters replaced by spaces. If one or more non-alphabetic characters occur in a row, you should only have one space in the result (the result should never have consecutive spaces).</p>
+<script>
+/*
+Input: A string
+Output: A 'cleaned up' version of the string
+Rules:
+  - A cleaned up string should only consist of alphabetic characters and spaces
+  - A cleaned up string should never contain more than one consecutive space
+Algorithm:
+  1) Use the string replace method with a regex
+*/
+
+function cleanUp(str) {
+  return str.replace(/[^a-zA-Z]+/g, ' ');
+}
+
+
+console.log(cleanUp('---what\'s my +*& line?'));      // ' what s my line '
+</script>
+</body>
+</html>

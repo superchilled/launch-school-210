@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 1</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 1</h1>
+<h2>Exercise 4: Tip Calculator</h2>
+<p>Create a simple tip calculator. The program should prompt for a bill amount and a tip rate. The program must compute the tip and then log both the tip and the total amount of the bill to the console. You can ignore input validation and assume that the user will put in numbers.</p>
+<p>Example:</p>
+<code>
+  What is the bill? 200<br/>
+  What is the tip percentage? 15<br/>
+<br/>
+  The tip is $30.0<br/>
+  The total is $230.0<br/>
+</code>
+<script>
+var bill = Number.parseFloat(prompt('What is the bill?'), 10);
+var percentage = Number.parseFloat(prompt('What is the tip percentage?'), 10);
+var tip = (bill / 100) * percentage;
+var total = bill + tip;
+
+console.log('The tip is $' +  String(tip.toFixed(2)));
+console.log('The total is $' +  String(total.toFixed(2)));
+</script>
+</body>
+</html>

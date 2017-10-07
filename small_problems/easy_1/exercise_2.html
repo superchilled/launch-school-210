@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 1</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 1</h1>
+<h2>Exercise 2: Even Numbers</h2>
+<p>Log the even numbers from 1 to 99, inclusive, to the console. Log all numbers on separate lines.</p>
+<h2>Answer</h2>
+<p>This is basically the same as the previous problem but with a differnt value for the initialization and a different value for the condition.</p>
+<p>The conditional in the 'further exploration' solution would also be slightly different</p>
+<script>
+for (var i = 2; i < 99; i += 2) {
+  console.log(i);
+}
+
+// Further exploration
+function logEvens(start, end) {
+  for (var i = start; i <= end; i++) {
+    if (i % 2 === 0) {
+      console.log(i);
+    }
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 2</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 2</h1>
+<h2>Exercise 4: Fibonacci Number Location by Length</h2>
+<p>The Fibonacci series is a series of numbers (1, 1, 2, 3, 5, 8, 13, 21, ...) such that the first 2 numbers are 1 by definition, and each subsequent number is the sum of the two previous numbers. This series appears throughout the natural world.</p>
+
+<p>Computationally, the Fibonacci series is a simple series, but the results grow at an incredibly rapid rate. For example, the 100th Fibonacci number is 354,224,848,179,261,915,075 -- that's enormous, especially considering that it takes 6 iterations just to find the first 2 digit Fibonacci number.</p>
+
+<p>Write a function that calculates and returns the index of the first Fibonacci number that has the number of digits specified as an argument. (The first Fibonacci number has index 1.)</p>
+<script>
+/*
+Input: An integer number
+Output: An 'index' which represents the position in the sequence of Fibonacci numbers of the firstnumber matching the condition
+  Rules:
+    - The condition to be matched is that the number has a number of digits equal to the input number
+Algorithm:
+  1) Declare an index varaible assigned to 1
+  2) Declare a previousNum variable assigned to 0
+  3) Declare a currentNum variable equal to 1
+  4) Declare a function which calculates the number of digits in a number passed to it (transforms to string and calls length)
+  5) Loop while number of digits in current number not equalto input number. On each iteration:
+    - Declare a varaible called new number and assign it to current number + previous number
+    - Assign previous number ot current number
+    - Assign current number to new number
+    - Increment index by 1
+  6) return index
+*/
+
+function findFibonacciIndexByLength(digits) {
+  var idx = 1;
+  var previousNum = 0;
+  var currentNum = 1;
+  while (String(currentNum).length < digits) {
+    var  newNum = previousNum + currentNum;
+    previousNum = currentNum;
+    currentNum = newNum;
+    idx++;
+  }
+  return idx;
+}
+
+console.log(findFibonacciIndexByLength(2));  // 7
+console.log(findFibonacciIndexByLength(10)); // 45
+console.log(findFibonacciIndexByLength(16)); // 74
+</script>
+</body>
+</html>

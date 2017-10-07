@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 1</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 1</h1>
+<h2>Exercise 10: ASCII String Value</h2>
+<p>Write a function that determines and returns the ASCII string value of a string passed in as an argument. The ASCII string value is the sum of the ASCII values of every character in the string. (You may use String.prototype.charCodeAt() to determine the ASCII value of a character.).</p>
+<script>
+/*
+Input: A string
+Output: The sum of the ASCII values of all the characters in teh string
+Algorithm:
+  1) Split teh input string into an array of characters
+  2) Map the characters to their ASCII vlaues using charCodeAt()
+  3) Reduce the mapped array to total the values
+*/
+
+function asciiValue(str) {
+  return str.split('').map(elem => elem.charCodeAt()).reduce((sum, value) => sum + value, 0);
+}
+
+console.log(asciiValue('Four score'));         // 984
+console.log(asciiValue('Launch School'));      // 1251
+console.log(asciiValue('a'));                  // 97
+console.log(asciiValue(''));                   // 0
+</script>
+</body>
+</html>

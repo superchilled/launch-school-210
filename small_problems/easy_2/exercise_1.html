@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 2</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 2</h1>
+<h2>Exercise 1: Ddaaiillyy ddoouubbllee</h2>
+<p>Write a function that takes a string argument and returns a new string that contains the value of the original string with all consecutive duplicate characters collapsed into a single character.</p>
+<script>
+/*
+Input: A string
+Output: A string with consecutive repeating characters removed
+Algorithm:
+  1) Declare a return varliable assigned to an empty string
+  2) Iterate through the input string. For each iteration:
+    - Compare the value of the character in the string at the index for that iteration to the character at the index for the iteration + 1
+     - If they are not equal, concatenate the current value to the return string
+  3) return the return string
+*/
+
+function crunch(str) {
+  var returnString = '';
+  for (var i = 0; i < str.length; i++) {
+    if (str[i] !== str[i + 1]) {
+      returnString += str[i];
+    }
+  }
+  return returnString;
+}
+
+console.log(crunch('ddaaiillyy ddoouubbllee'));        // 'daily double'
+console.log(crunch('4444abcabccba'));                  // '4abcabcba'
+console.log(crunch('ggggggggggggggg'));                // 'g'
+console.log(crunch('a'));                              // 'a'
+console.log(crunch(''));                               // ''
+</script>
+</body>
+</html>

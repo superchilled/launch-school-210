@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 2</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 2</h1>
+<h2>Exercise 10: What Century is That</h2>
+<p>Write a function that takes a year as input and returns the century. The return value should be a string that begins with the century number, and ends with st, nd, rd, or th as appropriate for that number.</p>
+
+<p>New centuries begin in years that end with 01. So, the years 1901-2000 comprise the 20th century.</p>
+<script>
+/*
+Input: A number representing a year
+Output: A string representing a 'century'
+Rules:
+  - A 'century' comprises of
+    - a century number, e.g. 18, 19, 20
+    - a century suffix st, nd, rd, th
+    - century number is determined by
+      - dividing the year by 100 and then determining the next highese number (using Math.ceil)
+    - a suffix is determined by
+      - If the year ends in a 1 then use 'st' unless the year end in 11, 12, 13, in which case use 'th'
+      - If the year ends in 2 use 'nd'  unless the year end in 11, 12, 13, in which case use 'th'
+      - If the year ends in 3 usee 'rd' unless the year end in 11, 12, 13, in which case use 'th'
+      - In all other cases use 'th'
+Main Algorithm:
+  1) Declare a variable for centuryNumber and set it to the input year divided by 100 and rounded to the next greatest integer, then converted to a string
+  2) Declare a variable for centurySuffix and assign it the result of a calculateCenturySuffix heper function
+  3) reurn centuryNumber concatenated with calculateCenturySuffix
+--centurySuffix--
+Input: A number representing a year
+Output: A string representing the appropraite suffix for  the century that year is in, either 'st', 'nd', 'rd' or 'th' (see main 'rules')
+Algorithm:
+  1) Concert the year to a string
+  2) Declare a variable last two didgits, and assign to the last two digits of the string
+  3) Declare a variable last digit and assign to the last digit of the string
+  4) Use a series of 'if/ else' clauses to return the appropraite suffix:
+    - if the last two digits is one of '11', '12' or '13' return 'th'
+    - if the last digit is '1' return 'st'
+    - if the last digit is '2' return 'nd'
+    - if the last digit is '3' return 'rd'
+    - otherwise return 'th'
+*/
+
+function calculateCenturySuffix(year) {
+  var yearString = String(year);
+  var lastDigit = yearString.slice(yearString.length -1);
+  var lastTwoDigits = yearString.slice(yearString.length -2);
+  if (['11', '12', '13'].includes(lastTwoDigits)) {
+    return 'th';
+  } else if (lastDigit === '1') {
+    return 'st';
+  } else if (lastDigit === '2') {
+    return 'nd';
+  } else if (lastDigit === '3') {
+    return 'rd';
+  } else {
+    return 'th';
+  }
+}
+
+function century(year) {
+  var centuryNumber = Math.ceil(year / 100).toString();
+  var centurySuffix = calculateCenturySuffix(centuryNumber);
+  return centuryNumber + centurySuffix;
+}
+
+console.log(century(2000));        // '20th'
+console.log(century(2001));        // '21st'
+console.log(century(1965));        // '20th'
+console.log(century(256));         // '3rd'
+console.log(century(5));           // '1st'
+console.log(century(10103));       // '102nd'
+console.log(century(1052));        // '11th'
+console.log(century(1127));        // '12th'
+console.log(century(11201));       // '113th'
+
+</script>
+</body>
+</html>

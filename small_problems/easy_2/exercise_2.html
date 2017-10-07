@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 2</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 2</h1>
+<h2>Exercise 2: Bannerizer</h2>
+<p>Write a function that will take a short line of text, and write it to the console log within a box.</p>
+<script>
+/*
+Input: A string
+Output: A 'banner' containing the string
+  Rules:
+    - the 'banner' is essentially a string diplayed over 5 lines:
+      - Line 1 consists of a '+', then a number of '-' equal to the string length + 2, then another '+', then a newline character
+      - Line 2 constists of a '|', then a number of ' ' equal to the string length + 2, then another '|', then a newline character
+      - Line 3 consists of a '|', then a ' ', then the inout string, then a ' ', then another '|', then a newline character
+      - Line 4 constists of a '|', then a number of ' ' equal to the string length + 2, then another '|', then a newline character
+      - Line 1 consists of a '+', then a number of '-' equal to the string length + 2, then another '+', then a newline character
+Algorithm:
+  1) Declare a variable for the border rows and assign it to '+' + a number of '-' equal to input string length + 2 + '+'
+  2) Declare a spacer row varaible and assign it to '|' + a number of '-' equal to input string length + 2 + '|'
+  3) Declare a text row variable and assign it to '|' + ' ' + input string + ' ' + '|'
+  4) Return border row + '\n' + spacer ro + '\n' + text row + '\n' + spacer row + '\n' + border row
+*/
+
+function logInBox(str) {
+  var borderRow = '+' + '-'.repeat(str.length + 2) + '+';
+  var spacerRow = '|' + ' '.repeat(str.length + 2) + '|';
+  var textRow = '|' + ' ' + str + ' ' + '|';
+  var banner =  borderRow + '\n' + spacerRow + '\n' + textRow + '\n' +
+                  spacerRow + '\n' + borderRow;
+  console.log(banner);
+}
+
+logInBox('To boldly go where no one has gone before.');
+
+/* will log on the console:
+
++--------------------------------------------+
+|                                            |
+| To boldly go where no one has gone before. |
+|                                            |
++--------------------------------------------+
+
+*/
+
+logInBox('');
+
+/* will log on the console:
+
++--+
+|  |
+|  |
+|  |
++--+
+
+*/
+</script>
+</body>
+</html>

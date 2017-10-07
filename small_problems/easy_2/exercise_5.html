@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 2</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 2</h1>
+<h2>Exercise 5: Right Triangles</h2>
+<p>Write a function that takes a positive integer, n, as an argument, and logs a right triangle whose sides each have n stars. The hypotenuse of the triangle (the diagonal side in the images below) should have one end at the lower-left of the triangle, and the other end at the upper-right.</p>
+<script>
+/*
+Input: an integer number
+Output: A log of strings, the number of strings equl to the input number
+  Rules:
+    - Each string has a number of characters equal to the input number
+      - The characters in the first string are (width - 1 * ' ') + '*'
+      - The characters in the last string are width * '*'
+      - The intermediate stings decrement the number of spaces by 1 and increment the number of stars by one each time
+Algorithm:
+  1) Declare a variable called spaces assigned to width - 1
+  2) Declare a variable called stars assigned to 1
+  3) Loop through from 1 until the width. On each iteration:
+    - log ' ' repated spaces times concatenated with '*' repeated stars times
+*/
+
+function triangle(width) {
+  var spaces = width - 1;
+  var stars = 1;
+  for (var i = 1; i <= width; i++) {
+    var line = ' '.repeat(spaces) + '*'.repeat(stars);
+    console.log(line);
+    spaces--;
+    stars++;
+  }
+}
+
+triangle(5);
+
+/* logs:
+
+    *
+   **
+  ***
+ ****
+*****
+
+*/
+
+triangle(9);
+
+/* logs:
+
+        *
+       **
+      ***
+     ****
+    *****
+   ******
+  *******
+ ********
+*********
+*/
+</script>
+</body>
+</html>

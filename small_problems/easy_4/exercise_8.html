@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 4</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 4</h1>
+<h2>Exercise 8: Digits List</h2>
+<p>Write a function that takes one argument, a positive integer, and returns a list of the digits in the number.</p>
+<script>
+/*
+Input: A positive integer number
+Output: An array of digits, which are all the individual digits in the number
+Rules: The input number is a positive integer
+Algorithm:
+  1) Return the input number, converted to a string, split into characters and then each character mapped back to a number.
+*/
+
+function digitList(num) {
+  return String(num).split('').map(elem => Number.parseInt(elem));
+}
+
+
+console.log(digitList(12345));       // [1, 2, 3, 4, 5]
+console.log(digitList(7));           // [7]
+console.log(digitList(375290));      // [3, 7, 5, 2, 9, 0]
+console.log(digitList(444));         // [4, 4, 4]
+</script>
+</body>
+</html>

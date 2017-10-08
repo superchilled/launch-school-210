@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 4</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 4</h1>
+<h2>Exercise 9: How Many</h2>
+<p>Write a function that counts the number of occurrences of each element in a given array. Once counted, log each element alongside the number of occurrences.</p>
+<script>
+/*
+Input: An array of strings, some of which occur more than once
+Output: Console output in the form 'string => num' which lists each string and the number of times it occurs in the array
+Algorithm:
+  1) Declare a count variable assigned to an empty object
+  2) iterate thorugh the array, on each iteration
+    - if the value already exists as a key in the object, increment tht key's value by 1
+    - if the value doesn't already exist as a key, assign that key a vlaue of 1
+  3) Iterate through the keys of the object, for each key, log the key and value in the form specified
+*/
+
+function countOccurrences(arr) {
+  var occurences = {};
+  arr.forEach(function(elem) {
+    if (occurences[elem]) {
+      occurences[elem] += 1;
+    } else {
+      occurences[elem] = 1;
+    }
+  });
+  Object.keys(occurences).forEach(elem => console.log(`${elem} => ${occurences[elem]}`));
+}
+
+var vehicles = ['car', 'car', 'truck', 'car', 'SUV', 'truck', 'motorcycle', 'motorcycle', 'car', 'truck'];
+countOccurrences(vehicles);
+
+/* console output
+car => 4
+truck => 3
+SUV => 1
+motorcycle => 2
+*/
+</script>
+</body>
+</html>

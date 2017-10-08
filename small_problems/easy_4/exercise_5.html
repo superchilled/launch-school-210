@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 4</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 4</h1>
+<h2>Exercise 5: Combine Two Lists</h2>
+<p>Write a function that combines two Arrays passed as arguments, and returns a new Array that contains all elements from both Array arguments, with the elements taken in alternation.</p>
+
+<p>You may assume that both input Arrays are non-empty, and that they have the same number of elements.</p>
+<script>
+/*
+Input: Two arrays
+Output: A single array with the elements from the two arrays interleaved
+Rules:
+  - Both arrays contain 1 or more lements
+  - Both arrays contain the same number of elements
+  - The return array should start with the first element of the first array
+Algorithm:
+  1) Declare a return element assigned to an emtpy array
+  2) Loop through each element in the first array. ON each iteration
+    - push the lement for that iteration to the return array
+    - push the element at the equivalent index in teh second array to the return array
+  3) return the return array
+*/
+
+function interleave(arr1, arr2) {
+  var returnArr = [];
+  arr1.forEach(function(elem, idx) {
+    returnArr.push(elem, arr2[idx]);
+  });
+  return returnArr;
+}
+
+console.log(interleave([1, 2, 3], ['a', 'b', 'c'])); // [1, 'a', 2, 'b', 3, 'c']
+</script>
+</body>
+</html>

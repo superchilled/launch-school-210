@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 4</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 4</h1>
+<h2>Exercise 7: Multiply Lists</h2>
+<p>Write a function that takes two Array arguments, in which each Array contains a list of numbers, and returns a new Array that contains the product of each pair of numbers from the arguments that have the same index. You may assume that the arguments contain the same number of elements.</p>
+<script>
+/*
+Input: Two arrays of integers
+Output: One array of numers, where each number is the product of the two corresponding numbers from the input arrays
+Rules:
+  - The two arrays contan the same number of elements
+Algorithm:
+    1) Return the first array with each element mapped to the product of that element and the equivalent element (at the same index) from the second array
+*/
+
+function multiplyList(arr1, arr2) {
+  return arr1.map((elem, idx) => elem * arr2[idx]);
+}
+
+console.log(multiplyList([3, 5, 7], [9, 10, 11]));  // [27, 50, 77]
+</script>
+</body>
+</html>

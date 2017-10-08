@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 4</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 4</h1>
+<h2>Exercise 10: Array Average</h2>
+<p>Write a function that takes one argument, an array containing integers, and returns the average of all numbers in the array, rounded downward to the integer component of the average. The array will never be empty and the numbers will always be positive integers.</p>
+
+<script>
+/*
+Input: An array of integers
+Output: An average of all the integer values rounded down to the nearest whole number
+Rules:
+  - There is always at least one integer in the array
+  - The integers are laways positive numbers
+Algorithm:
+  1) Declare a variable and assign it to the return of reducing the array by summing the values
+  2) Return the floor of the variable divided by the array length
+*/
+
+function average(arr) {
+  var sum = arr.reduce((total, val) => total + val);
+  return Math.floor(sum / arr.length);
+}
+
+console.log(average([1, 5, 87, 45, 8, 8]));    // 25
+console.log(average([9, 47, 23, 95, 16, 52])); // 40
+</script>
+</body>
+</html>

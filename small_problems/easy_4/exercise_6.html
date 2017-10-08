@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 4</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 4</h1>
+<h2>Exercise 6: Multiplicative Average</h2>
+<p>Write a function that takes an Array of integers as input, multiplies all of the numbers together, divides the result by the number of entries in the Array, and returns the result as a String with the value rounded to 3 decimal places.</p>
+<script>
+/*
+Input: An array of integers
+Output: A string representing the average of the product of the integers in the array
+Rules:
+  - To produce the average, multiply all the integers togeether and divide by the number of integers
+  - The value should be rounded to 3 decimal places
+Algorithm:
+  1) Declare a variable for average and assign it to the return of a reduce call on the inoput array divided by array length
+  2) Round the variable to 3 decimal places and return as a string
+*/
+
+function showMultiplicativeAverage(arr) {
+  var average = arr.reduce((prod, val) => prod * val) / arr.length;
+  return average.toFixed(3);   
+}
+
+console.log(showMultiplicativeAverage([3, 5]));                 // '7.500'
+console.log(showMultiplicativeAverage([2, 5, 7, 11, 13, 17]));  // '28361.667'
+</script>
+</body>
+</html>

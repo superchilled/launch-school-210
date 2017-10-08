@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 4</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 4</h1>
+<h2>Exercise 1: Cute Angles</h2>
+<p>Write a function that takes a floating point number that represents an angle between 0 and 360 degrees and returns a String that represents that angle in degrees, minutes, and seconds. You should use a degree symbol (˚) to represent degrees, a single quote (') to represent minutes, and a double quote (") to represent seconds. There are 60 minutes in a degree, and 60 seconds in a minute.</p>
+<script>
+/*
+Input: A floating point number, between 0 and 360
+Output: A string comprising of an integer number of degrees, minutes and seconds
+Rules:
+  - The absolute part of the floating point number represents the degrees
+  - The fractional part of the floating point number represents the minutes and seconds
+  - When the fractional part is multiplied by sixty, the absolute part represents minutes and the fractional part seconds
+  - When the franctional part of that calculation is multiplied by 60, the absolute part represents the seconds
+Algorithm:
+  1) Get the absolute degrees by calling Math.floor() on the input.
+  2) Get the fractional degrees part by subtracting the absolute degrees from the input
+  3) Get the floating point minutes by multiplying the fractional degrees by 60
+  4) get the absolute minutes by calling math floor on the floating point minutes
+  5) get the fractional minutes part by subtracting the absolute minutes from the floating point minutes
+  6) get the floating point seconds by multiplying the fractional minutes by 60
+  7) get the absolute seconds by calling Math.floor() on the floating point seconds
+  8) Return all the relevant values appropriately concatenated into a string
+*/
+
+function stringifyTime(num) {
+  if (num < 10) {
+    return '0' + String(num);
+  } else {
+    return String(num);
+  }
+}
+
+function dms(num) {
+  var absDegrees = Math.floor(num);
+  var fpMinutes = (num - absDegrees) * 60;
+  var absMinutes = Math.floor(fpMinutes);
+  var fpSeconds = (fpMinutes - absMinutes) * 60;
+  var absSeconds = Math.floor(fpSeconds);
+  return `${absDegrees}\u00B0${stringifyTime(absMinutes)}'${stringifyTime(absSeconds)}"`
+}
+
+console.log(dms(30));        // 30°00'00"
+console.log(dms(76.73));     // 76°43'48"
+console.log(dms(254.6));     // 254°35'59"
+console.log(dms(93.034773)); // 93°02'05"
+console.log(dms(0));         // 0°00'00"
+console.log(dms(360));       // 360°00'00" or 0°00'00"
+</script>
+</body>
+</html>

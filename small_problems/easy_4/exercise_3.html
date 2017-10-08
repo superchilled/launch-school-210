@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 4</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 4</h1>
+<h2>Exercise 3: Halvsies</h2>
+<p>Write a function that takes an Array as an argument, and returns an array that contains 2 elements, each of which is an Array. Put the first half of the original Array elements in the first element of the return value, and put the second half in the second element. If the original array contains an odd number of elements, place the middle element in the first half Array.</p>
+<script>
+/*
+Input: An array
+Output: An array containing two sub-arrays
+Rules:
+  - The frst sub array contains the first 'half' of the elements, the second sub array contains the second 'half' of the elements
+  - If the input array is of even length, the two sub arrays are of equal length
+  - If the input array is of odd length, the first sub array is longer by 1 element, so the 'half-way' point occurs at the ceiling of the array length / 2
+Algorithm:
+  1) Declare a return variable assigned to an empty array
+  2) Calculate the 'halfway point' and assign this to a variable
+  3) Declare a subArry1 var assigned to the input array sliced from the start to the halfway point
+  4) Declare a subArry2 var assigned to an empty array sliced from the halfway point to the end
+  5) Push both sub arrays to the return array and return it
+*/
+
+function halvsies(arr) {
+  var returnArr = [];
+  var midpoint = Math.ceil(arr.length / 2);
+  var subArr1 = arr.slice(0, midpoint);
+  var subArr2 = arr.slice(midpoint);
+  return [subArr1, subArr2];
+}
+
+console.log(halvsies([1, 2, 3, 4]));    // [[1, 2], [3, 4]]
+console.log(halvsies([1, 5, 2, 4, 3])); // [[1, 5, 2], [4, 3]]
+console.log(halvsies([5]));             // [[5], []]
+console.log(halvsies([]));              // [[], []]
+</script>
+</body>
+</html>

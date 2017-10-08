@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 5</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 5</h1>
+<h2>Exercise 7: Name Swapping</h2>
+<p>Write a function that takes a first name, a space, and a last name passed as a single String argument, and returns a string that contains the last name, a comma, a space, and the first name.</p>
+<script>
+/*
+Input: A string, conmprised of two words: first name and last name
+Output: A string with the two words swapped in position and comma separated
+Rules:
+  - The input string comprises of two words separated by a space
+Algorithm:
+    1) Split the string on space to produce an array of words, reverse the array and join with a comma and space, and return it
+*/
+
+function swapName(name) {
+  return name.split(' ').reverse().join(', ');
+}
+
+console.log(swapName('Joe Roberts')); // 'Roberts, Joe'
+</script>
+</body>
+</html>

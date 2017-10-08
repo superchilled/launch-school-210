@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 5</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 5</h1>
+<h2>Exercise 8: Sequence Count</h2>
+<p>Create a function that takes two integers as arguments. The first argument is a count, and the second is the first number of a sequence that your function will create. The function returns an Array that contains the same number of elements as the count argument, while the values of each element will be multiples of the starting number.</p>
+
+<p>You may assume that the count argument will always have a value of 0 or greater, while the starting number can be any integer value. If the count is 0, return an empty list.</p>
+<script>
+/*
+Input: Two integers: a count and a starting point for a sequence
+Output: An array of numbers with a number of array elements equal to count, followign the sequence
+Rules:
+  - Count is always a positive integer (though can be 0)
+  - start point can be positive or negative
+  - each number in the sequence is a product of the starting number and its position in the sequence
+Algorithm:
+  1) Create and return an array using ArrayFrom, of length equal to the count, with its elements mapped using a map function that adds 1 to the index and then multiplies it by the start number
+*/
+
+function sequence(count, startNum) {
+  return Array.from({length: count}, (val, idx) => (idx + 1) * startNum);
+}
+
+console.log(sequence(5, 1));       // [1, 2, 3, 4, 5]
+console.log(sequence(4, -7));      // [-7, -14, -21, -28]
+console.log(sequence(3, 0));       // [0, 0, 0]
+console.log(sequence(0, 1000000)); // []
+</script>
+</body>
+</html>

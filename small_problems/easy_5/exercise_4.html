@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 5</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 5</h1>
+<h2>Exercise 4: Get The Middle Character</h2>
+<p>Write a function that takes a non-empty string argument, and returns the middle character or characters of the argument. If the argument has an odd length, you should return exactly one character. If the argument has an even length, you should return exactly two characters.</p>
+<script>
+/*
+Input: A string
+Output: The 'middle character(s)' of the string
+Rules:
+  - The string always has at least one character
+  - If the string is odd length return one character
+  - If the string is even length return two characters
+Algorithm:
+  1) Calculate the start index of the substring and assign to a var
+  2) Calculate the end index of the substring and assign to a var
+  3) Extract the substring and return it
+*/
+
+function centerOf(str) {
+  start = Math.ceil(str.length / 2) - 1;
+  end = Math.floor(str.length / 2) + 1;
+  return str.substring(start, end);
+}
+
+
+
+
+console.log(centerOf('I love ruby'));    // 'e'
+console.log(centerOf('Launch School'));  // ' '
+console.log(centerOf('Launch'));         // 'un'
+console.log(centerOf('Launchschool'));   // 'hs'
+console.log(centerOf('x'));              // 'x'
+</script>
+</body>
+</html>

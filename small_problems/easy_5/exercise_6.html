@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 5</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 5</h1>
+<h2>Exercise 6: Counting Up</h2>
+<p>Write a function that takes an integer argument, and returns an Array of all integers, in sequence, between 1 and the argument.</p>
+
+<p>You may assume that the argument will always be a valid integer that is greater than 0.</p>
+<script>
+/*
+Input: An integer
+Output: An array of integers in sequence from 1 to the input integer
+Rules:
+  - the input integer is a valid integer greater than 0
+Algorithm:
+  1) Generate an array using array from, passing it a new array with a length of the input integer and a map function mapping each value to index plus one
+*/
+
+function sequence(int) {
+  return Array.from({length: int}, (val, idx) => idx + 1);
+}
+
+console.log(sequence(5)); // [1, 2, 3, 4, 5]
+console.log(sequence(3)); // [1, 2, 3]
+console.log(sequence(1)); // [1]
+</script>
+</body>
+</html>

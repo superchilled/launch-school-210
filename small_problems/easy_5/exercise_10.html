@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 5</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 5</h1>
+<h2>Exercise 10: Reverse It Part 2</h2>
+<p>Write a function that takes one argument, a string containing one or more words, and returns the given string with all five or more letter words reversed. Each string will consist of only letters and spaces. Include spaces only when more than one word is present.</p>
+
+<script>
+/*
+Input: A string of words
+Output: A string of words, some of which have their letters reversed
+Rules:
+  - The input string always has at least one word
+  - Only words containing five or more letters should have their letters reversed
+Algorithm:
+  1) Split the string into an array of words, map the array:
+    - If the word has less than five letters return the word as is
+    - if the word has five or more letters, reverse the letters using a helper function
+  2) Return the word joined with spaces
+*/
+
+function reverseLetters(word) {
+  return word.split('').reverse().join('');
+}
+
+function reverseWords(sentence) {
+  var sentenceArr = sentence.split(' ').map(function(word) {
+    if (word.length >= 5) {
+      return reverseLetters(word);
+    } else {
+      return word;
+    }
+  });
+  return sentenceArr.join(' ');
+}
+
+console.log(reverseWords('Professional'));          // lanoisseforP
+console.log(reverseWords('Walk around the block')); // Walk dnuora the kcolb
+console.log(reverseWords('Launch School'));         // hcnuaL loohcS
+</script>
+</body>
+</html>

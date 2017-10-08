@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 5</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 5</h1>
+<h2>Exercise 5: Combine Two Lists</h2>
+<p>Write a function that takes a number as an argument. If the argument is a positive number, return the negative of that number. If the number negative, return the original number.</p>
+<script>
+/*
+Input: A number
+Output: A negative version of the number
+Rules:
+  - If the nuber is positive return a negative of that number
+  - If the number is negative return the input number (i.e. the negative)
+Algorithm:
+  1) Check if the number is less than 0
+    - if so return the number
+    - if not return the number multipied by -1
+*/
+
+function negative(num) {
+  if (num < 0) {
+    return num;
+  } else {
+    return num * -1;
+  }
+}
+
+console.log(negative(5));  // -5
+console.log(negative(-3)); // -3
+console.log(negative(0));  // -0
+</script>
+</body>
+</html>

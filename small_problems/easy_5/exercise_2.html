@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 5</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 5</h1>
+<h2>Exercise 2: Double Char Part 2</h2>
+<p>Write a function that takes a string, and returns a new string in which it doubles every consonant character. It doesn't double vowels (a,e,i,o,u), digits, punctuation, and whitespace.</p>
+<script>
+/*
+Input: A string
+Output: A new string with every character duplicated in order, e.g. 'ab' => 'aabb'
+Algorithm:
+  1) Split the string into an array of chars and then map each char in the chars array
+      -tmap the cahr to the char concatenated to itself, if the char is a consonant character, otherwise just map it to itself
+  2) return the joined array
+*/
+
+function doubleConsonants(str) {
+  var charsArray = str.split('').map(function(elem) {
+    if (elem.match(/[b-df-hj-np-tv-z]/)) {
+      return elem.repeat(2);
+    } else {
+      return elem;
+    }
+  });
+  return charsArray.join('');
+}
+
+console.log(doubleConsonants('String'));       // "SSttrrinngg"
+console.log(doubleConsonants('Hello-World!')); // "HHellllo-WWorrlldd!"
+console.log(doubleConsonants('July 4th'));     // "JJullyy 4tthh"
+console.log(doubleConsonants(''));             // ""
+</script>
+</body>
+</html>

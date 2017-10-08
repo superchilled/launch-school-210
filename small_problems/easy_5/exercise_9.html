@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 5</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 5</h1>
+<h2>Exercise 9: Reverse It Part 1</h2>
+<p>Write a function that takes one argument, a string, and returns the same string with the words in reverse order.</p>
+<script>
+/*
+Input: A string of words
+Output: A string of words with the words in reverse order
+Algorithm:
+  1) Split the string on empty spaces to form an array of words, reverse the array and join with empty spaces
+*/
+
+function reverseSentence(str) {
+  return str.split(' ').reverse().join(' ');
+}
+
+console.log(reverseSentence(''));                     // ''
+console.log(reverseSentence('Hello World'));          // 'World Hello'
+console.log(reverseSentence('Reverse these words'));  // 'words these Reverse'
+</script>
+</body>
+</html>

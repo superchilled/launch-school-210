@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 3</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 3</h1>
+<h2>Exercise 1: How Old is Teddy</h2>
+<p>Build a program that randomly generates and logs Teddy's age to the console. Have the age be a random number between 20 and 200 (inclusive).</p>
+
+<p>Example Output</p>
+<code>
+Teddy is 69 years old!
+</code>
+<script>
+/*
+Input: n/a
+Output: Log to the console a string 'Teddy is n years old!', where 'n' represents a renadomly generated number betwen 20 and 200 (inc)
+Algorithm:
+  1) Declare a variable and assign it ot a random number between 20 and 200
+    - Use the Math.random method to generate the number
+  2) Log the string to the console concatenating the number converset to a string
+*/
+
+function generateAge(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+console.log('Teddy is ' + String(generateAge(20, 201)) + ' years old!');
+</script>
+</body>
+</html>

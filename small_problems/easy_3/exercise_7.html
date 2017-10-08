@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 3</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 3</h1>
+<h2>Exercise 7: Running Totals</h2>
+<p>Write a function that takes an array of numbers, and returns an array with the same number of elements with each elements value being running total from the original array.</p>
+<script>
+/*
+Input: An array of numbers
+Output: An array witht he same number of elements, but each element being replaced by the 'running total' at that point in the array
+Rules: running total is calculated by adding all the elements in the array up to that point
+Algorithm:
+      1) Map each item in the array. The function to map should:
+        - slice the array from teh start to the current index
+        - reduce the sliced array by summing the values
+*/
+
+function runningTotal(arr) {
+  return arr.map((_, idx) =>
+    arr.slice(0, idx + 1).reduce((total, val) => total + val)
+  );
+}
+
+console.log(runningTotal([2, 5, 13]));             // [2, 7, 20]
+console.log(runningTotal([14, 11, 7, 15, 20]));    // [14, 25, 32, 47, 67]
+console.log(runningTotal([3]));                    // [3]
+console.log(runningTotal([]));                     // []
+</script>
+</body>
+</html>

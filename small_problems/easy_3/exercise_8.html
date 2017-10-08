@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 3</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 3</h1>
+<h2>Exercise 8: Grade book</h2>
+<p>Given a string of words separated by spaces, write a function that swaps the first and last letters of every word.</p>
+
+<p>You may assume that every word contains at least one letter, and that the string will always contain at least one word. You may also assume that each string contains nothing but words and spaces, and that there are no leading, trailing, or repeated spaces.</p>
+<script>
+/*
+Input: A string of words
+Output: A string of words, with each word having the first and last letters swapped
+Rules:
+  - Input strings contain one of more words, and contain only words and spaces
+  - Words contain one or more letters
+Algorithm:
+  1) Split the sctring into words
+  2) Map the split string, the return value of the map function being the word for that iteration with the first and last letters swapped (use a helper function to acheive this)
+Letter swap helper function:
+Input: a word consisting of one or more characters
+Output: The same word but with the first and last letters swapped
+Algorithm:
+  1) Split the string into an array of characters
+  2) set the first index of the array to the last character, and the last index tot he first character
+  3) return the joined array
+*/
+
+function switchFirstAndLastLetters(word) {
+  var charsArray = word.split('');
+  charsArray[0] = word[word.length - 1];
+  charsArray[word.length - 1] = word[0];
+  return charsArray.join('');
+}
+
+function swap(sentence) {
+  return sentence.split(' ').map((word) => switchFirstAndLastLetters(word)).join(' ');
+}
+
+console.log(swap('Oh what a wonderful day it is'));    // 'hO thaw a londerfuw yad ti si'
+console.log(swap('Abcde'));                            // 'ebcdA'
+console.log(swap('a'));                                // 'a'
+</script>
+</body>
+</html>

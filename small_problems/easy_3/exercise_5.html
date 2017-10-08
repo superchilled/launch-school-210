@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 3</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 3</h1>
+<h2>Exercise 5: Palindromic Strings Part 2</h2>
+<p>Write another function that returns true if the string passed as an argument is a palindrome, false otherwise. This time, however, your function should be case-insensitive, and it should ignore all non-alphanumeric characters. If you wish, you may simplify things by calling the isPalindrome function you wrote in the previous exercise.</p>
+<script>
+/*
+Input: A string
+Output: A boolean
+Rules:
+  - A palindrome reads the same back to front
+    - the first 'half' is the characters from the start to the length of the string / 2 rounded down
+    - the second 'half' is the characters from length of the string / 2 rounded up to the entered
+    - in an odd length string we can miss out the 'middle' character since it is the same for both
+  - Case matters
+Algorithm:
+  1) Use regex to remove all non alphanumerics
+  2) Converst the string to lowercase
+  3) call the isPalindrome method on the converted string
+*/
+
+function isPalindrome(str) {
+  var reversedString = str.split('').reverse().join('');
+  return str === reversedString;
+}
+
+function isRealPalindrome(str) {
+  str = str.replace(/\W/g, '').toLowerCase();
+  return isPalindrome(str);
+}
+
+console.log(isRealPalindrome('madam'));               // true
+console.log(isRealPalindrome('Madam'));               // true (case does not matter)
+console.log(isRealPalindrome('Madam, I\'m Adam'));    // true (only alphanumerics matter)
+console.log(isRealPalindrome('356653'));              // true
+console.log(isRealPalindrome('356a653'));             // true
+console.log(isRealPalindrome('123ab321'));            // false
+</script>
+</body>
+</html>

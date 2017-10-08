@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 3</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 3</h1>
+<h2>Exercise 3: When Will I Retire</h2>
+<p>Build a program that logs when the user will retire and how many years the user has to work till retirement.</p>
+<p>Example:</p>
+<code>
+  What is your age? 30<br/>
+  At what age would you like to retire? 70<br/>
+<br/>
+  It's 2016. You will retire in 2056.<br/>
+  You have only 40 years of work to go!<br/>
+</code>
+<script>
+/*
+Input: an integer string representing an age and an integer string representing a desired retirement age
+Output: A log of two strings to the console:
+  - A sentence stating the current year and retirement year
+  - A sentence stating the number of years left to work
+Algorithm:
+  1) Declare a variable and assign to input of age
+  2) declare a variable ans assign to input of desired retirement date
+  3) declare a variable and assign to current year (using a date object)
+  4) subtract the current age from retirement age and (converting to integers from strings as required), assign the result to yearsLeftToWork
+  5) Log the first sentnce, interpolating the current year and the current year + yearsLeftToWork
+  6) Log the second sentence interpolating the years left ot work
+*/
+
+var age = prompt('What is your age?', 10);
+var desiredRetirementAge = prompt('At what age would you like to retire?', 10);
+var date = new Date();
+var currentYear = date.getFullYear();
+var yearsLeftToWork = Number.parseInt(desiredRetirementAge) - Number.parseInt(age);
+console.log(`It's ${currentYear}. You will retire in ${currentYear + yearsLeftToWork}.`);
+console.log(`You have only ${yearsLeftToWork} years of work to go!`);
+</script>
+</body>
+</html>

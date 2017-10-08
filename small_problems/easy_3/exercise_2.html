@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 3</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 3</h1>
+<h2>Exercise 2: Searching 101</h2>
+<p>Write a program that solicits 6 numbers from the user, then logs a message that describes whether or not the 6th number appears amongst the first 5 numbers.</p>
+<p>Examples:</p>
+<code>
+  Enter the 1st number: 25<br/>
+  Enter the 2nd number: 15<br/>
+  Enter the 3rd number: 20<br/>
+  Enter the 4th number: 17<br/>
+  Enter the 5th number: 23<br/>
+  Enter the last number: 17<br/>
+<br/>
+  The number 17 appears in [25, 15, 20, 17, 23].<br/>
+</code>
+<code>
+  Enter the 1st number: 25<br/>
+  Enter the 2nd number: 15<br/>
+  Enter the 3rd number: 20<br/>
+  Enter the 4th number: 17<br/>
+  Enter the 5th number: 23<br/>
+  Enter the last number: 18<br/>
+<br/>
+ The number 18 does not appear in [25, 15, 20, 17, 23].<br/>
+</code>
+<script>
+/*
+Input: 6 numbers entered by a user
+Output: A string stating whether or not the 6th number appears in a list of the first 5 numbers
+  1) Declare a variable for the number list assigned to an empty array
+  2) Loop 5 times, promting the user for a number on each occasion, push the user input to the number list
+  3) Declare a variable for the last number and asign it to the response to a user prompt
+  4) Declare a variable for the 'judgement' part of the logged string (i.e. 'appears' or 'does not appear')
+  5) use a conditional to set the value of judgement based on whether the number list includes the last number
+  6) construct the string of the various parts ('The number' + lastNumber + 'judgement' + 'in [' + joined number list array + '].') along with suitable spaces
+  7) log the constructed string
+*/
+
+function suffixedNumber(num) {
+  num = String(num);
+  if (num === '1') {
+    return num + 'st';
+  } else if (num == '2') {
+    return num + 'nd';
+  } else if (num == '3') {
+    return num + 'rd';
+  } else {
+    return num + 'th';
+  }
+}
+
+var numberList = [];
+var lastNumber;
+var judgement;
+var sentence;
+for (var i = 1; i <= 5; i++) {
+  var num = prompt('Enter the ' + suffixedNumber(i) + ' number:');
+  numberList.push(num);
+}
+
+lastNumber = prompt('Enter the last number:');
+
+if (numberList.includes(lastNumber)) {
+  judgement = ' appears in ';
+} else {
+  judgement = ' does not appear in ';
+}
+sentence = 'The number ' + lastNumber + judgement + '[' + numberList.join(', ') + '].'
+console.log(sentence);
+</script>
+</body>
+</html>

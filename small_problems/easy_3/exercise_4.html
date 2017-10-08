@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 3</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 3</h1>
+<h2>Exercise 4: Palindromic Strings Part 1</h2>
+<p>Write a function that returns true if the string passed as an argument is a palindrome, false otherwise. A palindrome reads the same forwards and backwards. For this problem the case matters and all characters matter.</p>
+<script>
+/*
+Input: A string
+Output: A boolean
+Rules:
+  - A palindrome reads the same back to front
+    - the first 'half' is the characters from the start to the length of the string / 2 rounded down
+    - the second 'half' is the characters from length of the string / 2 rounded up to the entered
+    - in an odd length string we can miss out the 'middle' character since it is the same for both
+  - Case matters
+Algorithm:
+  1) Declare a variable for teh reversed word, assigned to the input string reveresed
+    - use split to turn into an array of characters
+    - use the reverse method of array to reverse the array
+    - use join to join back into a string
+  2) compare the two strings and return the result
+*/
+
+function isPalindrome(str) {
+  var reversedString = str.split('').reverse().join('');
+  return str === reversedString;
+}
+
+console.log(isPalindrome('madam'));                    // true
+console.log(isPalindrome('Madam'));                    // false (case matters)
+console.log(isPalindrome('madam i\'m adam'));          // false (all characters matter)
+console.log(isPalindrome('356653'));                   // true
+</script>
+</body>
+</html>

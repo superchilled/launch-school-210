@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Easy 3</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Easy 3</h1>
+<h2>Exercise 9: Letter Counter Part 1</h2>
+<p>Write a function that takes a string with one or more space separated words and returns an object that shows the number of words of different sizes.</p>
+
+<p>Words consist of any string of characters that do not include a space.</p>
+<script>
+/*
+Input: A string of one or more separated words
+Output: An object that shows the number of words of different sizes (keys for word lengtha and values for the number of words of that length)
+Rules:
+  - Words consist of any string characters that dono include a space
+Algorithm:
+  1) Declare a variable letterCount and assign to an empty object
+  2) Split the string on spaces to return an array
+  3) Map the array to a string represetation of the length of each word
+  4) Iterate through each item in the array. On each iteration
+    - If the key for the number string in iteration exists in the object, increment its value by one
+    - If a key does not exist, set a key in the object for that number string with a value of 1
+  5) return the object
+*/
+
+function wordSizes(str) {
+  var letterCount = {};
+  if (str.length === 0) {
+    return letterCount;
+  }
+  str.split(' ').map(val => String(val.length)).forEach(function(val) {
+    if (letterCount[val]) {
+      letterCount[val] += 1;
+    } else {
+      letterCount[val] = 1;
+    }
+  });
+  return letterCount;
+}
+
+
+console.log(wordSizes('Four score and seven.'));                       // { "3": 1, "4" : "1", "5": 1, "6": 1 }
+console.log(wordSizes('Hey diddle diddle, the cat and the fiddle!'));  // { "3": 5, "6": 1, "7": 2 }
+console.log(wordSizes('What\'s up doc?'));                             // { "6": 1, "2": 1, "4": 1 }
+console.log(wordSizes(''));                                            // {}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: List Processing</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: List Processing</h1>
+<h2>Exercise 10: Inventory Item Availability</h2>
+<p>Building on the previous exercise, write a function the returns whether an item is available. As before, the function takes in two arguments: inventoryItem and transactions. The function will return true only if the sum of the quantity for the transactions for the item is greater than zero. Notice that in the transaction object there is a movement property. Every time the movement value is out it decreases the quantity.</p>
+
+<p>You may (and should) use the transactionsFor function from the previous exercise.</p>
+
+<script>
+/*
+Input: A number and an array of objects
+Output: A boolean
+Rules:
+  - The function should return true if the summed quantity of all the objects for which the id matches the input number is positive (i.e. greater than 0)
+    - The sum is calculated by adding the quantity if the value of movement is 'in' and subtracting it if the value of movement is 'out'
+Algorithm:
+  1) Filter the input array to only the transactions whose id matches the input id
+  2) Reduce the filtered array to the summed quantity
+    - the callback function of the reduce method should:
+      - add the quantity to the total if the movement === 'in'
+      - subtract the quantity from the total if movement === 'out'
+  3) Return the return value of a > comparison of the result of the reduce call with 0
+*/
+
+function transactionsFor(id, transactions) {
+  return transactions.filter(obj => obj.id === id);
+}
+
+function isItemAvailable(id, transactions) {
+  var quantityOfItem = transactionsFor(id, transactions).reduce(function(sum, transaction) {
+    if (transaction.movement === 'in') {
+      return sum + transaction.quantity;
+    } else if (transaction.movement === 'out') {
+      return sum - transaction.quantity;
+    }
+  }, 0);
+
+  return quantityOfItem > 0;
+}
+
+var transactions = [ {id: 101, movement: 'in', quantity: 5, },
+                     {id: 105, movement: 'in', quantity: 10, },
+                     {id: 102, movement: 'out', quantity: 17, },
+                     {id: 101, movement: 'in', quantity: 12, },
+                     {id: 103, movement: 'out', quantity: 15, },
+                     {id: 102, movement: 'out', quantity: 15, },
+                     {id: 105, movement: 'in', quantity: 25, },
+                     {id: 101, movement: 'out', quantity: 18, },
+                     {id: 102, movement: 'in', quantity: 22, },
+                     {id: 103, movement: 'out', quantity: 15, },];
+
+console.log(isItemAvailable(101, transactions)); // false
+console.log(isItemAvailable(105, transactions)); // true
+</script>
+</body>
+</html>

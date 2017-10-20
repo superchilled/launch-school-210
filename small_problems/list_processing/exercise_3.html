@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: List Processing</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: List Processing</h1>
+<h2>Exercise 3: Multiply All Pairs</h2>
+<p>Write a function that takes two Array arguments in which each Array contains a list of numbers, and returns a new Array that contains the product of every pair of numbers that between the elements of the two Arrays. Sort the results in increasing value.</p>
+
+<p>You may assume that neither argument is an empty Array.</p>
+<script>
+/*
+Input: Two arrays, each containing integers
+Output: A new array containing the products of all the permutations of pairs of numbers in the two arrays, sorted in ascending numerical order
+Rules:
+  - A pair consists of one number from the first array and one from the second
+  - All the pairs from both arrays represents all the possible combinations of numbers between the arrays
+Algorithm:
+  1) Declare an variable assigned to an empty array
+  2) Iterate through all the numbers in the first array. On each iteration
+    - iterate through all the numbers in the second array. On each iteration
+      - Multiply the number for that iteration with the number for the 'outer' iteration and push it to the product array
+  3) Sort the product array and return it
+*/
+
+function multiplyAllPairs(arr1, arr2) {
+  var returnArr = [];
+  arr1.forEach(function(outerNum) {
+    arr2.forEach(function(innerNum) {
+      returnArr.push(outerNum * innerNum);
+    });
+  });
+
+  return returnArr.sort((a, b) => a - b);
+}
+
+var test1 = multiplyAllPairs([2, 4], [4, 3, 1, 2])
+console.log(test1); // [2, 4, 4, 6, 8, 8, 12, 16]
+</script>
+</body>
+</html>

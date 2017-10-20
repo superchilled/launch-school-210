@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: List Processing</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: List Processing</h1>
+<h2>Exercise 5: Leading Substrings</h2>
+<p>Write a function that returns a list of all substrings of a string that start at the beginning of the original string. It returns the substrings arranged from shortest to longest.</p>
+<script>
+/*
+Input: A string
+Output: An array of substrigs in the string, from shortest to longest
+Rules:
+  - A substring is defined as being within the outer string from the first letter,and at least one letter longest
+  - The shortest substring is the first letter
+  - The longest substring is the entire input string
+Algorithm:
+  1) Split the string into characters
+  2) Map each character as a substring of the input string from index 0 to the index of that character
+  3) Returnt he mapped string
+*/
+
+function substringsAtStart(str) {
+  return str.split('').map((elem, idx) => str.substring(0, idx + 1));
+}
+
+var test1 = substringsAtStart('abc')   // ['a', 'ab', 'abc']
+var test2 = substringsAtStart('a')     // ['a']
+var test3 = substringsAtStart('xyzzy') // ['x', 'xy', 'xyz', 'xyzz', 'xyzzy']
+
+console.log(test1);
+console.log(test2);
+console.log(test3);
+</script>
+</body>
+</html>

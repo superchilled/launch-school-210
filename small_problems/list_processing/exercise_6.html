@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: List Processing</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: List Processing</h1>
+<h2>Exercise 6: All Substrings</h2>
+<p>Write a function that returns a list of all substrings of a string. Order the returned list by where in the string the substring begins. This means that all substrings that start at position 0 should come first, then all substrings that start at position 1, and so on. Since multiple substrings will occur at each position, return the substrings at a given position from shortest to longest.</p>
+
+<p>You may (and should) use the substringsAtStart function you wrote in the previous exercise.</p>
+<script>
+/*
+Input: A string
+Output: An array of ALL substrings from the string in order
+Rules:
+  - A substring is any shorter string that appears within the larger string with its letters in sequence
+  - The substring can start anywhere in the input string and end enywhere int he input string
+Algorithm:
+  1) Split the input string an array of characters
+  2) Map each character in the array to a substring starting at the indexof the current character to the end of the input string
+  3) Map each of those substrings to the return of the substringsAtStart method
+  4) Concatenate all of the arrays and return
+*/
+
+function substringsAtStart(str) {
+  return str.split('').map((elem, idx) => str.substring(0, idx + 1));
+}
+
+function substrings(str) {
+  return str.split('').map((elem, idx) => substringsAtStart(str.substring(idx))).reduce((prev, curr) => prev.concat(curr));
+}
+
+console.log(substrings('abcde'));
+/* result
+[ 'a', 'ab', 'abc', 'abcd', 'abcde',
+  'b', 'bc', 'bcd', 'bcde',
+  'c', 'cd', 'cde',
+  'd', 'de',
+  'e' ]
+*/
+</script>
+</body>
+</html>

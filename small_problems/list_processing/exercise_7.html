@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: List Processing</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: List Processing</h1>
+<h2>Exercise 7: Palindromic Substrings</h2>
+<p>Write a function that returns a list of all substrings of a string that are palindromic. That is, each substring must consist of the same sequence of characters forwards as it does backwards. Arrange the return values in the same sequence as the substrings appear in the string. Include duplicate palindromes multiple times.</p>
+
+<p>You may (and should) use the substrings function you wrote in the previous exercise.</p>
+
+<p>For the purposes of this exercise, you should consider all characters and pay attention to case; that is, "AbcbA" is a palindrome, but neither "Abcba" nor "Abc-bA" are. In addition, assume that single characters are not palindromes.</p>
+<script>
+/*
+Input: A string
+Output: An array of all substrings that are palindromes
+Rules:
+  - Palindromes are identical forwards and backwards
+  - Single characters are not palindromes
+  - Palindromes are case sensitive
+  - All characters (even non-alphanumeric) can be part of a palindrome
+Algorithm:
+    1) transform the input string into an array of all substrings
+    2) filter the array of all substrings to only keep those that are palindromes
+      - define an 'isPalindrome' helper function
+    3) return the filtered list
+--isPalindrome
+Input: A string
+Output: a boolean
+Rules:
+  - It is a palindrome if the string is the same as the string reversed
+  - It must be longer than 1 character
+Algorithm:
+  1) If the string length is less then 1, return false
+  2) return the return of an expression which tests equality between the input string and its reversed self
+*/
+
+function substringsAtStart(str) {
+  return str.split('').map((elem, idx) => str.substring(0, idx + 1));
+}
+
+function substrings(str) {
+  return str.split('').map((elem, idx) => substringsAtStart(str.substring(idx))).reduce((prev, curr) => prev.concat(curr));
+}
+
+function isPalindrome(str) {
+  if (str.length <= 1) {
+    return false;
+  }
+  return str === str.split('').reverse().join('');
+}
+
+function palindromes(str) {
+  return substrings(str).filter(elem => isPalindrome(elem));
+}
+
+console.log(palindromes('abcd'));  // []
+console.log(palindromes('madam')); // ['madam', 'ada']
+console.log(palindromes('hello-madam-did-madam-goodbye'));
+// result
+// [ 'll', '-madam-', '-madam-did-madam-', 'madam', 'madam-did-madam', 'ada',
+//   'adam-did-mada', 'dam-did-mad', 'am-did-ma', 'm-did-m', '-did-', 'did',
+//   '-madam-', 'madam', 'ada', 'oo' ]
+
+console.log(palindromes('knitting cassettes'));
+// result
+// [ 'nittin', 'itti', 'tt', 'ss', 'settes', 'ette', 'tt' ]
+</script>
+</body>
+</html>

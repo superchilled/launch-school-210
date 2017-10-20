@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: List Processing</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: List Processing</h1>
+<h2>Exercise 2: Sum of Digits</h2>
+<p>Write a method that takes one argument, a positive integer, and returns the sum of its digits. Do this using list processing techniques.</p>
+<script>
+/*
+Input: A positive interger
+Output: Sum of digits in the integer
+Algorithm:
+  1) Convert the input integer into a string
+  2) Split the string into an array of character digits
+  3) Reduce the array, converting each string digit into an an integer during the reduce operation
+*/
+
+function sum(num) {
+  return String(num).split('').reduce((sum, num) => sum + parseInt(num, 10), 0);
+}
+
+console.log(sum(23));          // 5
+console.log(sum(496));         // 19
+console.log(sum(123456789));   // 45
+</script>
+</body>
+</html>

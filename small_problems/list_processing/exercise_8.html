@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: List Processing</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: List Processing</h1>
+<h2>Exercise 8: Grocery List</h2>
+<p>Write a function which takes a grocery list (array) of fruits with quantities and converts it into an array of the correct number of each fruit..</p>
+<script>
+/*
+Input: An array of arrays, each containing a string and a number
+Output: An array of strings, with the string from each subarray occuring as many times as the number
+Rules:
+  - the string in each subarray is at index 0
+  - the number in each sub array is as index 1
+Algorithm:
+  1) Map the array to the string in that subarray repeated as many times as the number
+  2) Concat all the sub arrays and return
+*/
+
+function buyFruit(arr) {
+  var returnArr = [];
+  arr.forEach(function(subArr) {
+    for (var i = 0; i < subArr[1]; i++) {
+      returnArr.push(subArr[0]);
+    }
+  });
+  return returnArr;
+}
+
+var test1 = buyFruit([['apples', 3], ['orange', 1], ['bananas', 2]]);
+console.log(test1); // ['apples', 'apples', 'apples', 'orange', 'bananas','bananas']
+</script>
+</body>
+</html>

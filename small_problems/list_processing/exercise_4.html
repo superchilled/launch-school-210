@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: List Processing</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: List Processing</h1>
+<h2>Exercise 4: Sum of Sums</h2>
+<p>Write a function that takes an Array of numbers and then returns the sum of the sums of each leading subsequence for that Array. You may assume that the Array always contains at least one number.</p>
+<script>
+/*
+Input: An array of numbers
+Output: An integer which is the sum of the sums of each sequence of numbers in the array
+Rules:
+  - A sequence is at least one number, and at most all the numbers in the array
+  - There are as many sequences as there are numbers in the array
+Algorithm:
+  1) Declare a return variable assigned to 0
+  2) Iterate through the input array. On each iteration:
+    - Slice the input array from index zero the the index of the current iteration
+    - Reduce the sliced array summing all the numbers in the lice
+    - Add the return of the reduce operation to the return variable
+  3) returnt he return variable
+*/
+
+function sumOfSums(arr) {
+  return arr.reduce(function(sum, elem, idx) {
+    return sum + arr.slice(0, idx + 1).reduce((innerSum, innerElem) => innerSum + innerElem);
+  }, 0);
+}
+
+
+var test1 = sumOfSums([3, 5, 2])       // (3) + (3 + 5) + (3 + 5 + 2) # -> (21)
+var test2 = sumOfSums([1, 5, 7, 3])    // (1) + (1 + 5) + (1 + 5 + 7) + (1 + 5 + 7 + 3) # -> (36)
+var test3 = sumOfSums([4])             // 4
+var test4 = sumOfSums([1, 2, 3, 4, 5]) // 35
+
+console.log(test1);
+console.log(test2);
+console.log(test3);
+console.log(test4);
+</script>
+</body>
+</html>

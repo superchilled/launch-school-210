@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: String and Text Processing</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: String and Text Processing</h1>
+<h2>Exercise 7: Staggered Caps Part 2</h2>
+<p>Modify the function from the previous exercise so it ignores non-alphabetic characters when determining whether it should uppercase or lowercase each letter. The non-alphabetic characters are still included in the return value; they just don't count when toggling the desired case.</p>
+<script>
+/*
+Input: A string
+Output: A string with letters alternately uppercased and lowercased
+Rules:
+  - Non letter characters should be ignored when tracking the alternation between cases
+Algorithm:
+    1) Split the string into an array of characters
+    2) Declare a tracking variable to decide if transformation should be upper or lower, initalize to upper
+    3) loop through the array of characters, on each iteration:
+      - If the character is a letter character, set its case according to the tracking variable and then switch the tracking variable
+      - If the character is not a letter character do nothing
+    4) Join the array into a string and return it
+*/
+
+function staggeredCase(str) {
+  var toUpper = true;
+  var returnString = '';
+  for (var i = 0; i < str.length; i++) {
+    if (!!str[i].match(/[A-Z]/i) && toUpper) {
+      returnString += str[i].toUpperCase();
+      toUpper = false;
+    } else if (!!str[i].match(/[A-Z]/i)) {
+      returnString += str[i].toLowerCase();
+      toUpper = true;
+    } else {
+      returnString += str[i];
+    }
+  }
+  return returnString;
+}
+
+console.log(staggeredCase('I Love Launch School!'));     // 'I lOvE lAuNcH sChOoL!'
+console.log(staggeredCase('ALL CAPS'));                  // 'AlL cApS'
+console.log(staggeredCase('ignore 77 the 444 numbers')); // 'IgNoRe 77 ThE 444 nUmBeRs'
+</script>
+</body>
+</html>

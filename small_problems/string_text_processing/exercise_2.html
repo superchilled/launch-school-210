@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: String and Text Processing</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: String and Text Processing</h1>
+<h2>Exercise 2: Delete Vowels</h2>
+<p>Write a function that takes an array of strings, and returns an array of the same string values without the vowels (a, e, i, o, u).</p>
+<script>
+/*
+Input: An array of strings
+Output: An array of teh same strings with the vowels removed from all the strings
+Algorithm:
+  1) Map the array. On each iteration:
+    - Replace any occurences of viwels with an empty string ''
+*/
+
+function removeVowels(arr) {
+  return arr.map(elem => elem.replace(/[AEIOU]/gi, ''));
+}
+
+console.log(removeVowels(['abcdefghijklmnopqrstuvwxyz']));             // ['bcdfghjklmnpqrstvwxyz']
+console.log(removeVowels(['green', 'YELLOW', 'black', 'white']));      // ['grn', 'YLLW', 'blck', 'wht']
+console.log(removeVowels(['ABC', 'AEIOU', 'XYZ']));                    // ['BC', '', 'XYZ']
+</script>
+</body>
+</html>

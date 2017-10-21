@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: String and Text Processing</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: String and Text Processing</h1>
+<h2>Exercise 3: Lettercase Counter</h2>
+<p>Write a function that takes a string, and then returns an object that contains 3 properties: one representing the number of characters in the string that are lowercase letters, one representing the number of characters that are uppercase letters, and finally one representing the number of characters that are neither.</p>
+<script>
+/*
+Input: A string
+Output: An object with three properties:
+  - number of lowercase letters in string
+  - number of uppercase letters in string
+  - number of characters that are neither upper or lowercase
+Algorithm:
+  1) Declare a return variable and assign it to an empty object
+  2) Set the various properties of the object:
+    - set lowercase to the length of the the input string with all non-lowercase letters replaced with an empty string
+    - set uppercse to the length of the the input string with all non-uppercase letters replaced with an empty string
+    - set nether to the length of the the input string with all uppercase and lowecase letters replaced with an empty string
+  3) Return the object
+*/
+
+function letterCaseCount(str) {
+  var returnObject = {};
+  returnObject.lowercase = str.replace(/[^a-z]/g,'').length;
+  returnObject.uppercase = str.replace(/[^A-Z]/g,'').length;
+  returnObject.neither = str.replace(/[a-z]/gi,'').length;
+  return returnObject;
+}
+
+console.log(letterCaseCount('abCdef 123')); // { lowercase: 5, uppercase: 1, neither: 4 }
+console.log(letterCaseCount('AbCd +Ef'));   // { lowercase: 3, uppercase: 3, neither: 2 }
+console.log(letterCaseCount('123'));        // { lowercase: 0, uppercase: 0, neither: 3 }
+console.log(letterCaseCount(''));           // { lowercase: 0, uppercase: 0, neither: 0 }
+</script>
+</body>
+</html>

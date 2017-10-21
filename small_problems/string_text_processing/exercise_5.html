@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: String and Text Processing</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: String and Text Processing</h1>
+<h2>Exercise 5: Swap Case</h2>
+<p>Write a function that takes a string as an argument and returns a new string in which lowercase letters replace every uppercase and vice versa. Leave all other characters unchanged.</p>
+<script>
+/*
+Input: A string
+Output: A string with the lowercase letters uppercased and the uppercased letters lowercased
+Rules:
+  - Only letter cases should be swapped, all other characters showld stay the same
+Algorithm:
+  1) Split the intput string into an array characters
+  2) Map each character:
+    - If it is an uppercase letter, downcase the letter
+    - If it is a lowercase letter, upcase the letter
+    - Else just return the character
+  3) Join the array to a string and return it
+*/
+
+function swapcase(str) {
+  return str.split('').map(function(char) {
+    if (char.match(/[A-Z]/)) {
+      return char.toLowerCase();
+    } else if (char.match(/[a-z]/)) {
+      return char.toUpperCase();
+    } else {
+      return char;
+    }
+  }).join('');
+}
+
+console.log(swapcase('CamelCase'));         // 'cAMELcASE'
+console.log(swapcase('Tonight on XYZ-TV')); // 'tONIGHT ON xyz-tv'
+</script>
+</body>
+</html>

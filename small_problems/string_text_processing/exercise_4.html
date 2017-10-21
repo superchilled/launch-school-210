@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: String and Text Processing</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: String and Text Processing</h1>
+<h2>Exercise 4: Capitalize Words</h2>
+<p>Write a function that takes a single string argument and returns a new string that contains the original value of the argument with the first character of every word capitalized and all succeeding characters in lowercase.</p>
+
+<p>You may assume that words are any sequence of non-blank characters.</p>
+<script>
+/*
+Input: A string
+Output: A string with the first character of every word upercased and the rest lowercased
+Rules:
+  - If a word is in quotes or prepended in some other way by a non-letter character, then the first letter of that word doesn't ned to be uppercased
+Algorithm:
+  1) Transform the input string to lowercase
+  2) Split the lowercased string on spaces to form an array of words
+  3) Map the array so that each word is uppercased
+    - Uppercase the letter at index 0 of teh word
+    - concatenate this to the word sliced from index 1 to the end
+  4) Join the maped array with spaces and return
+*/
+
+function wordCap(str) {
+  return str.toLowerCase().split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
+}
+
+console.log(wordCap('four score and seven'));    // 'Four Score And Seven'
+console.log(wordCap('the javaScript language')); // 'The Javascript Language'
+console.log(wordCap('this is a "quoted" word')); // 'This Is A "quoted" Word'
+</script>
+</body>
+</html>

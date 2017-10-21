@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: String and Text Processing</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: String and Text Processing</h1>
+<h2>Exercise 6: Staggered Caps Part 1</h2>
+<p>Write a function that takes a string as an argument, and returns a new string that contains the original value using a staggered capitalization scheme in which it capitalizaes every other character while the making the characters in between lowercased. Don't change characters that are not letters, but count it as characters when switching between upper and lowercase.</p>
+<script>
+/*
+Input: A string
+Output: A string with alternate characters lowercased and uppercased
+Rules:
+  - Non letter characters count in terms of tracking the alternation, even though they can't be lower/ uppercased
+  - Even characters are uppercased and odd characters are lowercased
+Algorithm:
+  1) Split the input string into characters
+  2) Map the split string:
+    - If the index of the character is even, uppercase it
+    - If the index of the character is odd, lowercase it
+  3) Join the array into a string and return it
+*/
+
+function staggeredCase(str) {
+  return str.split('').map(function(char,idx) {
+    if (idx % 2 === 0) {
+      return char.toUpperCase();
+    } else {
+      return char.toLowerCase();
+    }
+  }).join('');
+}
+
+console.log(staggeredCase('I Love Launch School!'));     // 'I LoVe lAuNcH ScHoOl!'
+console.log(staggeredCase('ALL_CAPS'));                  // 'AlL_CaPs'
+console.log(staggeredCase('ignore 77 the 444 numbers')); // 'IgNoRe 77 ThE 444 NuMbErS'
+</script>
+</body>
+</html>

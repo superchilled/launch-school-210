@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: String and Text Processing</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: String and Text Processing</h1>
+<h2>Exercise 8: How long are you</h2>
+<p>Write a function that takes a string as an argument, and returns an Array that contains every word from the string with the length of the word joined to it by a blank space.</p>
+
+<p>You may assume that one blank space separates words in the string.</p>
+<script>
+/*
+Input: A string
+Output: An array of strings, each string is a word in the original string pluss its length
+Rules:
+  - words can be made up of any character, even non-alphanumeric
+  - words are separated by spaces
+  - the words in the resulting array must be made up of the original word, a space then the word length
+Algorithm:
+  1) Split the string into an array of words
+  2) map each word to the word pluss it's length, separated by a space
+  3) returnt he mapped array
+*/
+
+function wordLengths(str) {
+  if (str.length === 0) { return [] };
+  return str.split(' ').map(word => `${word} ${word.length}`);
+}
+
+console.log(wordLengths('cow sheep chicken')); // ['cow 3', 'sheep 5', 'chicken 7']
+console.log(wordLengths('baseball hot dogs and apple pie')); // ['baseball 8', 'hot 3', 'dogs 4', 'and 3', 'apple 5', 'pie 3']
+console.log(wordLengths('It ain\'t easy, is it?')); // ['It 2', 'ain\'t 5', 'easy, 5', 'is 2', 'it? 3']
+console.log(wordLengths('Supercalifragilisticexpialidocious')); // ['Supercalifragilisticexpialidocious 34']
+console.log(wordLengths('')); // []
+</script>
+</body>
+</html>

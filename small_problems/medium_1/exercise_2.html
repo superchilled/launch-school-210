@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Medium 1</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Medium 1</h1>
+<h2>Exercise 2: Rotation Part 2</h2>
+<p>Write a function that rotates the last n digits of a number. For the rotation, rotate by one digit to the left, moving the first digit to the end.</p>
+
+<script>
+/*
+Input: Two numbers; one to have its digits rotated and one to indicate the number of digits to be rotated
+Output: A new number, with 'n' digits 'rotated' but the rest of the number unnaffected
+Rules:
+  - Only rotate the part of the number as indicated by the number of digits to be rotated (starting from the end and moving forward)
+Algortihm:
+  1) Convert the number to a String
+  2) Slice the string from index 0 to a minus index as indicated by the second input. This provides the 'unrotated' part of the array.
+  3) Slice the string from a minus index as indicated by the second input to the end of the array. This provides the part of the array to be rotated
+  4) Rotate the second Slice
+  5) Join the first slice with the rotated second slice, convert to a number and return
+*/
+
+function rotateString(str) {
+  return str.slice(1) + str[0];
+}
+
+function rotateRightmostDigits(num, amount) {
+  var firstSlice = String(num).slice(0, -amount);
+  var secondSlice = rotateString(String(num).slice(-amount));
+  return Number(firstSlice + secondSlice);
+}
+
+console.log(rotateRightmostDigits(735291, 1));      // 735291
+console.log(rotateRightmostDigits(735291, 2));      // 735219
+console.log(rotateRightmostDigits(735291, 3));      // 735912
+console.log(rotateRightmostDigits(735291, 4));      // 732915
+console.log(rotateRightmostDigits(735291, 5));      // 752913
+console.log(rotateRightmostDigits(735291, 6));      // 352917
+</script>
+</body>
+</html>

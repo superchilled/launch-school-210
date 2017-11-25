@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Medium 1</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Medium 1</h1>
+<h2>Exercise 4: Stack Machine Interpretation</h2>
+<p>A stack is a list of values that grows and shrinks dynamically. A stack may be implemented as an Array that uses two Array methods: Array.prototype.push and Array.prototype.pop.</p>
+
+<p>A stack-and-register programming language is a language that uses a stack of values. Each operation in the language operates on a register, which can be thought of as the current value. The register is not part of the stack. An operation that requires two values pops the topmost item from the stack (i.e., the operation removes the most recently pushed value from the stack), operates on the popped value and the register value, and stores the result back in the register.</p>
+
+<p>Consider a MULT operation in a stack-and-register language. It multiplies the stack value with the register value, removes the value from the stack, and stores the result back in the register. For example, if we start with a stack of [3, 6, 4] (where 4 is the topmost item in the stack) and a register value of 7, the MULT operation transforms the stack to [3, 6] (the 4 is removed), and the result of the multiplication, 28, is left in the register. If we do another MULT at this point, the stack is transformed to [3], and the register is left with the value 168.</p>
+
+<p>Write a function that implements a miniature stack-and-register-based programming language that has the following commands (also called operations or tokens):
+  <ul>
+    <li>n : Place a value, n, in the register. Do not modify the stack.</li>
+    <li>PUSH : Push the register value onto the stack. Leave the value in the register.</li>
+    <li>ADD : Pop a value from the stack and add it to the register value, storing the result in the register.</li>
+    <li>SUB : Pop a value from the stack and subtract it from the register value, storing the result in the register.</li>
+    <li>MULT : Pop a value from the stack and multiply it by the register value, storing the result in the register.</li>
+    <li>DIV : Pop a value from the stack and divide it into the register value, storing the integer result in the register.</li>
+    <li>MOD : Pop a value from the stack and divide it into the register value, storing the integer remainder of the division in the register.</li>
+    <li>POP : Remove the topmost item from the stack and place it in the register.</li>
+    <li>PRINT : Print the register value.</li>
+  </ul>
+All operations are integer operations (which is only important with DIV and MOD).</p>
+
+<p>Programs will be supplied to your language function via a string argument. Your function may assume that all arguments are valid programs — i.e., they will not do anything like trying to pop a non-existent value from the stack, and they will not contain any unknown tokens.</p>
+
+<p>Initialize the stack and register to the values [] and 0, respectively.</p>
+<script>
+/*
+Input: A string of commands
+Output: Logged integer values of the current value of the register when the PRINT command is used
+Rules:
+  - The string is formed of either numeric characters or single word commands
+    - If it's a numeric character, then the 'n' command should be used
+    - Otherwise the word itself is the command name
+    - All commands except for 'n' and 'print' act on both the stack and the register
+    - 'n' and 'print' act on the register only
+Data Structures:
+  - The input is a string, but each 'word' within that string should be acted on in order.
+  - An array of integers and strings should be iterated through
+  - stack is an array
+  - register is an integers
+Algortihm:
+  1) Define helper functions for all the commands except 'n'
+  1) Declare a variable 'stack' and assign to an emtpy array
+  2) Decalre a variable 'register' and assign to '0'
+  3) Downcase the input string, and split it into an array of characters
+  4) Map the array so the any numeric characters are transformed into integers
+  5) Iterate through the array. On each iteration
+    - If the item for that iteration is an integer, assign its value to the register
+    - Otherwise call eval on the value, passing in the stack and the register variables
+*/
+
+function push(stack, register) {
+  stack.push(register);
+  return register;
+}
+
+function add(stack, register) {
+  return register + stack.pop();
+}
+
+function sub(stack, register) {
+  return register - stack.pop();
+}
+
+function mult(stack, register) {
+  return register * stack.pop();
+}
+
+function div(stack, register) {
+  return Math.floor(register / stack.pop());
+}
+
+function mod(stack, register) {
+  return register % stack.pop();
+}
+
+function pop(stack, register) {
+  return stack.pop();
+}
+
+function print(stack, register) {
+  console.log(register);
+  return register;
+}
+
+function transform_command_string(command_string) {
+  return command_string.toLowerCase().split(' ').map(function(command) {
+    if (command.match(/[0-9]/)) {
+      return Number(command);
+    } else {
+      return command;
+    }
+  });
+}
+
+function minilang(command_string) {
+  var stack = [];
+  var register = 0;
+  transform_command_string(command_string).forEach(function(command) {
+    if (Number.isInteger(command)) {
+      register = command;
+    } else {
+      register = eval(command)(stack, register);
+    }
+  });
+}
+
+minilang('PRINT');
+// 0
+
+minilang('5 PUSH 3 MULT PRINT');
+// 15
+
+minilang('5 PRINT PUSH 3 PRINT ADD PRINT');
+// 5
+// 3
+// 8
+
+minilang('5 PUSH POP PRINT');
+// 5
+
+minilang('3 PUSH 4 PUSH 5 PUSH PRINT ADD PRINT POP PRINT ADD PRINT');
+// 5
+// 10
+// 4
+// 7
+
+minilang('3 PUSH PUSH 7 DIV MULT PRINT');
+// 6
+
+minilang('4 PUSH PUSH 7 MOD MULT PRINT');
+// 12
+
+minilang('-3 PUSH 5 SUB PRINT');
+// 8
+
+minilang('6 PUSH');
+// (nothing is printed because the `program` argument has no `PRINT` commands)
+</script>
+</body>
+</html>

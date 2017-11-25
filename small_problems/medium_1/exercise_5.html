@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Medium 1</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Medium 1</h1>
+<h2>Exercise 5: Word to Digit</h2>
+<p>Write a function that takes a sentence string as an argument, and returns that string with every occurrence of a "number word" — 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine' — converted to its corresponding digit character.</p>
+<script>
+/*
+Input: A string
+Output: A string with the 'number words' replaced by number characters; i.e. 'four' becomes '4'
+Rules:
+  - Number words can be followd by punctuation, e.g. '.'
+Data structures:
+  - Input is a string, but need to iterate through each word, so convert to a array (split on spaces)
+  - Join back to a string, separating the words wiht spaces, before returning
+Algorithm:
+  1) Define an object with keys as the 'number words' and values as the corresponding number characters
+  2) Split the string into words
+  3) Map each word in the split string:
+    - Call match on the word, comparing it to an alternated list of number words.
+      - If it matches, replace the 'match' part (i.e. index '0' of the returned match array), with its equivalent value from the object and return this
+      - If it doesn't match just return the word
+  4) Join the array with spaces and return
+*/
+
+function wordToDigit(str) {
+  var wordNumMatrix = {
+    'zero': '0', 'one': '1', 'two': '2',
+    'three': '3', 'four': '4', 'five': '5',
+    'six': '6', 'seven': '7', 'eight': '8', 'nine': '9'
+  }
+  var arr = str.split(' ');
+  var arr = str.split(' ').map(function(word) {
+    var wordMatch = word.match(/zero|one|two|three|four|five|six|seven|eight|nine/);
+    if (wordMatch) {
+      return word.replace(wordMatch[0], wordNumMatrix[wordMatch[0]]);
+    } else {
+      return word;
+    }
+  });
+
+  return arr.join(' ');
+}
+
+var test = wordToDigit('Please call me at five five five one two three four. Thanks.');
+console.log(test); // "Please call me at 5 5 5 1 2 3 4. Thanks."
+</script>
+</body>
+</html>

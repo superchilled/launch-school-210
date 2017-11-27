@@ -6,13 +6,36 @@
 <body>
 <h1>LS 210 | Small Problems: Medium 1</h1>
 <h2>Exercise 7: Fibonacci Numbers (Procedural)</h2>
-<p></p>
-<h2>Answer</h2>
-<p></p>
+<p>In the previous exercise, we developed a recursive solution for computing the nth Fibonacci number. In a language that is not optimized for recursion, some (but not all) recursive functions can be extremely slow and may require massive quantities of memory and/or stack space. If you tested for bigger nth numbers, you might have noticed that getting the 50th fibonacci number already takes a significant amount of time.</p>
+
+<p>Fortunately, every recursive function can be rewritten as a non-recursive (or procedural) function.</p>
+
+<p>Rewrite your recursive fibonacci function so that it computes its results without using recursion.</p>
 <script>
+/*
+Input: An integer representing the length of a fibonacci sequence
+Output: The final number in that sequence
+Rules:
+  - The first two numbers in the sequence are '1'
+  - Subsequent numbers in the sequence are calculated from the previous two numbers summed together
+Algorithm:
+  1) Declare a variable and assign it to an array with '1' as the first two elements [1, 1]
+  2) Loop until the length of the array is greater than or equal to the required length. On each iteration
+    - Sum the elements at current length - 1 and current length -2 and push them to the array
+  3) Return the last element of the array
+*/
 
+function fibonacci(sequence_length) {
+  var fibonacci_sequence = [1, 1];
+  for (var i = 2; i <= sequence_length; i++) {
+    fibonacci_sequence.push(fibonacci_sequence[i - 1] + fibonacci_sequence[i - 2]);
+  }
+  return fibonacci_sequence[fibonacci_sequence.length - 1];
+}
 
-
+console.log(fibonacci(20));       // 6765
+console.log(fibonacci(50));       // 12586269025
+console.log(fibonacci(100));      // 354224848179261915075
 </script>
 </body>
 </html>

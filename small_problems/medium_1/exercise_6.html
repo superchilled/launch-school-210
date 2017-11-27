@@ -6,13 +6,65 @@
 <body>
 <h1>LS 210 | Small Problems: Medium 1</h1>
 <h2>Exercise 6: Fibonacci Numbers (Recursion)</h2>
-<p></p>
-<h2>Answer</h2>
-<p></p>
+<p>The Fibonacci series is a sequence of numbers in which each number is the sum of the previous two numbers. The first two Fibonacci numbers are 1 and 1. The third number is 1 + 1 = 2, the fourth is 1 + 2 = 3, the fifth is 2 + 3 = 5, and so on. In mathematical terms, this can be represented as:
+  <code>
+    F(1) = 1<br/>
+    F(2) = 1<br/>
+    F(n) = F(n - 1) + F(n - 2) where n > 2
+  </code>
+</p>
+
+<p>This simple sequence can easily be computed using a recursive function. A recursive function is one in which the function calls itself. For example, the following function is a recursive function that computes the sum of all integers between 1 and n:
+  <code>
+    function sum(n) {<br/>
+      if (n === 1) {<br/>
+        return 1;<br/>
+      } else {<br/>
+        return n + sum(n - 1);<br/>
+      }<br/>
+    }
+  </code>
+</p>
+
+<p>A good recursive function has three primary qualities:
+  <ul>
+    <li>It calls itself at least once.</li>
+    <li>It has an ending condition — e.g., if (n === 1), in the sum function above.</li>
+    <li>The results of each recursion are used in each step — e.g., n + sum(n - 1) uses sum(n - 1).</li>
+  </ul>
+</p>
+
+<p>Write a recursive function that computes the nth Fibonacci number, where nth is an argument passed to the function.</p>
+
+<p>NOTE: This exercise verges on the Advanced level of exercises, so do not be discouraged if you are not able to solve it on your own; recursion is tricky, and even experienced developers can have difficulty dealing with it.</p>
 <script>
+/*
+Input: An integer representing the length of a fibonacci sequence
+Output: The final number in that sequence
+Rules:
+  - The first two numbers in the sequence are '1'
+  - Subsequent numbers in the sequence are calculated from the previous two numbers summed together
+Algorithm:
+  1) Use a conditional to determine if the length of the sequence is equal to 2
+    - If it is then return 1
+    - If not, return the sum of two calls to the fibonacci function with sequence_length -1 and sequence_length -2 as the arguments
+*/
 
+function fibonacci(sequence_length) {
+  if (sequence_length <= 2) {
+    return 1;
+  } else {
+    return fibonacci(sequence_length - 1) + fibonacci(sequence_length - 2);
+  }
+}
 
-
+console.log(fibonacci(1));       // 1
+console.log(fibonacci(2));       // 1
+console.log(fibonacci(3));       // 2
+console.log(fibonacci(4));       // 3
+console.log(fibonacci(5));       // 5
+console.log(fibonacci(12));      // 144
+console.log(fibonacci(20));      // 6765
 </script>
 </body>
 </html>

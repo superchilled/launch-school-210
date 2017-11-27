@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Medium 2</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Medium 2</h1>
+<h2>Exercise 2: Triangle Sides</h2>
+<p>A triangle is classified as follows:
+  <ul>
+    <li>Equilateral: All three sides are of equal length.</li>
+    <li>Isosceles: Two sides are of equal length, while the third is different.</li>
+    <li>Scalene: All three sides are of different lengths.</li>
+  </ul>
+To be a valid triangle, the sum of the lengths of the two shortest sides must be greater than the length of the longest side, and every side must have a length greater than 0. If either of these conditions is not satisfied, the triangle is invalid.
+
+Write a function that takes the lengths of the three sides of a triangle as arguments, and returns one of the following four strings representing the triangle's classification: 'equilateral', 'isosceles', 'scalene', or 'invalid'.</p>
+<script>
+/*
+Input: Three numbers representing the length of the triangle sides
+Output: On of four strings: 'equilateral', 'isosceles', 'scalene', or 'invalid' depending on what type of triangle the lengths indicate
+Rules:
+  - None of the lengths can be 0
+  - The two shortest lengths summed must be greater than the longest length
+  - If three lengths are the same then it is 'equilateral'
+  - If two lengths are the same and one differnt then it is 'isosceles'
+  - If all lengths are different then it is scalene
+Algorithm:
+  1) Transform the input params to an array and sort the array from highest value to lowest
+  2) Run a series of conditionals to return the correct string:
+    - if the array includes a '0' return 'invalid'
+    - if element_1 + element_2 <= element_3 return 'invalid'
+    - if element_1 === element_2 AND element_2 == element_3 return return 'equilateral'
+    - if element_1 === element_2 OR element_2 == element_3 return 'isosceles'
+    - otherwise return 'scalene'
+*/
+
+function triangle(side1, side2, side3) {
+  var sides = Array.from(arguments).sort((a, b) => a - b);;
+  if (sides.includes(0) || sides[0] + sides[1] <= sides[2]) {
+    return 'invalid';
+  } else if (sides[0] === sides[1] && sides[1] === sides[2]) {
+    return 'equilateral';
+  } else if (sides[0] === sides[1] || sides[1] === sides[2]) {
+    return 'isosceles';
+  } else {
+    return 'scalene';
+  }
+}
+
+console.log(triangle(3, 3, 3));        // "equilateral"
+console.log(triangle(3, 3, 1.5));      // "isosceles"
+console.log(triangle(3, 4, 5));        // "scalene"
+console.log(triangle(0, 3, 3));        // "invalid"
+console.log(triangle(3, 1, 1));        // "invalid"
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Medium 2</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Medium 2</h1>
+<h2>Exercise 1: Lettercase Percentage Ratio</h2>
+<p>
+</p>
+<script>
+/*
+Input: A string with at least one character
+Output: An object with three properties: lowercase, uppercase, and neither
+Rules:
+  - The input string will always have at least one character
+  - The lowercase percentage is the number of lowercase characters / string length * 100
+  - The uppercase percentage is the number of uppercase characters / string length * 100
+  - the neiter percentage is 100 - (lowercase percentage + uppercase percentage)
+Algorithm:
+  1) Declare a variable assigned to an empty object
+  2) Transform the input string to an array
+  3) Filter the array to only lowercase letters using regex and assign the length of the resulting array to a lowercaseCount variable
+  4) Filter the array to only uppercase letters using regex and assign the length of the resulting array to a uppercaseCount variable
+  5) Assign properties to the object using calculations based on lowercaseCount variable & uppercaseCount variable & string length6) return the object
+*/
+
+function letterPercentages(str) {
+  var percentages = {};
+  var lowercaseCount = str.split('').filter(letter => letter.match(/[a-z]/)).length;
+  var uppercaseCount = str.split('').filter(letter => letter.match(/[A-Z]/)).length;
+  percentages['lowercase'] = ((lowercaseCount / str.length) * 100).toFixed(2);
+  percentages['uppercase'] = ((uppercaseCount / str.length) * 100).toFixed(2);
+  percentages['neither'] = (100 - (Number(percentages['lowercase']) + Number(percentages['uppercase']))).toFixed(2);
+  return percentages;
+}
+
+console.log(letterPercentages('abCdef 123'));
+// { lowercase: "50.00", uppercase: "10.00", neither: "40.00" }
+
+console.log(letterPercentages('AbCd +Ef'));
+// { lowercase: "37.50", uppercase: "37.50", neither: "25.00" }
+
+console.log(letterPercentages('123'));
+// { lowercase: "0.00", uppercase: "0.00", neither: "100.00" }
+</script>
+</body>
+</html>

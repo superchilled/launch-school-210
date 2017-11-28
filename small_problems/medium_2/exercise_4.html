@@ -6,19 +6,33 @@
 <body>
 <h1>LS 210 | Small Problems: Medium 2</h1>
 <h2>Exercise 4: Unlucky Days</h2>
-<p>
-</p>
+<p>Write a function that takes a year as an argument, and returns the number of 'Friday the 13ths' in that year. You may assume that the year is greater than 1752 (when the modern Gregorian Calendar was adopted by the United Kingdom). You may also assume that the same calendar will remain in use for the foreseeable future.</p>
 <script>
 /*
-Input:
-Output:
+Input: An integer number representing a year
+Output: An integer number representing the number of Friday 13ths in that year.
 Rules:
-  -
+  - Each year has 12 '13th' days, one for each month
+  - That 13th date, combined with the month an the year, is either a Friday or not (true or false)
 Algorithm:
-  1)
+  1) Create an array of months
+  2) Map the array to be a complete date for every 13th of the months for the input year
+  3) Filter the array to only have fridayThe13ths
+  4) Return the length of the array
 */
 
+function isFriday(date) {
+  return date.getDay() === 5;
+}
 
+function fridayThe13ths(year) {
+  var dates = Array.from({length: 12}).map((elem, idx) => new Date(year, idx, 13));
+  return dates.filter(date => isFriday(date)).length;
+}
+
+console.log(fridayThe13ths(1986));      // 1
+console.log(fridayThe13ths(2015));      // 3
+console.log(fridayThe13ths(2017));      // 2
 </script>
 </body>
 </html>

@@ -6,19 +6,36 @@
 <body>
 <h1>LS 210 | Small Problems: Medium 2</h1>
 <h2>Exercise 6: Sum Square - Square Sum</h2>
-<p>
-</p>
+<p>Write a function that computes the difference between the square of the sum of the first n positive integers and the sum of the squares of the first n positive integers.</p>
 <script>
 /*
-Input:
-Output:
-Rules:
-  -
+Input: An integer number
+Output: An integer number representing the difference betweent the square of the sum of all the integers from 1 to the input, and the sum of the squares of all the numbers from 1 to the input number
 Algorithm:
-  1)
+  1) Create an array of integers from 1 to the input number
+    - Use Array.from and then map the resulting array to the index + 1
+  2) Calculate the sum of all the numbers in the array and then square the result
+  3) Calculate the sum of squares of all the numbers in the array
+  4) return squareOfSum - sumOfSquares
 */
 
+function squareOfSum(numArr) {
+  return numArr.reduce((total, num) => total + num)**2;
+}
 
+function sumOfSquares(numArr) {
+  return numArr.reduce((total, num) => total + num**2, 0);
+}
+
+function sumSquareDifference(num) {
+  var numArr = Array.from({length: num}).map((elem, idx) => idx + 1);
+  return squareOfSum(numArr) - sumOfSquares(numArr);
+}
+
+console.log(sumSquareDifference(3));      // 22 --> (1 + 2 + 3)**2 - (1**2 + 2**2 + 3**2)
+console.log(sumSquareDifference(10));     // 2640
+console.log(sumSquareDifference(1));      // 0
+console.log(sumSquareDifference(100));    // 25164150
 </script>
 </body>
 </html>

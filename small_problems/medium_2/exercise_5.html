@@ -6,19 +6,68 @@
 <body>
 <h1>LS 210 | Small Problems: Medium 2</h1>
 <h2>Exercise 5: Next Featured Number Higher than a Given Value</h2>
-<p>
-</p>
+<p>A 'featured number' (something unique to this exercise) is an odd number that is a multiple of 7, with all of its digits occuring exactly once each. For example, 49 is a featured number, but 98 is not (it is not odd), 97 is not (it is not a multiple of 7), and 133 is not (the digit 3 appears twice).</p>
+
+<p>Write a function that takes an integer as an argument, and returns the next featured number greater than the integer. Issue an error message if there is no next featured number.</p>
 <script>
 /*
-Input:
-Output:
+Input: An integer number
+Output: An integer number that is larger than the input number and also a 'featured number'
 Rules:
-  -
+  - A featured number is a multiple of 7
+  - A featured number's digits occur only once in the number
+    - Therefore a featured number cannot have more than 10 digits and cannot be higher than 9876543210
 Algorithm:
-  1)
+  1) Iterate from the input number +1 to 9876543210. On each iteration
+    - Test if the number is a multiple of 7
+    - Test if teh number is odd
+    - Test if the digits in the number are not repeated
+    - If both these conditions are met return the number
+  2) If iteration completes without a number being found, return 'No number found'
+The tests:
+Multiple of 7 -
+  - Divide the number by 7 and test if the result is an integer
+Non-repeated digits -
+  - Transform to a string
+  - Iterate through each character in the string. On each iteration:
+    - Match the remainder of the string (i.e. slice from 1 more than the current index) with the current character. If there is a match, return false
+  - If iteration completes with no match, return true
 */
 
+function multipleOf7(num) {
+  return Number.isInteger(num / 7);
+}
 
+function isOdd(num) {
+  return num % 2 === 1;
+}
+
+function notRepeated(num) {
+  var numArr = String(num).split('');
+  for (var i = 0; i < numArr.length - 1; i++) {
+    if(numArr.slice(i + 1).includes(numArr[i])) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function featured(num) {
+  for (var i = num + 1; i < 9876543210; i++) {
+    if (multipleOf7(i) && isOdd(i) && notRepeated(i)) {
+      return i;
+    }
+  }
+  return 'There is no featured number for this input.'
+}
+
+console.log(featured(12));           // 21
+console.log(featured(20));           // 21
+console.log(featured(21));           // 35
+console.log(featured(997));          // 1029
+console.log(featured(1029));         // 1043
+console.log(featured(999999));       // 1023547
+console.log(featured(999999987));    // 1023456987
 </script>
 </body>
 </html>

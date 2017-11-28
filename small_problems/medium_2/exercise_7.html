@@ -6,19 +6,58 @@
 <body>
 <h1>LS 210 | Small Problems: Medium 2</h1>
 <h2>Exercise 7: Bubble Sort</h2>
-<p>
-</p>
+<p>'Bubble Sort' is one of the simplest sorting algorithms available. Although it is not an efficient algorithm, it is an excellent exercise for student developers. In this exercise, you will write a function that sorts an array using the bubble sort algorithm.</p>
+
+<p>A bubble sort works by making multiple passes (iterations) through an array. On each pass, the two values of each pair of consecutive elements are compared. If the first value is greater than the second, the two elements are swapped. This process is repeated until a complete pass is made without performing any swaps — at which point the array is completely sorted.</p>
+
+<p>We can stop iterating the first time we make a pass through the array without making any swaps because this means that the entire array is sorted.</p>
+
+<p>For further information — including pseudo-code that demonstrates the algorithm, as well as a minor optimization technique — see the Bubble Sort Wikipedia page.</p>
+
+<p>Write a function that takes an array as an argument and sorts that array using the bubble sort algorithm described above. The sorting should be done "in-place" — that is, the function should mutate the array. You may assume that the array contains at least two elements.</p>
 <script>
 /*
-Input:
-Output:
+Input: An array
+Output: A sorted version of the array
 Rules:
-  -
+  - The algorithm should compare 2 elements in the array at a time and swap their positions if the first element is larger than the second
 Algorithm:
-  1)
+  1) start a 'do/ while' loop and run it while swapped is true
+  2) Set a 'swapped' var to false
+  3) Start a for loop, starting at i = 1 and looping until the length of the input array -1. On each iteration:
+    - compare the element at i with the element at i - 1. If i - 1 elem is greater, swap them and set swapped to true
+  4) Return the array
 */
 
+function bubbleSort(arr) {
+  var endPoint = arr.length;
+  var swapped;
+  do {
+    swapped = false;
+    for (var i = 1; i < endPoint; i++) {
+      var elem1 = array[i - 1];
+      var elem2 = array[i]
+      if (elem1 > elem2) {
+        arr[i - 1] = elem2;
+        arr[i] = elem1;
+        swapped = true;
+      }
+    }
+    endPoint -= 1;
+  } while(swapped);
+}
 
+var array = [5, 3];
+bubbleSort(array);
+console.log(array);    // [3, 5]
+
+var array = [6, 2, 7, 1, 4];
+bubbleSort(array);
+console.log(array);    // [1, 2, 4, 6, 7]
+
+var array = ['Sue', 'Pete', 'Alice', 'Tyler', 'Rachel', 'Kim', 'Bonnie'];
+bubbleSort(array);
+console.log(array);    // ["Alice", "Bonnie", "Kim", "Pete", "Rachel", "Sue", "Tyler"]
 </script>
 </body>
 </html>

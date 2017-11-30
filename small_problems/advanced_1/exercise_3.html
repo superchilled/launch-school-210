@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Advanced 1</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Advanced 1</h1>
+<h2>Exercise 3: Transpose MxN</h2>
+<p>In the previous exercise, you wrote a function that transposed a 3x3 matrix represented by an array of arrays.</p>
+
+<p>Matrix transposes are not limited to 3x3 matrices, or even square matrices. Any matrix can be transposed simply by switching columns with rows.</p>
+
+<p>Modify your transpose function from the previous exercise so that it works with any MxN matrix with at least one row and one column.</p>
+<script>
+/*
+Input: A matrix (nested array) of three rows by three columns
+Output: A transposed matrix with the rows and columns swapped
+Rules:
+  - [0][0] => [0][0], [1][0] => [0][1], [2][0] => [0][2]...
+Algorithm:
+  1) Declare a variable assigned to a new matrix which is an array of three empty arrays
+  2) Loop through each element in the input matrix. For each element (subarray), loop again:
+    - On the inner loop, reverse the 'outer index' and 'inner index' and use the reversed indices to set the element in the newMatrix
+  3) Return the new matrix
+ORIGINAL SOLUTION SHOULD STILL WORK HERE
+*/
+
+function transpose(matrix) {
+  var newMatrix = Array.from({length: matrix[0].length}, elem => []);
+  matrix.forEach((outerElem, outerIdx) => {
+    outerElem.forEach((innerElem, innerIdx) => {
+      newMatrix[innerIdx][outerIdx] = innerElem;
+    });
+  });
+  return newMatrix;
+}
+
+console.log(transpose([[1, 2, 3, 4]]));            // [[1], [2], [3], [4]]
+console.log(transpose([[1], [2], [3], [4]]));      // [[1, 2, 3, 4]]
+console.log(transpose([[1]]));                     // [[1]]
+console.log(transpose([[1, 2, 3, 4, 5], [4, 3, 2, 1, 0], [3, 7, 8, 6, 2]]));
+// [[1, 4, 3], [2, 3, 7], [3, 2, 8], [4, 1, 6], [5, 0, 2]]
+</script>
+</body>
+</html>

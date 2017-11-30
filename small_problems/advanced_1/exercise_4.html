@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Advanced 1</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Advanced 1</h1>
+<h2>Exercise 4: Rotating Matrices</h2>
+<p>As we saw in the previous exercises, a matrix can be represented by an array of arrays. For example, the 3x3 matrix shown below:<br/>
+<code>
+1  5  8<br/>
+4  7  2<br/>
+3  9  6<br/>
+</code>
+is represented by the following array of arrays:<br/>
+<code>
+var matrix = [<br/>
+  [1, 5, 8],<br/>
+  [4, 7, 2],<br/>
+  [3, 9, 6],<br/>
+];<br/>
+</code>
+</p>
+<p>A 90-degree rotation of a matrix produces a new matrix in which each side of the matrix is rotated clockwise by 90 degrees. For example, the 90-degree rotation of the matrix shown above is:<br/>
+<code>
+3  4  1<br/>
+9  7  5<br/>
+6  2  8<br/>
+</code>
+</p>
+<p>A 90-degree rotation of a non-square matrix is similar. For example, given the following matrix:<br/>
+<code>
+3  4  1<br/>
+9  7  5<br/>
+</code>
+its 90-degree rotation is:<br/>
+<code>
+9  3<br/>
+7  4<br/>
+5  1<br/>
+</code>
+</p>
+<p>Write a function that takes an arbitrary MxN matrix, rotates it clockwise by 90-degrees as described above, and returns the result as a new matrix. The function should not mutate the original matrix.</p>
+<script>
+/*
+Input: A matrix (nested array) of three rows by three columns
+Output: A 'rotated' matrix with the subarrays 'rotated' clockwise by 90 degrees
+Rules:
+  - The number of new rows equals the number of current columns
+  - Rotation by 90 clockwise means that elements in the first row become elements in the last columns. For a three col three row matrix:
+    [0][0] => [0][2], [0][1] => [1][2], [0][2] => [2][2]
+    [1][0] => [0][1], [1][1] => [1][1], [1][2] => [2][1]
+    [2][0] => [0][0], [2][1] => [1][0], [2][2] => [2][0]
+  - Outer index becomes Inner index
+  - Inner index decrements from row length - 1 down to 0 on each iteration
+Algorithm:
+  1) Declare a variable assigned to a new matrix which is an array of three empty arrays
+  2) Declare a colNumber var and assign it to the length of a row - 1
+  3) Loop through each element in the input matrix. For each element (subarray), loop again:
+    - On the inner loop use the inner index as the outer index. use the value of colNumber as the inner index, and set the element for that iteration as the element for those indices
+    - When the outer loop is complete, decrement the colNumber value by 1
+  4) Return the new matrix
+
+*/
+
+function rotate90(matrix) {
+  var newMatrix = Array.from({length: matrix[0].length}, elem => []);
+  var colNumber = matrix.length -1;
+  matrix.forEach((outerElem, outerIdx) => {
+    outerElem.forEach((innerElem, innerIdx) => {
+      newMatrix[innerIdx][colNumber] = innerElem;
+    });
+    colNumber--;
+  });
+  return newMatrix;
+}
+
+var matrix1 = [
+  [1, 5, 8],
+  [4, 7, 2],
+  [3, 9, 6],
+];
+
+var matrix2 = [
+  [3, 7, 4, 2],
+  [5, 1, 0, 8],
+];
+
+var newMatrix1 = rotate90(matrix1);
+var newMatrix2 = rotate90(matrix2);
+var newMatrix3 = rotate90(rotate90(rotate90(rotate90(matrix2))));
+
+console.log(newMatrix1);      // [[3, 4, 1], [9, 7, 5], [6, 2, 8]]
+console.log(newMatrix2);      // [[5, 3], [1, 7], [0, 4], [8, 2]]
+console.log(newMatrix3);      // `matrix2` --> [[3, 7, 4, 2], [5, 1, 0, 8]]
+</script>
+</body>
+</html>

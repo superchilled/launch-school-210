@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Advanced 1</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Advanced 1</h1>
+<h2>Exercise 7: Binary Search</h2>
+<p>It is quite common to find yourself in a situation where you need to perform a search on some data to find something you're looking for. Imagine that you need to search through the yellow pages to find the phone number of a particular business. A straightforward way to do this would be to go through the yellow pages one business at a time, checking if the current business name is the one you're trying to find.</p>
+
+<p>This may be a simple and easy way to search, but it's not very efficient. In the worst case scenario, it could mean having to search through every single business name before finding out that the business isn't listed—or, slightly better, having to go through every letter from 'A' to 'Z' before finding the business. A linear search such as this can take quite a long time.</p>
+
+<p>A binary search algorithm is a much more efficient alternative. This algorithm allows you to cut the search area in half on each iteration by discarding the half that you know your search term doesn't exist in. The binary search algorithm is able to do this by relying on the data being sorted. Going back to the yellow pages example, let's say that we're searching the following yellowPages data for the search item 'Pizzeria':<br/><br/>
+<code style="display: block; background: black; color: yellow;">
+// Yellow pages list of business names data:<br/>
+var yellowPages = ['Apple Store', 'Bags Galore',<br/>
+                   'Bike Store',  'Donuts R Us',<br/>
+                   'Eat a Lot',   'Good Food',<br/>
+                   'Pasta Place', 'Pizzeria',<br/>
+                   'Ruby Lounge', 'Zooper'];<br/>
+</code>
+</p>
+
+<p>With a linear search, we would have to sequentially go through each of the items until we found the search item 'Pizzeria'. In a binary search, however, the following sequence happens:
+  <ul>
+    <li>Retrieve the middle value from the data (assume truncation to integer) --> 'Eat a Lot'.</li>
+    <li>If the middle value is equal to 'Pizzeria', stop the search.</li>
+    <li>If the middle value is less than 'Pizzeria':
+      <ul>
+        <li>Discard the lower half, including the middle value --> ['Apple Store', 'Bags Galore', 'Bike Store', 'Donuts R Us', 'Eat a Lot'].</li>
+        <li>Repeat the process from the top, using the upper half as the starting data --> ['Good Food', 'Pasta Place', 'Pizzeria', 'Ruby Lounge', 'Zooper'].</li>
+      </ul>
+    </li>
+    <li>If the middle value is greater than 'Pizzeria', do the same as the previous step, but with opposite halves.</li>
+  </ul>
+</p>
+
+<p>Using the process described above, the search successfully ends on the second iteration when the middle value is 'Pizzeria'.</p>
+
+<p>Implement a binarySearch function that takes an array and a searchItem as arguments, and returns the index of the searchItem if found, or -1 otherwise. You may assume that the array argument will always be sorted.</p>
+<script>
+/*
+Input:
+Output:
+Rules:
+  -
+Algorithm:
+  1)
+*/
+
+
+</script>
+</body>
+</html>

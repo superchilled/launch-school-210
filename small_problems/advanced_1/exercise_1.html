@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Advanced 1</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Medium 2</h1>
+<h2>Exercise 1: Madlibs Revisited</h2>
+<p>Let's build another program using madlibs. We made a similar program in the Easy exercises, but this time the requirements are a bit different.</p>
+
+<p>Build a madlibs program that takes a text template as input, plugs in a selection of randomized nouns, verbs, adjectives, and adverbs into that text, and then returns it. You can build your lists of nouns, verbs, adjectives, and adverbs directly into your program. Your program should read this text and, for each line, place random words of the appropriate types into the text and return the result.</p>
+
+<p>The challenge of this program isn't just about writing your solution—it's about choosing the structure of the text template. Choose the right way to structure your template and this problem becomes much easier. Consequently, this exercise is a bit more open-ended since the input is also something that you'll be defining.</p>
+<script>
+/*
+Input: A template. This is some type of data structure which indicates words, and the sequence in which those words should be used along with the replacement texts
+Output: A string with the replacement texts added in the correct place
+Algorithm:
+  1) Declare a variable assigned ot an object with keys 'adjectives', 'nouns', 'verbs' and 'adverbs' and the values as arrays of those things
+  1) Split the input template on [ or ] to create an array where noun, verb, adjective and adverb are separate words
+  2) Map the array conditionally (if the array element equals the obejct keys map it, else return the element)
+    - The mapping logic randomly selects an array element from the array value for that object key
+  4) Join the array back together and return
+*/
+
+function randomlySelect(arr) {
+  var randomIndex = Math.floor(Math.random() * arr.length);
+  return arr[randomIndex];
+}
+
+function madlibs(template) {
+  var replacementTexts = {
+    'adjective': ['quick', 'lazy', 'sleepy', 'noisy', 'hungry'],
+    'noun': ['fox', 'dog', 'head', 'leg', 'tail'],
+    'verb': ['jumps', 'lifts', 'bites', 'licks', 'pats'],
+    'adverb': ['easily', 'lazily', 'noisily', 'excitedly'],
+  };
+
+  return template.split(/\[|\]/).map(elem => {
+    if (Object.keys(replacementTexts).includes(elem)) {
+      return randomlySelect(replacementTexts[elem]);
+    } else {
+      return elem;
+    }
+  }).join('');
+}
+
+var  template1 = 'The [adjective] brown [noun] [adverb] [verb] the [adjective] yellow [noun], who [adverb] [verb] his [noun] and looks around.'
+var  template2 = 'The [noun] [verb] the [noun]\'s [noun].'
+
+// These examples use the following list of replacement texts:
+// adjectives: quick lazy sleepy noisy hungry
+// nouns: fox dog head leg tail
+// verbs: jumps lifts bites licks pats
+// adverbs: easily lazily noisily excitedly
+
+// Note: The quotes in the example strings returned by the madlibs function are only shown for emphasis. These quotes are not present in the actual output strings. The words in quotes come from the list of texts and it is the madlibs function that puts them in.
+
+console.log(madlibs(template1));
+// The "sleepy" brown "cat" "noisily"
+// "licks" the "sleepy" yellow
+// "dog", who "lazily" "licks" his
+// "tail" and looks around.
+
+console.log(madlibs(template1));
+// The "hungry" brown "cat" "lazily"
+// "licks" the "noisy" yellow
+// "dog", who "lazily" "licks" his
+// "leg" and looks around.
+
+console.log(madlibs(template2));      // The "fox" "bites" the "dog"'s "tail".
+
+console.log(madlibs(template2));      // The "cat" "pats" the "cat"'s "head".
+</script>
+</body>
+</html>

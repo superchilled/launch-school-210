@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Advanced 1</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Advanced 1</h1>
+<h2>Exercise 6: Merge Sort</h2>
+<p>Merge sort is a recursive sorting algorithm that works by breaking down an array's elements into nested subarrays, then combining those nested subarrays back together in sorted order. It is best explained with an example. Given the array [9, 5, 7, 1], let's walk through the process of sorting it with merge sort. We'll start off by breaking the array down into nested subarrays:<br/>
+<code>
+[9, 5, 7, 1] --><br/>
+[[9, 5], [7, 1]] --><br/>
+[[[9], [5]], [[7], [1]]]<br/>
+</code>
+</p>
+
+<p>We then work our way back to a flat array by merging each pair of nested subarrays back together in the proper order:<br/>
+<code>
+[[[9], [5]], [[7], [1]]] --><br/>
+[[5, 9], [1, 7]] --><br/>
+[1, 5, 7, 9]<br/>
+</code>
+</p>
+
+<p>Write a function that takes an array, and returns a new array that contains the values from the input array in sorted order. The function should sort the array using the merge sort algorithm as described above. You may assume that every element of the array will be of the same data type—either all numbers or all strings.</p>
+
+<p>Feel free to use the merge function you wrote in the previous exercise.</p>
+<script>
+/*
+Input: A flat array of like elements (either all numbers or all strings)
+Output: A sorted version of the flat array
+Rules:
+  - The input array must be sorted using the merged sort Algorithm
+  - For an input array with an even number of elements, the deepest nested subarrays all have a single elements
+  - For an input array with an odd number of elements, 1 of the deepest nested arrays will have two elements
+Problem breakdown:
+  - Two parts:
+   1) Create the nested data structure from the flat input array
+   2) Iterate through the nested structure progresively from in to out (i.e. from the deepest nested level until the array is flat)
+Algorithm:
+  1) Recursively slice the array until the elements are all nested
+    - Write a helper function that:
+      - Takes an array as a argument
+      - Tests if the length of the array is greater than one
+        - If it is, then it slices the array from 0 to Math.floor(array.length / 2) and also Math.floor(array.length / 2) to the end of the array and reassigns the input array to these two sliced elements, then calls for each on the new array and calls the recursive function on each element
+  2) Recursively build the new array back up from all the nested arrays using the merge function from the previous problem
+    - Write a helper function, recursive merge that:
+      - Takes a nested array as an argument
+        - Tests if the array has more than one element, if so
+          - Returns a call to itself with a merge call passed as an argument, with the first and second elements as arguments
+        - If not then just returns the array
+*/
+
+function merge(arr1, arr2) {
+  var arr1Copy = arr1.slice();
+  var arr2Copy = arr2.slice();
+  var mergedArray = [];
+  while (arr1Copy.length > 0 && arr2Copy.length > 0) {
+    if (arr1Copy[0] < arr2Copy[0]) {
+      mergedArray.push(arr1Copy.shift());
+    } else {
+      mergedArray.push(arr2Copy.shift());
+    }
+  }
+
+  [arr1Copy, arr2Copy].sort((a, b) => b.length - a.length)[0].forEach(elem => mergedArray.push(elem));
+  return mergedArray;
+}
+
+function recursiveSlice(arr) {
+  if (arr.length > 1) {
+    var slice1 = arr.slice(0, Math.floor(arr.length / 2));
+    var slice2 = arr.slice(Math.floor(arr.length / 2));
+    arr = [recursiveSlice(slice1), recursiveSlice(slice2)];
+  }
+  return arr;
+}
+
+function recursiveMerge(arr) {
+  if (arr.length > 1) {
+    return merge(recursiveMerge(arr[0]), recursiveMerge(arr[1]));
+  } else {
+    return arr;
+  }
+}
+
+function mergeSort(arr) {
+  var nestedArr = recursiveSlice(arr);
+  return recursiveMerge(nestedArr);
+}
+
+console.log(mergeSort([9, 5, 7, 1]));           // [1, 5, 7, 9]
+console.log(mergeSort([5, 3]));                 // [3, 5]
+console.log(mergeSort([6, 2, 7, 1, 4]));        // [1, 2, 4, 6, 7]
+
+console.log(mergeSort(['Sue', 'Pete', 'Alice', 'Tyler', 'Rachel', 'Kim', 'Bonnie']));
+// ["Alice", "Bonnie", "Kim", "Pete", "Rachel", "Sue", "Tyler"]
+
+console.log(mergeSort([7, 3, 9, 15, 23, 1, 6, 51, 22, 37, 54, 43, 5, 25, 35, 18, 46]));
+// [1, 3, 5, 6, 7, 9, 15, 18, 22, 23, 25, 35, 37, 43, 46, 51, 54]
+</script>
+</body>
+</html>

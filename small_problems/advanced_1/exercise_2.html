@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Advanced 1</title>
+</head>
+<body>
+<h1>LS 210 | Small Problems: Advanced 1</h1>
+<h2>Exercise 2: Transpose 3x3</h2>
+<p>A 3x3 matrix can be represented by an array of arrays: an outer array containing three subarrays that each contain three elements. For example, the 3x3 matrix shown below:<br/>
+<code>
+1  5  8<br/>
+4  7  2<br/>
+3  9  6<br/>
+</code>
+is represented by the following array of arrays:<br/>
+<code>
+var matrix = [<br/>
+  [1, 5, 8],<br/>
+  [4, 7, 2],<br/>
+  [3, 9, 6],<br/>
+];
+</code>
+</p>
+
+<p>An array of arrays is sometimes called a "nested array" because each inner subarray is nested inside an outer array. It also may be called a "two-dimensional array"</p>
+
+<p>To access an element in the matrix, you can use bracket notation twice (such as array[][]), and include both the row index and column index within the brackets. Given the above matrix, matrix[0][2] is 8, and matrix[2][1] is 9. An entire row in the matrix can be referenced using a single index: matrix[1] is the row (subarray) [4, 7, 2]. Furthermore, given a row, we can determine the total number of columns by counting the number of elements in the row. Unfortunately, a convenient notation for accessing an entire column does not exist.</p>
+
+<p>The transpose of a 3x3 matrix is the matrix that results from exchanging the rows and columns of the original matrix. For example, the transposition of the matrix shown above is:<br/>
+<code>
+1  4  3<br/>
+5  7  9<br/>
+8  2  6<br/>
+</code>
+</p>
+
+<p>Write a function that takes an array of arrays representing a 3x3 matrix, and returns the transpose of the matrix. You should implement the function on your own, without using any external libraries.</p>
+
+<p>Take care not to modify the original matrix — your function must produce a new matrix and leave the input matrix array unchanged.</p>
+<script>
+/*
+Input: A matrix (nested array) of three rows by three columns
+Output: A transposed matrix with the rows and columns swapped
+Rules:
+  - [0][0] => [0][0], [1][0] => [0][1], [2][0] => [0][2]...
+Algorithm:
+  1) Declare a variable assigned to a new matrix which is an array of three empty arrays
+  2) Loop through each element in the input matrix. For each element (subarray), loop again:
+    - On the inner loop, reverse the 'outer index' and 'inner index' and use the reversed indices to set the element in the newMatrix
+  3) Return the new matrix
+*/
+
+function transpose(matrix) {
+  var newMatrix = Array.from({length: matrix[0].length}, elem => []);
+  matrix.forEach((outerElem, outerIdx) => {
+    outerElem.forEach((innerElem, innerIdx) => {
+      newMatrix[innerIdx][outerIdx] = innerElem;
+    });
+  });
+  return newMatrix;
+}
+
+var matrix = [
+  [1, 5, 8],
+  [4, 7, 2],
+  [3, 9, 6]
+];
+
+var newMatrix = transpose(matrix);
+
+console.log(newMatrix);      // [[1, 4, 3], [5, 7, 9], [8, 2, 6]]
+console.log(matrix);         // [[1, 5, 8], [4, 7, 2], [3, 9, 6]]
+</script>
+</body>
+</html>

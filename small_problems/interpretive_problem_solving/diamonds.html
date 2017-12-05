@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+  <title>LS 210 | Small Problems: Interpretive Problem Solving</title>
+</head>
+<body>
+<h1>Launch School 210 | Small Problems: Interpretive Problem Solving</h1>
+<h2>Diamonds</h2>
+<p>Write a function that displays a four-pointed diamond in an nxn grid, where n is an odd integer supplied as an argument to the function. You may assume that the argument will always be an odd integer.</p>
+<script>
+/*
+input: An odd integer
+output: Log of a text lines made up of spaces and stars, representing a 'diamond' shape with the width of the input integer
+data structures:
+  - Each 'row' of the diamond is represented by a string made up of spaces and star characters
+    - The first row has one star characters
+    - The second row has three star characters
+    - The third row has 5 star characters
+    - etc..
+    - The stars in each row are prepended by a number of spaces equal to the input number minus the number of stars for that row then divided by 2,
+      - e.g. if input is 5 and stars on the row is 1, then spaces = (5 - 1) / 2; i.e. 2
+algorithm:
+ 1) Declare a variable for the the diamond and assign it to an array made up of odd numbers from 1 up to the input numbers
+ 2) Concat that array with a reversed version of itself exluding the last element
+ 3) Map the resulting array of number so that each integer is transofrmed to the appropraite number of spaces and stars.
+ 4) Join the array with newline characters and return it
+
+*/
+
+function makeLine(line, width) {
+  var spaces = (width - line) / 2;
+  return ' '.repeat(spaces) + '*'.repeat(line);
+}
+
+function diamond(width) {
+  // var diamondArr = createDiamondArr(width);
+  var diamondArr = Array.from({length: width}, (elem, i) => i + 1).filter(elem => elem % 2 === 1);
+  diamondArr = diamondArr.concat(diamondArr.slice(0, diamondArr.length - 1).reverse())
+  return diamondArr.map(line => makeLine(line, width)).join('\n');
+}
+
+console.log(diamond(1));
+// logs
+/*
+
+*
+
+*/
+
+console.log(diamond(3));
+// logs
+/*
+
+ *
+***
+ *
+
+*/
+
+console.log(diamond(9));
+// logs
+/*
+
+    *
+   ***
+  *****
+ *******
+*********
+ *******
+  *****
+   ***
+    *
+
+*/
+</script>
+</body>
+</html>

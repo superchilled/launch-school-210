@@ -40,15 +40,73 @@ var yellowPages = ['Apple Store', 'Bags Galore',<br/>
 <p>Implement a binarySearch function that takes an array and a searchItem as arguments, and returns the index of the searchItem if found, or -1 otherwise. You may assume that the array argument will always be sorted.</p>
 <script>
 /*
-Input:
-Output:
+Input: A sorted array of like elements (e.g. string or number) and a search item of that element type
+Output: The index within the array for that element, or -1 if the array does not contain the element
 Rules:
-  -
+  - Use a binary search algorithm; i.e. slice the array in half each time and search the half that is greater or lesser than the serach term until the term is found
 Algorithm:
-  1)
+  1) Declare a variable for the search array and assign it to a copy of the input array
+  2) Declare a variable for the search index and assign it to midpoint of the array: Math.floor((arr.length - 1) / 2)
+  3) Run a while loop. While the length of the search array is greater than 0:
+    - Determine the mid-point of this array: and assign this to the current index
+    - If the element at the current index is equal to the input search value, return the search index
+    - If the element at the current index is less than the input search value:
+      - slice the search array from current index plus 1 and reassign to the search array
+      - Reassign the search index to itself + Math.ceil(searchArr.length / 2)
+    - If the element at the current index is greater than the input search value:
+      - slice the search array from 0 to the current index and reassign to the search array
+      - Reassign the search index to itself - Math.ceil(searchArr.length / 2)
+  4) If the entire loop completes without returning, return -1
+
 */
 
+// function binarySearch(arr, searchValue) {
+//   if (arr.length === 1) {
+//     return 0;
+//   }
+//
+//   var searchIndex = Math.floor((arr.length - 1) / 2);
+//   if (arr[searchIndex] === searchValue) {
+//     return searchIndex;
+//   } else if (arr[searchIndex] < searchValue) {
+//     searchIndex += binarySearch(arr.slice(searchIndex + 1), searchValue);
+//   } else {
+//     searchIndex = binarySearch(arr.slice(0, searchIndex), searchValue);
+//   }
+//
+//   return searchIndex;
+// }
 
+function binarySearch(arr, searchValue) {
+  var searchIndex = Math.floor((arr.length - 1) / 2);
+  var searchArr = arr.slice();
+
+  while (searchArr.length > 0) {
+    var currentIndex = Math.floor((searchArr.length - 1) / 2);
+    if (searchArr[currentIndex] === searchValue) {
+      return searchIndex;
+    } else if (searchArr[currentIndex] < searchValue) {
+      searchArr = searchArr.slice(currentIndex + 1);
+      searchIndex += Math.ceil(searchArr.length / 2);
+    } else {
+      searchArr = searchArr.slice(0, currentIndex);
+      searchIndex -= Math.ceil((searchArr.length + 1) / 2);
+    }
+  }
+  return -1;
+}
+
+
+var yellowPages = ['Apple Store', 'Bags Galore', 'Bike Store', 'Donuts R Us', 'Eat a Lot', 'Good Food', 'Pasta Place', 'Pizzeria', 'Ruby Lounge', 'Zooper'];
+console.log(binarySearch(yellowPages, 'Pizzeria'));                   // 7
+console.log(binarySearch(yellowPages, 'Apple Store'));                // 0
+
+console.log(binarySearch([1, 5, 7, 11, 23, 45, 65, 89, 102], 77));    // -1
+console.log(binarySearch([1, 5, 7, 11, 23, 45, 65, 89, 102], 89));    // 7
+console.log(binarySearch([1, 5, 7, 11, 23, 45, 65, 89, 102], 5));     // 1
+
+console.log(binarySearch(['Alice', 'Bonnie', 'Kim', 'Pete', 'Rachel', 'Sue', 'Tyler'], 'Peter'));  // -1
+console.log(binarySearch(['Alice', 'Bonnie', 'Kim', 'Pete', 'Rachel', 'Sue', 'Tyler'], 'Tyler'));  // 6
 </script>
 </body>
 </html>

@@ -27,45 +27,69 @@
 <p>Write a function that implements the Vigenere Cipher. The case of the keyword doesn't matter—in other words, the resulting encryption won't change depending on the case of the keyword's letters (e.g., 'MEat' === 'mEaT').</p>
 <script>
 /*
-input:
-output:
-data structures:
-  -
+input: A string to be encrypted and a 'keyword' from which to derive the encryption key
+output: An version of the string encrypted according to the rules of the Vigenere cipher
 rules and edge cases:
-  -
+  - Only alphabetic characters are encrypted
+  - Letters must retain their original cases
+  - Letters are encrypted according to a Caeser cipher but the shift value is determined by the alphabetic position (1-26) of the current letter in the keyword
+    - Letters in the keyword are used in order, once all have been used return to the start of the keyword
+    - Each alphabetic character in the input string will use one letter in the keyword in order
+    - The keyword can be contian both upper and lowercase letters, this makes no difference to the value of that letter in terms of the shift
+data structures:
+  - The input string needs to be mapped, so should be converted to an array
+  - Need a sequence of 'shift values' long enough for all the alphabetic characters. An array could also be used so that it can have elements shifted of popped
 algorithm:
- 1)
+ 1) Determine the number of alphabetic characters in the input string
+ 2) If the keyword is an empty string or the alpahbetic characters in the input string is 0, return the input string
+ 3) Repeat the keyword enough times so that there is a keyword letter for every alphabetic letter in the input string. Split it into an array and map to the alpabetic position (a => 1, b => 2,...)
+ 4) Split the input string into an array and map it using the Caeser cipher and with the current letter and a shifted integer from the keyword sequence
+ 5) Join the array and return it
 */
 
-star(7);
-/*
-logs:
+function caesarEncrypt(string, key) {
+  var UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var LOWER = 'abcdefghijklmnopqrstuvwxyz'
+  while (key > 26) {
+    key -= 26;
+  }
+  var encryptedUpper = UPPER.slice(key) + UPPER.slice(0, key);
+  var encryptedLower = LOWER.slice(key) + LOWER.slice(0, key);
 
-*  *  *
- * * *
-  ***
-*******
-  ***
- * * *
-*  *  *
+  var mappedArr = string.split('').map(function (char) {
+    if (char.match(/[A-Z]/)) {
+      return encryptedUpper[UPPER.indexOf(char)];
+    } else if (char.match(/[a-z]/)) {
+      return encryptedLower[LOWER.indexOf(char)];
+    } else {
+      return char;
+    }
+  });
+  return mappedArr.join('');
+}
 
-*/
+function vigenereEncrypt(string, keyword) {
+  var alphaChars = string.match(/[a-z]/gi);
+  if (keyword === '' || alphaChars === null) {
+    return string;
+  }
+  var keywordSequence = keyword.toLowerCase().repeat(Math.ceil(alphaChars.length / keyword.length))
+    .substr(0, alphaChars.length).split('').map(letter => letter.charCodeAt() - 97);
+  return string.split('').map(letter => {
+    if (letter.match(/[a-z]/i)) {
+      return caesarEncrypt(letter, keywordSequence.shift());
+    } else {
+      return letter;
+    }
+  }).join('');
+}
 
-star(9);
-/*
-logs:
-
-*   *   *
- *  *  *
-  * * *
-   ***
-*********
-   ***
-  * * *
- *  *  *
-*   *   *
-
-*/
+console.log(vigenereEncrypt("Pineapples don't go on pizzas!", 'meat')); // 'Bmnxmtpeqw dhz'x gh ar pbldal!'
+console.log(vigenereEncrypt("Pineapples don't go on pizzas!", 'mEaT')); // 'Bmnxmtpeqw dhz'x gh ar pbldal!'
+console.log(vigenereEncrypt('The quick brown fox jumps over the lazy dog!', 'F')); // "Ymj vznhp gwtbs ktc ozrux tajw ymj qfed itl!"
+console.log(vigenereEncrypt('The quick brown fox jumps over the lazy dog!', '')); // "The quick brown fox jumps over the lazy dog!"
+console.log(vigenereEncrypt('', 'hello')); // ''
+console.log(vigenereEncrypt('9£!23', 'hello')); // '9£!23'
 </script>
 </body>
 </html>

@@ -11,15 +11,48 @@
 <p>The Caesar Cipher only encrypts letters (including both lower and upper case). Any other character is left as is. The substituted letters are in the same letter case as the original letter. If the key value for shifting exceeds the length of the alphabet, it wraps around from the beginning.</p>
 <script>
 /*
-input:
-output:
+input: A string to be encrypted and an integer representing the encryption 'key' (the number of positons to be shifted)
+output: An encrypted version of the key
 data structures:
-  -
+  - Have two strings representing the uppercase and lowercase alphabets
+  - Have two other strings representing the encrypted versions of both alphabets (the unecrypted versions sliced and concatenated)
 rules and edge cases:
-  -
+  - Only letters are encrypted (non-alphanumeric characters remain unchanged)
+  - The input string can contain both uppercase and lowercase.
+  - Case must be persisted in the encrypted string
+  - If key is greater then 26 then it needs to wrap more than once
 algorithm:
- 1)
+ 1) Declare a variable upper for the uppercase alphabets
+ 2) Declare a variable lower for the lowercase alphabets
+ 3) Declare a varaible encryptedUpper which is assigned to a uppercase alphabet sliced from the input key to the end, concatenated to the uppercase alphabet slided from 0 to the input index
+ 4) Declare a varaible encryptedLower which is assigned to a lowercase alphabet sliced from the input key to the end, concatenated to the lowercase alphabet slided from 0 to the input index
+ 5) Split the input string into characters and map it:
+  - Check each char, if it is an uppercase letter, find its index in the uppercase alphabet string and map the character to the character at the same index in the enctypted version
+  - The the same for lowercase letters but using the lowercase versions
+  - If it is a non-alpha character just return the character
+ 6) Return the joined string
 */
+
+function caesarEncrypt(string, key) {
+  var UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var LOWER = 'abcdefghijklmnopqrstuvwxyz'
+  while (key > 26) {
+    key -= 26;
+  }
+  var encryptedUpper = UPPER.slice(key) + UPPER.slice(0, key);
+  var encryptedLower = LOWER.slice(key) + LOWER.slice(0, key);
+
+  var mappedArr = string.split('').map(function (char) {
+    if (char.match(/[A-Z]/)) {
+      return encryptedUpper[UPPER.indexOf(char)];
+    } else if (char.match(/[a-z]/)) {
+      return encryptedLower[LOWER.indexOf(char)];
+    } else {
+      return char;
+    }
+  });
+  return mappedArr.join('');
+}
 
 // simple shift
 console.log(caesarEncrypt('A', 0));       // "A"
